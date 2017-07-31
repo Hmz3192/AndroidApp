@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="network_unstable">网络不稳定</string>
+    <string name="no_call_data">没有通话数据</string>
+    <string name="call_version_inconsistent">通话协议版本不一致</string>
+
+</resources>
