@@ -1,18 +1,18 @@
 [
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\easeui\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_custom_big.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\layout-v21\\notification_template_custom_big.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\layout-v21\\notification_action_tombstone.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\easeui\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_icon_group.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\layout-v21\\notification_template_icon_group.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\layout-v21\\notification_action.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\easeui\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\layout-v21\\notification_action.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\layout-v21\\notification_template_icon_group.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\easeui\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action_tombstone.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\layout-v21\\notification_action_tombstone.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\layout-v21\\notification_template_custom_big.xml"
     }
 ]

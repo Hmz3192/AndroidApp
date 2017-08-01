@@ -1,77 +1,77 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\WorkSpace\AsWorkSpace\MyApplication\tBViewer\src\main\AndroidManifest.xml:2:1-23:12
+ADDED from E:\WorkSpace\AsWorkSpace\AndroidApp\tBViewer\src\main\AndroidManifest.xml:2:1-23:12
 	package
-		ADDED from D:\WorkSpace\AsWorkSpace\MyApplication\tBViewer\src\main\AndroidManifest.xml:3:5-36
-		INJECTED from D:\WorkSpace\AsWorkSpace\MyApplication\tBViewer\src\main\AndroidManifest.xml
-		INJECTED from D:\WorkSpace\AsWorkSpace\MyApplication\tBViewer\src\main\AndroidManifest.xml
+		ADDED from E:\WorkSpace\AsWorkSpace\AndroidApp\tBViewer\src\main\AndroidManifest.xml:3:5-36
+		INJECTED from E:\WorkSpace\AsWorkSpace\AndroidApp\tBViewer\src\main\AndroidManifest.xml
+		INJECTED from E:\WorkSpace\AsWorkSpace\AndroidApp\tBViewer\src\main\AndroidManifest.xml
 	android:versionName
-		ADDED from D:\WorkSpace\AsWorkSpace\MyApplication\tBViewer\src\main\AndroidManifest.xml:5:5-30
-		INJECTED from D:\WorkSpace\AsWorkSpace\MyApplication\tBViewer\src\main\AndroidManifest.xml
-		INJECTED from D:\WorkSpace\AsWorkSpace\MyApplication\tBViewer\src\main\AndroidManifest.xml
+		ADDED from E:\WorkSpace\AsWorkSpace\AndroidApp\tBViewer\src\main\AndroidManifest.xml:5:5-30
+		INJECTED from E:\WorkSpace\AsWorkSpace\AndroidApp\tBViewer\src\main\AndroidManifest.xml
+		INJECTED from E:\WorkSpace\AsWorkSpace\AndroidApp\tBViewer\src\main\AndroidManifest.xml
 	android:versionCode
-		ADDED from D:\WorkSpace\AsWorkSpace\MyApplication\tBViewer\src\main\AndroidManifest.xml:4:5-28
-		INJECTED from D:\WorkSpace\AsWorkSpace\MyApplication\tBViewer\src\main\AndroidManifest.xml
-		INJECTED from D:\WorkSpace\AsWorkSpace\MyApplication\tBViewer\src\main\AndroidManifest.xml
+		ADDED from E:\WorkSpace\AsWorkSpace\AndroidApp\tBViewer\src\main\AndroidManifest.xml:4:5-28
+		INJECTED from E:\WorkSpace\AsWorkSpace\AndroidApp\tBViewer\src\main\AndroidManifest.xml
+		INJECTED from E:\WorkSpace\AsWorkSpace\AndroidApp\tBViewer\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from D:\WorkSpace\AsWorkSpace\MyApplication\tBViewer\src\main\AndroidManifest.xml:2:11-69
+		ADDED from E:\WorkSpace\AsWorkSpace\AndroidApp\tBViewer\src\main\AndroidManifest.xml:2:11-69
 uses-sdk
-ADDED from D:\WorkSpace\AsWorkSpace\MyApplication\tBViewer\src\main\AndroidManifest.xml:7:5-9:41
-MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\output\AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:support-v4:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\46118f4043c4a6b8e48e746909173440f26ede49\output\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\5f6a998532021d8c9163a025192bcb67b4b2341e\output\AndroidManifest.xml:21:5-23:63
-MERGED from [com.android.support:support-fragment:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\5e5b9a948f12087026d1d6507b3479648be38a11\output\AndroidManifest.xml:21:5-23:60
-MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\3be15283653b39770eb0871a3403128ddaed983a\output\AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\025d793e5a39ccc4a497e772ad645d4a50376f84\output\AndroidManifest.xml:21:5-23:61
-MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\c0db8757f6137835c3364af8fd0acefbb0ff5d07\output\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\e372512dd94ac7944ef0c145c9edcc9349d43c58\output\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\6041923de8cccd94fd5bce10d5224405152da62b\output\AndroidManifest.xml:21:5-23:58
+ADDED from E:\WorkSpace\AsWorkSpace\AndroidApp\tBViewer\src\main\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\7c7b2cfb46bcbeda9f5160bb40134972459e1c6f\output\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\1d6515327b60550ef647904162476b3df38fdba7\output\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\514b3e9a603988a6abaf1f64b86336ff023f322a\output\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\ef92eb4de99e953c3594e8e19649e882d0d88d23\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\20ce0d5bad24350b154f9494951bcc30dc9bb5bc\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\d85606a96cbafa6f0001b17abf0bdca4d25ffc82\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\d7c9d3d92cddf15b7515d0f3e561dab11d3c2e7a\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\c3cd83402b3df2e5f154bb8f520eb550b1221a8d\output\AndroidManifest.xml:21:5-23:58
 	tools:overrideLibrary
-		ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\output\AndroidManifest.xml:23:9-75
+		ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\output\AndroidManifest.xml:23:9-75
 	android:targetSdkVersion
-		ADDED from D:\WorkSpace\AsWorkSpace\MyApplication\tBViewer\src\main\AndroidManifest.xml:9:9-38
-		INJECTED from D:\WorkSpace\AsWorkSpace\MyApplication\tBViewer\src\main\AndroidManifest.xml
-		INJECTED from D:\WorkSpace\AsWorkSpace\MyApplication\tBViewer\src\main\AndroidManifest.xml
+		ADDED from E:\WorkSpace\AsWorkSpace\AndroidApp\tBViewer\src\main\AndroidManifest.xml:9:9-38
+		INJECTED from E:\WorkSpace\AsWorkSpace\AndroidApp\tBViewer\src\main\AndroidManifest.xml
+		INJECTED from E:\WorkSpace\AsWorkSpace\AndroidApp\tBViewer\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		ADDED from D:\WorkSpace\AsWorkSpace\MyApplication\tBViewer\src\main\AndroidManifest.xml:8:9-34
-		INJECTED from D:\WorkSpace\AsWorkSpace\MyApplication\tBViewer\src\main\AndroidManifest.xml
-		INJECTED from D:\WorkSpace\AsWorkSpace\MyApplication\tBViewer\src\main\AndroidManifest.xml
+		ADDED from E:\WorkSpace\AsWorkSpace\AndroidApp\tBViewer\src\main\AndroidManifest.xml:8:9-34
+		INJECTED from E:\WorkSpace\AsWorkSpace\AndroidApp\tBViewer\src\main\AndroidManifest.xml
+		INJECTED from E:\WorkSpace\AsWorkSpace\AndroidApp\tBViewer\src\main\AndroidManifest.xml
 application
-ADDED from D:\WorkSpace\AsWorkSpace\MyApplication\tBViewer\src\main\AndroidManifest.xml:11:5-21:19
-MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\output\AndroidManifest.xml:29:5-20
-MERGED from [com.android.support:support-v4:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\46118f4043c4a6b8e48e746909173440f26ede49\output\AndroidManifest.xml:29:5-20
-MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\5f6a998532021d8c9163a025192bcb67b4b2341e\output\AndroidManifest.xml:29:5-20
-MERGED from [com.android.support:support-fragment:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\5e5b9a948f12087026d1d6507b3479648be38a11\output\AndroidManifest.xml:29:5-20
-MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\3be15283653b39770eb0871a3403128ddaed983a\output\AndroidManifest.xml:29:5-20
-MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\025d793e5a39ccc4a497e772ad645d4a50376f84\output\AndroidManifest.xml:29:5-20
-MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\c0db8757f6137835c3364af8fd0acefbb0ff5d07\output\AndroidManifest.xml:26:5-20
-MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\e372512dd94ac7944ef0c145c9edcc9349d43c58\output\AndroidManifest.xml:26:5-20
-MERGED from [com.android.support:support-compat:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\6041923de8cccd94fd5bce10d5224405152da62b\output\AndroidManifest.xml:29:5-20
+ADDED from E:\WorkSpace\AsWorkSpace\AndroidApp\tBViewer\src\main\AndroidManifest.xml:11:5-21:19
+MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\7c7b2cfb46bcbeda9f5160bb40134972459e1c6f\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\1d6515327b60550ef647904162476b3df38fdba7\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\514b3e9a603988a6abaf1f64b86336ff023f322a\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\ef92eb4de99e953c3594e8e19649e882d0d88d23\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\20ce0d5bad24350b154f9494951bcc30dc9bb5bc\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\d85606a96cbafa6f0001b17abf0bdca4d25ffc82\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\d7c9d3d92cddf15b7515d0f3e561dab11d3c2e7a\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\c3cd83402b3df2e5f154bb8f520eb550b1221a8d\output\AndroidManifest.xml:29:5-20
 	android:label
-		ADDED from D:\WorkSpace\AsWorkSpace\MyApplication\tBViewer\src\main\AndroidManifest.xml:14:9-41
+		ADDED from E:\WorkSpace\AsWorkSpace\AndroidApp\tBViewer\src\main\AndroidManifest.xml:14:9-41
 	android:allowBackup
-		ADDED from D:\WorkSpace\AsWorkSpace\MyApplication\tBViewer\src\main\AndroidManifest.xml:12:9-35
+		ADDED from E:\WorkSpace\AsWorkSpace\AndroidApp\tBViewer\src\main\AndroidManifest.xml:12:9-35
 	android:icon
-		ADDED from D:\WorkSpace\AsWorkSpace\MyApplication\tBViewer\src\main\AndroidManifest.xml:13:9-45
+		ADDED from E:\WorkSpace\AsWorkSpace\AndroidApp\tBViewer\src\main\AndroidManifest.xml:13:9-45
 	android:theme
-		ADDED from D:\WorkSpace\AsWorkSpace\MyApplication\tBViewer\src\main\AndroidManifest.xml:15:9-40
+		ADDED from E:\WorkSpace\AsWorkSpace\AndroidApp\tBViewer\src\main\AndroidManifest.xml:15:9-40
 activity#com.jingchen.tbviewer.MainActivity
-ADDED from D:\WorkSpace\AsWorkSpace\MyApplication\tBViewer\src\main\AndroidManifest.xml:16:9-20:20
+ADDED from E:\WorkSpace\AsWorkSpace\AndroidApp\tBViewer\src\main\AndroidManifest.xml:16:9-20:20
 	android:label
-		ADDED from D:\WorkSpace\AsWorkSpace\MyApplication\tBViewer\src\main\AndroidManifest.xml:18:13-45
+		ADDED from E:\WorkSpace\AsWorkSpace\AndroidApp\tBViewer\src\main\AndroidManifest.xml:18:13-45
 	android:name
-		ADDED from D:\WorkSpace\AsWorkSpace\MyApplication\tBViewer\src\main\AndroidManifest.xml:17:13-62
+		ADDED from E:\WorkSpace\AsWorkSpace\AndroidApp\tBViewer\src\main\AndroidManifest.xml:17:13-62
 meta-data#android.support.VERSION
-ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\output\AndroidManifest.xml:25:5-27:41
-MERGED from [com.android.support:support-v4:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\46118f4043c4a6b8e48e746909173440f26ede49\output\AndroidManifest.xml:25:5-27:41
-MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\5f6a998532021d8c9163a025192bcb67b4b2341e\output\AndroidManifest.xml:25:5-27:41
-MERGED from [com.android.support:support-fragment:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\5e5b9a948f12087026d1d6507b3479648be38a11\output\AndroidManifest.xml:25:5-27:41
-MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\3be15283653b39770eb0871a3403128ddaed983a\output\AndroidManifest.xml:25:5-27:41
-MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\025d793e5a39ccc4a497e772ad645d4a50376f84\output\AndroidManifest.xml:25:5-27:41
-MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\c0db8757f6137835c3364af8fd0acefbb0ff5d07\output\AndroidManifest.xml:22:5-24:41
-MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\e372512dd94ac7944ef0c145c9edcc9349d43c58\output\AndroidManifest.xml:22:5-24:41
-MERGED from [com.android.support:support-compat:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\6041923de8cccd94fd5bce10d5224405152da62b\output\AndroidManifest.xml:25:5-27:41
+ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\7c7b2cfb46bcbeda9f5160bb40134972459e1c6f\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\1d6515327b60550ef647904162476b3df38fdba7\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\514b3e9a603988a6abaf1f64b86336ff023f322a\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\ef92eb4de99e953c3594e8e19649e882d0d88d23\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\20ce0d5bad24350b154f9494951bcc30dc9bb5bc\output\AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\d85606a96cbafa6f0001b17abf0bdca4d25ffc82\output\AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\d7c9d3d92cddf15b7515d0f3e561dab11d3c2e7a\output\AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\c3cd83402b3df2e5f154bb8f520eb550b1221a8d\output\AndroidManifest.xml:25:5-27:41
 	android:value
-		ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\output\AndroidManifest.xml:27:9-38
+		ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\output\AndroidManifest.xml:27:9-38
 	android:name
-		ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\Lenovo\.android\build-cache\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\output\AndroidManifest.xml:26:9-47
+		ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] C:\Users\ThinKPad\.android\build-cache\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\output\AndroidManifest.xml:26:9-47

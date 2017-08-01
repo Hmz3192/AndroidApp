@@ -1,13 +1,10 @@
 package com.example.lenovo.app;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.example.lenovo.controller.fragment.ChatFragment;
 import com.example.lenovo.controller.fragment.ContactListFragment;
@@ -16,14 +13,16 @@ import com.example.lenovo.home.fragment.HomeFragment;
 import com.example.lenovo.myapplication.R;
 import com.example.lenovo.shoppingcart.fragment.CartFragment;
 
-public class MainActivity extends FragmentActivity implements SwipeRefreshLayout.OnRefreshListener{
+public class MainActivity extends FragmentActivity {
     private RadioGroup rg_main;
     private ChatFragment chatFragment;
     private ContactListFragment contactListFragment;
     private SettingFragment settingFragment;
     private HomeFragment homeFragment;
     private CartFragment cartFragment;
-    private SwipeRefreshLayout mSwipeLayout;
+
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -92,29 +91,8 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
 
 
     private void initView() {
-
         rg_main = (RadioGroup)findViewById(R.id.rg_main);
-        mSwipeLayout =  findViewById(R.id.swipe_container);
-        mSwipeLayout.setOnRefreshListener(this);
-        // 设置下拉圆圈上的颜色，蓝色、绿色、橙色、红色
-        mSwipeLayout.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light,
-                android.R.color.holo_orange_light, android.R.color.holo_red_light);
-        mSwipeLayout.setDistanceToTriggerSync(400);// 设置手指在屏幕下拉多少距离会触发下拉刷新
-        mSwipeLayout.setProgressBackgroundColor(android.R.color.holo_red_light); // 设定下拉圆圈的背景
-        mSwipeLayout.setSize(SwipeRefreshLayout.LARGE); // 设置圆圈的大小
     }
-    public void onRefresh() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(MainActivity.this, "刷新成功", Toast.LENGTH_SHORT).show();
-                // 停止刷新
-                mSwipeLayout.setRefreshing(false);
-
-            }
-        }, 2000); // 2秒后发送消息，停止刷新
-    }
-
 
 }
 

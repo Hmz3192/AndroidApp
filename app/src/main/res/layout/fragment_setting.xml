@@ -241,11 +241,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/holo_red_light"
-                android:text="退出"
+                android:text="退      出"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
-                android:textAlignment="center"
+                android:gravity="center"
                 android:textSize="20sp" />
+
         </LinearLayout>
 
     </ScrollView>

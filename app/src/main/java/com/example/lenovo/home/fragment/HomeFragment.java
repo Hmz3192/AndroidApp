@@ -1,6 +1,8 @@
 package com.example.lenovo.home.fragment;
 
 import android.content.Intent;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -26,13 +28,14 @@ import okhttp3.Call;
  * 主页面
  */
 
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener{
     private static final String TAG = HomeFragment.class.getSimpleName();
     private RecyclerView rvHome;
     private ImageView ib_top;
     private TextView tv_search_home;
     private TextView tv_message_home;
     private HomeFragmentAdapter adapter;
+    private SwipeRefreshLayout mSwipeLayout;
     /*返回的数据*/
     private ResultBeanData.ResultBean resultBean;
 
@@ -43,7 +46,9 @@ public class HomeFragment extends BaseFragment {
         rvHome = view.findViewById(R.id.rv_home);
         ib_top = view.findViewById(R.id.ib_top);
         tv_search_home = view.findViewById(R.id.tv_search_home);
-        tv_message_home = view.findViewById(R.id.tv_message_home); //设置点击事件
+        tv_message_home = view.findViewById(R.id.tv_message_home);
+        mSwipeLayout =  view.findViewById(R.id.swipe_container);
+        //设置点击事件
         initListener();
         return view;
     }
@@ -144,5 +149,25 @@ public class HomeFragment extends BaseFragment {
                 mcontext.startActivity(intent);
             }
         });
+
+        mSwipeLayout.setOnRefreshListener(this);
+        // 设置下拉圆圈上的颜色，蓝色、绿色、橙色、红色
+        mSwipeLayout.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light,
+                android.R.color.holo_orange_light, android.R.color.holo_red_light);
+        mSwipeLayout.setDistanceToTriggerSync(400);// 设置手指在屏幕下拉多少距离会触发下拉刷新
+        mSwipeLayout.setProgressBackgroundColor(android.R.color.holo_red_light); // 设定下拉圆圈的背景
+        mSwipeLayout.setSize(SwipeRefreshLayout.LARGE); // 设置圆圈的大小
+    }
+
+    public void onRefresh() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(getActivity(), "刷新成功", Toast.LENGTH_SHORT).show();
+                // 停止刷新
+                mSwipeLayout.setRefreshing(false);
+
+            }
+        }, 2000); // 2秒后发送消息，停止刷新
     }
 }

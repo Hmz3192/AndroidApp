@@ -6,18 +6,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
   >
-    <com.hyphenate.easeui.widget.EaseTitleBar
-        app:titleBarTitle="Login"
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-    </com.hyphenate.easeui.widget.EaseTitleBar>
-    
+        <TextView
+            android:id="@+id/tv_back"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="320dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="退回"/>
+
+    </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="150dp">
-
         <TextView
-            android:text="硅谷社交"
+            android:text="Login"
             android:textSize="30dp"
             android:gravity="center"
             android:layout_width="match_parent"
@@ -65,22 +70,27 @@
     <LinearLayout
         android:layout_margin="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/bt_regist"
-            android:text="注册"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
-
-        <Button
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
             android:id="@+id/bt_login"
             android:layout_marginLeft="10dp"
+            android:gravity="center"
             android:text="登录"
+            android:background="@drawable/shape_buton"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/bt_regist"
+            android:gravity="center"
+            android:text="注册"
+            android:background="@drawable/shape_buton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+
+
     </LinearLayout>
 
 </LinearLayout>

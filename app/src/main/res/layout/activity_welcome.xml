@@ -1,22 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="#ffffff">
 
+    <com.example.lenovo.utils.CustomVideoView
+        android:id="@+id/videoview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00ffffff" />
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
 
+        <TextView
 
-        <ImageView
-            android:id="@+id/ivAdam"
+            android:id="@+id/tv_app"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:layout_centerInParent="true"
-            android:background="@drawable/view" />
+            android:text="A    P    P"
+            android:textColor="@color/btn_white_normal"
+            android:layout_marginTop="70dp"
+            android:textSize="35dp" />
 
+        <!-- <TextView
+         android:text="注  册"
+         android:gravity="center"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:background="@drawable/shape_buton"
+         android:textColor="@color/btn_white_normal"
+         android:layout_marginBottom="80dp"
+         android:id="@+id/bt_regist"
+         android:layout_alignParentBottom="true"
+         android:layout_alignLeft="@+id/bt_login"
+         android:layout_alignStart="@+id/bt_login" />
+-->
+        <TextView
+            android:id="@+id/tv_login_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_buton"
+            android:gravity="center"
+            android:layout_marginTop="423dp"
+            android:text="立  即  加  入"
+            android:textColor="@color/btn_white_normal"
+            />
 
+    </RelativeLayout>
 
-</RelativeLayout>
+    <include layout="@layout/view_page"></include>
+</FrameLayout>

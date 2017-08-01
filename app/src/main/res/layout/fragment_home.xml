@@ -2,16 +2,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.lenovo.home.fragment.HomeFragment">
-
+    >
     <include
         android:id="@+id/titlebar"
         layout="@layout/titlebar" />
 
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titlebar">
+
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_home"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/titlebar" />
     <ImageButton
         android:id="@+id/ib_top"
@@ -23,4 +30,5 @@
         android:layout_marginRight="20dp"
         android:background="@drawable/top_btn"
         android:visibility="visible" />
+    </android.support.v4.widget.SwipeRefreshLayout>
 </RelativeLayout>

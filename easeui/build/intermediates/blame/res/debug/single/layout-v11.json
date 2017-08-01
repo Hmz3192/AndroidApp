@@ -1,26 +1,26 @@
 [
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\easeui\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_narrow.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\layout-v11\\notification_template_big_media_narrow.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_custom.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\layout-v11\\notification_template_big_media_custom.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\easeui\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\layout-v11\\notification_template_big_media.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_media_action.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\layout-v11\\notification_media_action.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\easeui\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_media_action.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\layout-v11\\notification_media_action.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_narrow.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\layout-v11\\notification_template_big_media_narrow.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\easeui\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_narrow_custom.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\layout-v11\\notification_template_big_media_narrow_custom.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\layout-v11\\notification_template_big_media.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\easeui\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_media_cancel_action.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\layout-v11\\notification_media_cancel_action.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_media_cancel_action.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\layout-v11\\notification_media_cancel_action.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\easeui\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_custom.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\layout-v11\\notification_template_big_media_custom.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_narrow_custom.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\layout-v11\\notification_template_big_media_narrow_custom.xml"
     }
 ]

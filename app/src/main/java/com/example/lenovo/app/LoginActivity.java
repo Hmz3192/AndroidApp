@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lenovo.model.Model;
@@ -19,8 +19,9 @@ import com.hyphenate.exceptions.HyphenateException;
 public class LoginActivity extends Activity {
     private EditText et_login_name;
     private EditText et_login_pass;
-    private Button bt_regist;
-    private Button bt_login;
+    private TextView bt_regist;
+    private TextView bt_login;
+    private TextView tv_back;
 
 
     @Override
@@ -45,10 +46,20 @@ public class LoginActivity extends Activity {
 
          /*登录按钮的点击事件*/
         bt_login.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 login();
 
+            }
+        });
+        /*回退*/
+        tv_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, WelcomeActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
@@ -82,7 +93,7 @@ public class LoginActivity extends Activity {
                             @Override
                             public void run() {
                                 /*提示成功*/
-                                Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
                                 /*跳转到主页面*/
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(intent);
@@ -124,7 +135,7 @@ public class LoginActivity extends Activity {
         final String pwd = et_login_pass.getText().toString().trim();
         /*2.校验输入的用户名密码*/
         if (TextUtils.isEmpty(name) || TextUtils.isEmpty(pwd)) {
-            Toast.makeText(this, "输入的用户名密码为空", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "↑↑↑↑↑输入的用户名密码再注册好吧！", Toast.LENGTH_SHORT).show();
             /*退出注册逻辑判断*/
             return;
         }
@@ -159,7 +170,7 @@ public class LoginActivity extends Activity {
     }
 
     private void initView() {
-
+        tv_back = findViewById(R.id.tv_back);
         et_login_name = findViewById(R.id.et_login_name);
         et_login_pass = findViewById(R.id.et_login_pass);
         bt_regist = findViewById(R.id.bt_regist);

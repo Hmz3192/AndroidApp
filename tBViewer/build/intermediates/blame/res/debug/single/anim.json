@@ -1,42 +1,42 @@
 [
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\anim\\abc_grow_fade_in_from_bottom.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_exit.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\anim\\abc_popup_exit.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_out.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\anim\\abc_fade_out.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_bottom.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\anim\\abc_slide_in_bottom.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_bottom.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\anim\\abc_slide_in_bottom.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_top.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\anim\\abc_slide_in_top.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_top.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\anim\\abc_slide_out_top.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_top.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\anim\\abc_slide_out_top.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_bottom.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\anim\\abc_slide_out_bottom.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_out.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\anim\\abc_fade_out.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_exit.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\anim\\abc_popup_exit.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\anim\\abc_grow_fade_in_from_bottom.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_in.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\anim\\abc_fade_in.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_in.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\anim\\abc_fade_in.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_top.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\anim\\abc_slide_in_top.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_bottom.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\anim\\abc_slide_out_bottom.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_enter.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\anim\\abc_popup_enter.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_enter.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\anim\\abc_popup_enter.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
     }
 ]

@@ -1,82 +1,82 @@
 [
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_spinner.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\color\\abc_tint_spinner.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_light.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\color\\abc_primary_text_material_light.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_seek_thumb.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\color\\abc_tint_seek_thumb.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_text_material.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\color\\abc_btn_colored_text_material.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_light.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\color\\abc_secondary_text_material_light.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_light.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\color\\abc_primary_text_disable_only_material_light.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\color\\abc_search_url_text.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_borderless_text_material.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\color\\abc_btn_colored_borderless_text_material.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_light.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\color\\abc_primary_text_material_light.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_dark.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\color\\abc_primary_text_material_dark.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_light.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\color\\switch_thumb_material_light.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_dark.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_borderless_text_material.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\color\\abc_btn_colored_borderless_text_material.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_spinner.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\color\\abc_tint_spinner.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_text_material.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\color\\abc_btn_colored_text_material.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_light.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\color\\switch_thumb_material_light.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_dark.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\color\\abc_secondary_text_material_dark.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_thumb.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\color\\abc_tint_switch_thumb.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_edittext.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\color\\abc_tint_edittext.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\color\\abc_search_url_text.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_dark.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\color\\abc_hint_foreground_material_dark.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_light.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\color\\abc_hint_foreground_material_light.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_dark.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\color\\abc_primary_text_material_dark.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_track.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\color\\abc_tint_switch_track.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_dark.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\color\\switch_thumb_material_dark.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_default.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\color\\abc_tint_default.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_light.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\color\\abc_primary_text_disable_only_material_light.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_seek_thumb.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\color\\abc_tint_seek_thumb.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_btn_checkable.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\color\\abc_tint_btn_checkable.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_light.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\color\\abc_secondary_text_material_light.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_thumb.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\color\\abc_tint_switch_thumb.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_btn_checkable.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\color\\abc_tint_btn_checkable.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_track.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\color\\abc_tint_switch_track.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_dark.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\color\\abc_secondary_text_material_dark.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_dark.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_edittext.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\color\\abc_tint_edittext.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_light.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\color\\abc_hint_foreground_material_light.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_dark.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\color\\abc_hint_foreground_material_dark.xml"
     },
     {
-        "merged": "D:\\WorkSpace\\AsWorkSpace\\MyApplication\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_default.xml",
-        "source": "C:\\Users\\Lenovo\\.android\\build-cache\\2f9b38f280967c0fbb7c09ab76f6ad0a8a3be3be\\output\\res\\color\\abc_tint_default.xml"
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\tBViewer\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_dark.xml",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\color\\switch_thumb_material_dark.xml"
     }
 ]

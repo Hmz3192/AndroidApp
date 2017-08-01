@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2f000000"
+    android:visibility="gone">
+
+
+    <com.example.lenovo.viewPage.view.GuideViewPager
+        android:id="@+id/viewpager_launcher1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+
+        <LinearLayout
+            android:id="@+id/viewGroup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="75dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"/>
+    <TextView
+        android:id="@+id/bt_login_seconed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_buton"
+        android:gravity="center"
+        android:text="登    陆"
+        android:textColor="@color/btn_white_normal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="22dp" />
+</RelativeLayout>
