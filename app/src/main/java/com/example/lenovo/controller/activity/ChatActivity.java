@@ -4,11 +4,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.example.lenovo.myapplication.R;
 import com.example.lenovo.utils.Constant;
@@ -24,13 +27,15 @@ public class ChatActivity extends FragmentActivity {
     private EaseChat2Fragment easeChatFragment;
     private LocalBroadcastManager mLBM;
     private int mChatType;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(0xffed3f3f);
+        }
         setContentView(R.layout.activity_chat);
-
         initData();
 
         initListener();

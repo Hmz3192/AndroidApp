@@ -369,7 +369,7 @@ public class ResultBeanData {
             }
         }
 
-        public static class HotInfoBean {
+        public static  class HotInfoBean{
             /**
              * cover_price : 159.00
              * figure : /1477984921265.jpg

@@ -2,13 +2,16 @@ package com.example.lenovo.model;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.v4.content.LocalBroadcastManager;
 
 import com.example.lenovo.model.bean.GroupInfo;
 import com.example.lenovo.model.bean.InvationInfo;
 import com.example.lenovo.model.bean.UserInfo;
+import com.example.lenovo.utils.CallReceiver;
 import com.example.lenovo.utils.Constant;
 import com.example.lenovo.utils.SpUtils;
+import com.hyphenate.EMConnectionListener;
 import com.hyphenate.EMContactListener;
 import com.hyphenate.EMGroupChangeListener;
 import com.hyphenate.chat.EMClient;
@@ -21,18 +24,44 @@ public class EventListener {
 
     private Context mContext;
     private final LocalBroadcastManager mLBM;
+    private CallReceiver callReceiver;
 
     public EventListener(Context context) {
         mContext = context;
 
         // 创建一个发送广播的管理者对象
         mLBM = LocalBroadcastManager.getInstance(mContext);
-
+        setGlobalListeners();
         // 注册一个联系人变化的监听
         EMClient.getInstance().contactManager().setContactListener(emContactListener);
 
         // 注册一个群信息变化的监听
         EMClient.getInstance().groupManager().addGroupChangeListener(eMGroupChangeListener);
+    }
+
+
+    /**
+     * set global listener
+     */
+    protected void setGlobalListeners(){
+        EMConnectionListener connectionListener =  new EMConnectionListener() {
+
+            @Override
+            public void onConnected() {
+
+            }
+
+            @Override
+            public void onDisconnected(int i) {
+
+            }
+        };
+        IntentFilter callFilter = new IntentFilter(EMClient.getInstance().callManager().getIncomingCallBroadcastAction());
+        if(callReceiver == null){
+            callReceiver = new CallReceiver();
+        }
+        //注册通话广播接收者
+        mContext.registerReceiver(callReceiver, callFilter);
     }
 
     // 群信息变化的监听

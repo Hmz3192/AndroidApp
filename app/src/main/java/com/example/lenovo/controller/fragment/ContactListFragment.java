@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.chenyu.library.Utils.AnimationUtils;
+import com.chenyu.library.XToast;
 import com.example.lenovo.controller.activity.AddContactActivity;
 import com.example.lenovo.controller.activity.ChatActivity;
 import com.example.lenovo.controller.activity.GroupListActivity;
@@ -183,6 +186,9 @@ public class ContactListFragment extends EaseContactListFragment {
             deleteContact();
 
             return true;
+        }else if(item.getItemId() == R.id.add_to_blacklist){
+            moveToBlacklist(mHxid);
+            return true;
         }
 
         return super.onContextItemSelected(item);
@@ -209,8 +215,17 @@ public class ContactListFragment extends EaseContactListFragment {
                         @Override
                         public void run() {
                             // toast提示
-                            Toast.makeText(getActivity(), "删除" + mHxid + "成功", Toast.LENGTH_SHORT).show();
-
+//                            Toast.makeText(getActivity(), "删除" + mHxid + "成功", Toast.LENGTH_SHORT).show();
+                            XToast.create(getActivity())
+                                    .setText("删除" + mHxid + "成功")
+                                    .setAnimation(AnimationUtils.ANIMATION_DRAWER) //Drawer Type
+                                    .setDuration(XToast.XTOAST_DURATION_LONG)
+                                    .setOnDisappearListener(new XToast.OnDisappearListener() {
+                                        @Override
+                                        public void onDisappear(XToast xToast) {
+                                            Log.d("cylog", "The XToast has disappeared..");
+                                        }
+                                    }).show();
                             // 刷新页面
                             refreshContact();
                         }

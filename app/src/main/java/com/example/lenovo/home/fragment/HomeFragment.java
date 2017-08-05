@@ -5,23 +5,35 @@ import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
+import com.chenyu.library.Utils.AnimationUtils;
+import com.chenyu.library.XToast;
+import com.example.lenovo.app.GoodsInfoActivity;
 import com.example.lenovo.base.BaseFragment;
 import com.example.lenovo.home.activity.MessageCenterActivity;
 import com.example.lenovo.home.adapter.HomeFragmentAdapter;
+import com.example.lenovo.home.bean.GoodsInfo;
 import com.example.lenovo.home.bean.ResultBeanData;
 import com.example.lenovo.myapplication.R;
 import com.example.lenovo.utils.Constants;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
+import java.util.Random;
+
 import okhttp3.Call;
+
+import static android.content.Context.INPUT_METHOD_SERVICE;
 
 /**
  * Created by Hmz on 2017/7/5.
@@ -32,12 +44,13 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     private static final String TAG = HomeFragment.class.getSimpleName();
     private RecyclerView rvHome;
     private ImageView ib_top;
-    private TextView tv_search_home;
+    private EditText tv_search_home;
     private TextView tv_message_home;
     private HomeFragmentAdapter adapter;
     private SwipeRefreshLayout mSwipeLayout;
     /*返回的数据*/
     private ResultBeanData.ResultBean resultBean;
+
 
     @Override
     public View initView() {
@@ -131,14 +144,60 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
                 //回到顶部
                 rvHome.scrollToPosition(0);
             }
-        }); //搜素的监听
+        });
 
-        tv_search_home.setOnClickListener(new View.OnClickListener() {
+
+        tv_search_home.setOnKeyListener(new View.OnKeyListener() {
             @Override
-            public void onClick(View v) {
-                Toast.makeText(mcontext, "搜索功能暂未开放", Toast.LENGTH_SHORT).show();
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                InputMethodManager imm  = (InputMethodManager) mcontext.getSystemService(INPUT_METHOD_SERVICE);
+                if (i == KeyEvent.KEYCODE_ENTER && keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
+                    //隐藏软键盘
+                    if (imm.isActive()) {
+                        imm.hideSoftInputFromWindow(tv_search_home.getApplicationWindowToken(), 0);
+                    }
+
+//                    imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+                    if (TextUtils.isEmpty(tv_search_home.getText().toString())) {
+                        XToast.create(getActivity())
+                                .setText("输入为空，请重新输入！")
+                                .setAnimation(AnimationUtils.ANIMATION_DRAWER) //Drawer Type
+                                .setDuration(XToast.XTOAST_DURATION_LONG)
+                                .setOnDisappearListener(new XToast.OnDisappearListener() {
+                                    @Override
+                                    public void onDisappear(XToast xToast) {
+                                        Log.d("cylog", "The XToast has disappeared..");
+                                    }
+                                }).show();
+                      /*  XToast.create(getActivity(),"你收到了 1 条新消息..",XToast.XTOAST_TYPE_BOTTOM)
+                                .setButtonOnClickListener(new XToast.OnButtonClickListener() {
+                                    @Override
+                                    public void click(XToast xToast) {
+                                        Log.d("cylog","The button has been clicked.");
+                                    }
+                                })
+                                .setButtonText("取消")
+                                .show();*/
+//                        Toast.makeText(mcontext, "请重新输入", Toast.LENGTH_SHORT).show();
+
+                        return false;
+                    }
+                    onSearch(tv_search_home.getText().toString());
+
+                }
+                return false;
             }
         });
+       /* //搜素的监听
+        tv_search_home.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if (i == EditorInfo.IME_ACTION_SEARCH) {
+                    onSearch(tv_search_home.getText().toString());
+                }
+                return true;
+            }
+        });*/
 
         //消息的监听
         tv_message_home.setOnClickListener(new View.OnClickListener() {
@@ -159,15 +218,53 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         mSwipeLayout.setSize(SwipeRefreshLayout.LARGE); // 设置圆圈的大小
     }
 
+    /*进行搜索操作*/
+    public void onSearch(String text) {
+        String[] array = new String[]{"/supplier/1471315793182.jpg",
+                "/supplier/1469436115002.jpg",
+                "/1477360350123.png",
+                "/1438680345318.jpg",
+                "/1477984931882.jpg",
+                "/1477984921265.jpg",
+                "/1474370572805.jpg",
+                "/1475045805488.jpg"};
+
+        Random random = new Random();
+        String price = String.valueOf(random.nextInt(300));
+        int i = random.nextInt(8);
+
+        GoodsInfo goodsInfo = new GoodsInfo();
+        goodsInfo.setName(text);
+        goodsInfo.setCover_price(price);
+        goodsInfo.setFigure(array[i]);
+
+        Intent intent = new Intent(mcontext, GoodsInfoActivity.class);
+        intent.putExtra("goodsbean", goodsInfo);
+        mcontext.startActivity(intent);
+    }
+
+
     public void onRefresh() {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(getActivity(), "刷新成功", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "刷新成功", Toast.LENGTH_SHORT).show();
+                XToast.create(getActivity())
+                        .setText("刷新成功！")
+                        .setAnimation(AnimationUtils.ANIMATION_DRAWER) //Drawer Type
+                        .setDuration(XToast.XTOAST_DURATION_LONG)
+                        .setOnDisappearListener(new XToast.OnDisappearListener() {
+                            @Override
+                            public void onDisappear(XToast xToast) {
+                                Log.d("cylog", "The XToast has disappeared..");
+                            }
+                        }).show();
                 // 停止刷新
                 mSwipeLayout.setRefreshing(false);
 
             }
         }, 2000); // 2秒后发送消息，停止刷新
     }
+
+
 }

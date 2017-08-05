@@ -1,4 +1,4 @@
-package com.example.lenovo.app;
+package com.example.lenovo.test;
 
 import android.app.Activity;
 import android.media.MediaPlayer;

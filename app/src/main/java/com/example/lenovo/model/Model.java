@@ -5,6 +5,7 @@ import android.content.Context;
 import com.example.lenovo.model.bean.UserInfo;
 import com.example.lenovo.model.dao.UserAccountDao;
 import com.example.lenovo.model.db.DBManager;
+import com.hyphenate.chat.EMClient;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -71,5 +72,13 @@ public class Model {
     // 获取用户账号数据库的操作类对象
     public UserAccountDao getUserAccountDao(){
         return userAccountDao;
+    }
+    /**
+     * if ever logged in
+     *
+     * @return
+     */
+    public boolean isLoggedIn() {
+        return EMClient.getInstance().isLoggedInBefore();
     }
 }

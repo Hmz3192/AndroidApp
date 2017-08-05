@@ -16,11 +16,11 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.lenovo.app.GoodsInfoActivity;
 import com.example.lenovo.home.activity.GoodsListActivity;
+import com.example.lenovo.home.activity.GoodsMoreActivity;
 import com.example.lenovo.home.bean.GoodsInfo;
 import com.example.lenovo.home.bean.ResultBeanData;
 import com.example.lenovo.myapplication.R;
@@ -63,6 +63,8 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter {
     /*当前默认类型*/
     private int currentType = BANNER;
 
+
+
     public HomeFragmentAdapter(Context mcontext, ResultBeanData.ResultBean resultBean) {
         this.mcontext = mcontext;
         this.resultBean = resultBean;
@@ -89,7 +91,6 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter {
         } else if (viewType == HOT) {
             return new HotViewHolder(mcontext, mLayoutInflater.inflate(R.layout.hot_item, null));
         }
-
 
         return null;
     }
@@ -140,7 +141,6 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter {
         public void setData(final List<ResultBeanData.ResultBean.HotInfoBean> data) {
             /*有数据*/
             /*设置GridView适配器*/
-
             adpter = new HotGridViewAdapter(mcontext, data);
             gv_hot.setAdapter(adpter);
 
@@ -159,6 +159,14 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter {
 
                     startGoodsInfoActivity(goodsInfo);
 
+                }
+            });
+
+            tv_more_hot.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(mcontext, GoodsMoreActivity.class);
+                    mcontext.startActivity(intent);
                 }
             });
         }
@@ -187,7 +195,7 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                    ResultBeanData.ResultBean.RecommendInfoBean recommendInfoBean= data.get(i);
+                    ResultBeanData.ResultBean.RecommendInfoBean recommendInfoBean = data.get(i);
                     /*热卖部分商品信息*/
                     GoodsInfo goodsInfo = new GoodsInfo();
                     goodsInfo.setCover_price(recommendInfoBean.getCover_price());
@@ -200,6 +208,13 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter {
                 }
             });
 
+            tv_more_recommend.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(mcontext, GoodsMoreActivity.class);
+                    mcontext.startActivity(intent);
+                }
+            });
         }
     }
 
@@ -254,7 +269,7 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter {
             adapter.setOnSeckillRecylerView(new SeckillRecyleViewAdapter.OnSeckillRecylerView() {
                 @Override
                 public void onItemClick(int postion) {
-                   ResultBeanData.ResultBean.SeckillInfoBean.ListBean listBean= data.getList().get(postion);
+                    ResultBeanData.ResultBean.SeckillInfoBean.ListBean listBean = data.getList().get(postion);
                     /*热卖部分商品信息*/
                     GoodsInfo goodsInfo = new GoodsInfo();
                     goodsInfo.setCover_price(listBean.getCover_price());
@@ -269,6 +284,13 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter {
             dt = (Integer.valueOf(data.getEnd_time()) - Integer.valueOf(data.getStart_time()));
             handler.sendEmptyMessageDelayed(0, 1000);
 
+            tv_more_seckill.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(mcontext, GoodsMoreActivity.class);
+                    mcontext.startActivity(intent);
+                }
+            });
         }
     }
 
@@ -324,7 +346,7 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter {
                     imageView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Toast.makeText(mcontext, "position" + position, Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(mcontext, "position" + position, Toast.LENGTH_SHORT).show();
                         }
                     });
                     return imageView;
@@ -428,6 +450,8 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter {
         mcontext.startActivity(intent);
 
     }
+
+
 
     /*得到不同类型*/
     @Override

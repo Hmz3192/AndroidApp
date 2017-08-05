@@ -7,8 +7,8 @@ android {
         applicationId "com.example.lenovo.myapplication"
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 4
-        versionName "4.0"
+        versionCode 5
+        versionName "5.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -26,6 +26,8 @@ dependencies {
     })
     compile project(':banner')
     compile project(':easeui')
+    compile project(':library')
+    compile files('libs/core-3.2.1.jar')
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.jakewharton:butterknife:7.0.1'

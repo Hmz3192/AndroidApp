@@ -4,12 +4,7 @@
     android:layout_height="match_parent">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="fragment 3"
-        android:textSize="50sp"
-        android:layout_centerInParent="true"/>
+
     <RelativeLayout
         android:id="@+id/rl_private_message_launcher"
         android:layout_width="wrap_content"
@@ -17,14 +12,14 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp" >
 
-      <!--  <ImageView
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="30dp"
-            android:src="@drawable/icon_private_message_launcher" />-->
+            android:src="@drawable/icon_private_message_launcher" />
     </RelativeLayout>
 
-    <!--<ImageView
+    <ImageView
         android:id="@+id/iv_private_message_like_video"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -66,22 +61,22 @@
         android:id="@+id/reward"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/tv_watch_video_dating"
-        android:layout_centerHorizontal="true"
-        android:text="私信功能"
+        android:text="即时语聊功能"
         android:textColor="#FFFFFFFF"
-        android:textSize="54dp"/>
+        android:textSize="54dp"
+        android:layout_marginBottom="34dp"
+        android:layout_above="@+id/tv_watch_video_dating"
+        android:layout_alignLeft="@+id/rl_private_message_launcher"
+        android:layout_alignStart="@+id/rl_private_message_launcher" />
 
     <TextView
         android:id="@+id/tv_watch_video_dating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="65dp"
-        android:text="开心看视频   快乐交朋友"
+        android:layout_marginBottom="110dp"
+        android:text="开心看商城   快乐交朋友"
         android:textColor="#FFFFFFFF"
-        android:textSize="27dp"/>
--->
+        android:textSize="27dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

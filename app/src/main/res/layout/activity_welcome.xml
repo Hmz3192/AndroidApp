@@ -4,8 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipToPadding="true"
     android:orientation="vertical"
-    android:background="#ffffff">
+    android:background="#ffffff"
+    >
 
     <com.example.lenovo.utils.CustomVideoView
         android:id="@+id/videoview"
@@ -23,10 +25,12 @@
             android:id="@+id/tv_app"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="A    P    P"
+            android:text="校      淘"
             android:textColor="@color/btn_white_normal"
-            android:layout_marginTop="70dp"
-            android:textSize="35dp" />
+            android:layout_marginTop="67dp"
+            android:textSize="35dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
 
         <!-- <TextView
          android:text="注  册"

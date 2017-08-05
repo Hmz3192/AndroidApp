@@ -128,6 +128,8 @@ public class CartFragment extends BaseFragment {
                 Intent intent = new Intent(mcontext, MainActivity.class);
                 startActivity(intent);
                 getActivity().finish();
+                getActivity(). overridePendingTransition(R.anim.push_left_in,
+                        R.anim.push_left_out);
 //                Constants.isBackHome = true;
 
             }

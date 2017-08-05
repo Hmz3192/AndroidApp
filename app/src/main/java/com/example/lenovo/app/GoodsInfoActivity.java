@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -19,6 +20,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.chenyu.library.Utils.AnimationUtils;
+import com.chenyu.library.XToast;
 import com.example.lenovo.controller.activity.ChatActivity;
 import com.example.lenovo.home.bean.GoodsInfo;
 import com.example.lenovo.home.utils.VirtualkeyboardHeight;
@@ -52,6 +55,8 @@ public class GoodsInfoActivity extends FragmentActivity implements View.OnClickL
     private LinearLayout ll_root;
     private int enable = 0;
     private CartStorage cartProvider;
+    private String TAG;
+
     /**
      * Find the Views in the layout<br />
      * <br />
@@ -90,6 +95,8 @@ public class GoodsInfoActivity extends FragmentActivity implements View.OnClickL
         tv_more_share.setOnClickListener(this);
         tv_more_search.setOnClickListener(this);
         tv_more_home.setOnClickListener(this);
+        btn_more.setOnClickListener(this);
+
     }
 
     /**
@@ -104,6 +111,8 @@ public class GoodsInfoActivity extends FragmentActivity implements View.OnClickL
         if (v == ibGoodInfoBack) {
             // Handle clicks for ibGoodInfoBack
             finish();
+            overridePendingTransition(R.anim.slide_up_in,
+                    R.anim.slide_down_out);
         } else if (v == ibGoodInfoMore) {
             // Handle clicks for ibGoodInfoMore
             if (ll_root.getVisibility() == View.VISIBLE) {
@@ -129,15 +138,22 @@ public class GoodsInfoActivity extends FragmentActivity implements View.OnClickL
                     intent.putExtra(EaseConstant.EXTRA_USER_ID, "admin");
 
                     startActivity(intent);
+                    overridePendingTransition(R.anim.push_up_in,
+                            R.anim.push_up_out);
                 }
             });
         } else if (v == tvGoodInfoCollection) {
             if (enable == 0) {
 //                Toast.makeText(this, "收藏成功", Toast.LENGTH_SHORT).show();
                 tvGoodInfoCollection.setText("已收藏");
+                tvGoodInfoCollection.setCompoundDrawablesWithIntrinsicBounds(null,
+                        ContextCompat.getDrawable(getBaseContext(),R.drawable.good_uncollected_selected), null, null);
                 enable = 1;
             } else if (enable == 1) {
 //                Toast.makeText(this, "取消收藏", Toast.LENGTH_SHORT).show();
+                tvGoodInfoCollection.setCompoundDrawablesWithIntrinsicBounds(null,
+                        ContextCompat.getDrawable(getBaseContext(),R.drawable.good_uncollected), null, null);
+
                 tvGoodInfoCollection.setText("收藏");
                 enable = 0;
             }
@@ -145,6 +161,8 @@ public class GoodsInfoActivity extends FragmentActivity implements View.OnClickL
 //            Toast.makeText(this, "跳转购物车", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, ShoppingCartActivity.class);
             startActivity(intent);
+            overridePendingTransition(R.anim.scale_rotate,
+                    R.anim.my_alpha_action);
         } else if (v == tv_more_share) {
             Toast.makeText(this, "抱歉，功能暂未开放", Toast.LENGTH_SHORT).show();
         } else if (v == tv_more_search) {
@@ -154,6 +172,10 @@ public class GoodsInfoActivity extends FragmentActivity implements View.OnClickL
             /*起作用的主要是finish（）结束了当前的activity*/
 //            Constants.isBackHome = true;
             finish();
+        } else if (v == btn_more) {
+            if (ll_root.getVisibility() == View.VISIBLE) {
+                ll_root.setVisibility(View.GONE);
+            }
         }
 
     }
@@ -161,12 +183,19 @@ public class GoodsInfoActivity extends FragmentActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        this.getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
         setContentView(R.layout.activity_goods_info);
         findViews();
 
         cartProvider = CartStorage.getInstance();
         /*接受数据*/
         goodsInfo = (GoodsInfo) getIntent().getSerializableExtra("goodsbean");
+
+        Log.e(TAG, "------"+goodsInfo);
         if (goodsInfo != null) {
 //            Toast.makeText(this, "GoodsBean = " + goodsInfo.toString(),  Toast.LENGTH_SHORT).show();
             setDataForView(goodsInfo);
@@ -250,8 +279,17 @@ public class GoodsInfoActivity extends FragmentActivity implements View.OnClickL
                 window.dismiss();
                 //添加购物车
                 cartProvider.addData(goodsInfo);
-                Log.e("TAG", "66:" + goodsInfo.toString());
-                Toast.makeText(GoodsInfoActivity.this, "添加购物车成功", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(GoodsInfoActivity.this, "添加购物车成功", Toast.LENGTH_SHORT).show();
+                XToast.create(GoodsInfoActivity.this)
+                        .setText("添加购物车成功！")
+                        .setAnimation(AnimationUtils.ANIMATION_DRAWER) //Drawer Type
+                        .setDuration(XToast.XTOAST_DURATION_LONG)
+                        .setOnDisappearListener(new XToast.OnDisappearListener() {
+                            @Override
+                            public void onDisappear(XToast xToast) {
+                                Log.d("cylog", "The XToast has disappeared..");
+                            }
+                        }).show();
             }
         });
 
@@ -269,7 +307,14 @@ public class GoodsInfoActivity extends FragmentActivity implements View.OnClickL
 
     }
 
-  /*  public void setWebViewData(String product_id) {
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        finish();
+
+    }
+
+    /*  public void setWebViewData(String product_id) {
         if (product_id != null) {
             wbGoodInfoMore.loadUrl("#");
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.lenovo.app.VedioActivity">
+    tools:context="com.example.lenovo.test.VedioActivity">
 
     <com.example.lenovo.utils.CustomVideoView
         android:id="@+id/videoview"

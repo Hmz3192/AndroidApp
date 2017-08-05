@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.lenovo.app.GoodsInfoActivity">
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    >
 
     <!--标题栏-->
     <LinearLayout
@@ -223,7 +225,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:drawablePadding="5dp"
-                android:drawableTop="@drawable/good_uncollected_selector"
+                android:drawableTop="@drawable/good_uncollected"
                 android:gravity="center"
                 android:padding="2dp"
                 android:text="收藏"

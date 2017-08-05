@@ -31,8 +31,8 @@ public class StereoscopicLauncherFragment extends LauncherBaseFragment implement
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 		View rooView=inflater.inflate(R.layout.fragment_stereoscopic_launcher, null);
-//		imgView_immediate_experience=(ImageView) rooView.findViewById(R.id.imgView_immediate_experience);
-//		imgView_immediate_experience.setOnClickListener(this);
+		imgView_immediate_experience=(ImageView) rooView.findViewById(R.id.imgView_immediate_experience);
+		imgView_immediate_experience.setOnClickListener(this);
 		return rooView;
 	}
 	
@@ -42,7 +42,7 @@ public class StereoscopicLauncherFragment extends LauncherBaseFragment implement
     		 */
         AnimationSet animationSet = new AnimationSet(true);
 		animationSet.addAnimation(new ScaleAnimation(ZOOM_MIN, ZOOM_MAX, ZOOM_MIN, ZOOM_MAX, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,0.5f));
-        animationSet.addAnimation(new AlphaAnimation(1.0f, 0.8f));
+        animationSet.addAnimation(new AlphaAnimation(1.0f, 0.6f));
  
         animationSet.setDuration(500);
         animationSet.setInterpolator(new AccelerateInterpolator());
@@ -64,7 +64,7 @@ public class StereoscopicLauncherFragment extends LauncherBaseFragment implement
 	        		 */
                 AnimationSet animationSet = new AnimationSet(true);
                 animationSet.addAnimation(new ScaleAnimation(ZOOM_MAX, ZOOM_MIN, ZOOM_MAX,ZOOM_MIN, Animation.RELATIVE_TO_SELF, 0.5f,Animation.RELATIVE_TO_SELF, 0.5f));
-                animationSet.addAnimation(new AlphaAnimation(0.8f, 1.0f));
+                animationSet.addAnimation(new AlphaAnimation(0.6f, 1.0f));
                 animationSet.setDuration(600);
                 animationSet.setInterpolator(new DecelerateInterpolator());
                 animationSet.setFillAfter(false);
@@ -73,20 +73,21 @@ public class StereoscopicLauncherFragment extends LauncherBaseFragment implement
             }
         });
          // 实现心跳的View
-//        imgView_immediate_experience.startAnimation(animationSet);
+        imgView_immediate_experience.startAnimation(animationSet);
     } 
 
 	@Override
 	public void onClick(View v) {
-//		Intent intent = new Intent();
-//		intent.setClass(getActivity(),MainActivity.class);
-//		startActivity(intent);
-//		getActivity().finish();
+		/*Intent intent = new Intent();
+		intent.setClass(getActivity(),LoginActivity.class);
+		startActivity(intent);
+		getActivity().finish();*/
+
 	}
 
 	@Override
 	public void startAnimation() {
-//		playHeartbeatAnimation();
+		playHeartbeatAnimation();
 	}
 
 	@Override

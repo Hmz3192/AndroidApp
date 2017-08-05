@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dl_draw"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    >
 
     <ScrollView
         android:id="@+id/scrollview"
@@ -73,7 +74,7 @@
                 android:layout_height="1dp"
                 android:background="#eee" />
 
-            <LinearLayout
+           <!-- <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp">
@@ -132,7 +133,38 @@
                     android:text="售后/退款"
                     android:textColor="#5d5d5d" />
             </LinearLayout>
+-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:background="#eee" />
 
+            <TextView
+                android:id="@+id/tv_user_callcenter"
+                style="@style/TextStyle"
+                android:drawableLeft="@drawable/user_channel_icon_callcenter"
+                android:text="用户资料" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="45dp"
+                android:background="#eee" />
+            <TextView
+                android:id="@+id/tv_user_invitation"
+                style="@style/TextStyle"
+                android:drawableLeft="@drawable/user_channel_icon_invitation"
+                android:text="邀请分享" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="45dp"
+                android:background="#eee" />
+            <TextView
+                android:id="@+id/tv_user_feedback"
+                style="@style/TextStyle"
+                android:drawableLeft="@drawable/user_channel_icon_feedback"
+                android:text="校淘资讯" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="8dp"
@@ -154,16 +186,26 @@
                 style="@style/TextStyle"
                 android:drawableLeft="@drawable/user_channel_icon_collect"
                 android:text="我的收藏" />
-
             <View
                 android:layout_width="match_parent"
-                android:layout_height="8dp"
+                android:layout_height="1dp"
+                android:layout_marginLeft="45dp"
                 android:background="#eee" />
-
             <TextView
+                android:id="@+id/tv_user_code"
                 style="@style/TextStyle"
-                android:drawableLeft="@drawable/user_channel_icon_address"
-                android:text="收货地址" />
+                android:drawableLeft="@drawable/user_icon_ticket"
+                android:text="我的二维码" />
+            <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="45dp"
+            android:background="#eee" />
+            <TextView
+                android:id="@+id/tv_user_prize"
+                style="@style/TextStyle"
+                android:drawableLeft="@drawable/user_channel_icon_prize"
+                android:text="我的奖品" />
 
             <View
                 android:layout_width="match_parent"
@@ -171,67 +213,10 @@
                 android:layout_marginLeft="45dp"
                 android:background="#eee" />
             <TextView
+                android:id="@+id/tv_user_prize1"
                 style="@style/TextStyle"
-                android:drawableLeft="@drawable/user_channel_icon_collect"
-                android:text="我的收藏" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="8dp"
-                android:background="#eee" />
-            <TextView
-            style="@style/TextStyle"
-            android:drawableLeft="@drawable/user_channel_icon_address"
-            android:text="收货地址" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="45dp"
-                android:background="#eee" />
-            <TextView
-                style="@style/TextStyle"
-                android:drawableLeft="@drawable/user_channel_icon_collect"
-                android:text="我的收藏" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="8dp"
-                android:background="#eee" />
-            <TextView
-            style="@style/TextStyle"
-            android:drawableLeft="@drawable/user_channel_icon_address"
-            android:text="收货地址" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="45dp"
-                android:background="#eee" />
-            <TextView
-                style="@style/TextStyle"
-                android:drawableLeft="@drawable/user_channel_icon_collect"
-                android:text="我的收藏" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="8dp"
-                android:background="#eee" />
-            <TextView
-            style="@style/TextStyle"
-            android:drawableLeft="@drawable/user_channel_icon_address"
-            android:text="收货地址" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="45dp"
-                android:background="#eee" />
-            <TextView
-                style="@style/TextStyle"
-                android:drawableLeft="@drawable/user_channel_icon_collect"
-                android:text="我的收藏" />
-
+                android:drawableLeft="@drawable/user_channel_icon_prize"
+                android:text="我的奖品" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="8dp"
@@ -251,16 +236,20 @@
 
     </ScrollView>
 
-    <TextView
-        android:id="@+id/tv_usercenter"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="#fe3f3f"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="个人中心"
-        android:textColor="#fff"
-        android:textSize="20sp" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_usercenter"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#fe3f3f"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="个人中心"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+    </RelativeLayout>
 
 
     <RelativeLayout
@@ -276,9 +265,20 @@
 
     </RelativeLayout>
 
+    <!--侧滑菜单-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:background="#fff"
+        android:clickable="true"
+        >
 
+        <include layout="@layout/setting_layout" />
 
-</RelativeLayout>
+    </RelativeLayout>
+
+</android.support.v4.widget.DrawerLayout>
    <!-- <com.hyphenate.easeui.widget.EaseTitleBar
         app:titleBarTitle="设置"
         android:layout_width="match_parent"

@@ -1,14 +1,20 @@
 package com.example.lenovo.app;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.chenyu.library.Utils.AnimationUtils;
+import com.chenyu.library.XToast;
 import com.example.lenovo.model.Model;
 import com.example.lenovo.model.bean.UserInfo;
 import com.example.lenovo.myapplication.R;
@@ -23,22 +29,30 @@ public class LoginActivity extends Activity {
     private TextView bt_login;
     private TextView tv_back;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         setContentView(R.layout.activity_login);
         /*初始化控件*/
         initView();
         /*初始化监听*/
         initListener();
+
     }
+
 
     private void initListener() {
         /*注册按钮的点击事件*/
         bt_regist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (imm.isActive()) {
+                    imm.hideSoftInputFromWindow(bt_regist.getApplicationWindowToken(), 0);
+                }
                 regist();
 
             }
@@ -49,6 +63,10 @@ public class LoginActivity extends Activity {
 
             @Override
             public void onClick(View view) {
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (imm.isActive()) {
+                    imm.hideSoftInputFromWindow(bt_login.getApplicationWindowToken(), 0);
+                }
                 login();
 
             }
@@ -60,6 +78,8 @@ public class LoginActivity extends Activity {
                 Intent intent = new Intent(LoginActivity.this, WelcomeActivity.class);
                 startActivity(intent);
                 finish();
+                overridePendingTransition(R.anim.scale_translate,
+                        R.anim.my_alpha_action);
             }
         });
     }
@@ -69,9 +89,20 @@ public class LoginActivity extends Activity {
         /*获取用户名密码*/
         final String loginname = et_login_name.getText().toString().trim();
         final String loginpwd = et_login_pass.getText().toString().trim();
+
         /*校验*/
         if (TextUtils.isEmpty(loginname) || TextUtils.isEmpty(loginpwd)) {
-            Toast.makeText(this, "输入的用户名密码为空", Toast.LENGTH_SHORT).show();
+            XToast.create(LoginActivity.this)
+                    .setText("输入的用户名密码为空！")
+                    .setAnimation(AnimationUtils.ANIMATION_DRAWER) //Drawer Type
+                    .setDuration(XToast.XTOAST_DURATION_LONG)
+                    .setOnDisappearListener(new XToast.OnDisappearListener() {
+                        @Override
+                        public void onDisappear(XToast xToast) {
+                            Log.d("cylog", "The XToast has disappeared..");
+                        }
+                    }).show();
+//            Toast.makeText(this, "输入的用户名密码为空", Toast.LENGTH_SHORT).show();
             /*退出注册逻辑判断*/
             return;
         }
@@ -84,6 +115,7 @@ public class LoginActivity extends Activity {
                 EMClient.getInstance().login(loginname, loginpwd, new EMCallBack() {
                     @Override
                     public void onSuccess() {
+
                         /*对模型层处理*/
                         Model.getInstance().loginSuccess(new UserInfo(loginname));
                         /*保存用户信息到本地*/
@@ -98,6 +130,8 @@ public class LoginActivity extends Activity {
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(intent);
                                 finish();
+                                overridePendingTransition(R.anim.wave_scale,
+                                        R.anim.my_alpha_action);
                             }
                         });
 
@@ -109,7 +143,17 @@ public class LoginActivity extends Activity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(LoginActivity.this, "登陆失败"+ s, Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(LoginActivity.this, "登陆失败"+ s, Toast.LENGTH_SHORT).show();
+                                XToast.create(LoginActivity.this)
+                                        .setText("账户或密码错误！")
+                                        .setAnimation(AnimationUtils.ANIMATION_DRAWER) //Drawer Type
+                                        .setDuration(XToast.XTOAST_DURATION_LONG)
+                                        .setOnDisappearListener(new XToast.OnDisappearListener() {
+                                            @Override
+                                            public void onDisappear(XToast xToast) {
+                                                Log.d("cylog", "The XToast has disappeared..");
+                                            }
+                                        }).show();
                             }
                         });
 

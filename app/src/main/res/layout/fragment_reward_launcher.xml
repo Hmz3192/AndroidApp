@@ -2,21 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:orientation="vertical" >
 
-    <!--<ImageView
+    <ImageView
         android:id="@+id/iv_receive_apicture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:src="@drawable/icon_popular" />-->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="fragment 1"
-        android:textSize="50sp"
-        android:layout_centerInParent="true"/>
+        android:src="@drawable/icon_popular" />
 
     <RelativeLayout
         android:id="@+id/rl_receive_apicture"
@@ -25,7 +20,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="65dp" >
 
-       <!-- <ImageView
+       <ImageView
             android:id="@+id/iv_receive_apicture1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,9 +34,9 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="32dp"
             android:paddingRight="30dp"
-            android:src="@drawable/icon_gold" />-->
+            android:src="@drawable/icon_gold" />
 
-      <!--  <ImageView
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -54,29 +49,29 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:src="@drawable/icon_reward"
-            android:visibility="gone" />-->
+            android:visibility="gone" />
     </RelativeLayout>
 
-   <!-- <TextView
+    <TextView
         android:id="@+id/reward"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/tv_shooting_video_money"
-        android:text="打赏功能"
+        android:text="校园二手交易"
         android:textColor="#FFFFFFFF"
-        android:textSize="54dp" />
+        android:textSize="45dp"
+        android:layout_above="@+id/tv_shooting_video_money"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="34dp" />
 
     <TextView
         android:id="@+id/tv_shooting_video_money"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="60dp"
-        android:text="拍视频    赚赏钱"
+        android:text="线上挑商品 线下赚财富"
         android:textColor="#FFFFFFFF"
-        android:textSize="37dp"/>-->
+        android:textSize="30dp"
+        android:layout_marginBottom="110dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

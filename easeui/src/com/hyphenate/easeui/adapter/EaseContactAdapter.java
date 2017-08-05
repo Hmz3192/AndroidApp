@@ -67,6 +67,8 @@ public class EaseContactAdapter extends ArrayAdapter<EaseUser> implements Sectio
         }
         
         EaseUser user = getItem(position);
+        Log.i("info", user + "++++++++++++++++++++++++++++" + position);
+
         if(user == null)
             Log.d("ContactAdapter", position + "");
         String username = user.getUsername();

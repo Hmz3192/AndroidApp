@@ -1,12 +1,14 @@
 package com.example.lenovo.viewPage.fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
 import com.example.lenovo.myapplication.R;
 
@@ -16,7 +18,7 @@ import com.example.lenovo.myapplication.R;
  * @author ansen
  */
 public class PrivateMessageLauncherFragment extends LauncherBaseFragment{
-//	private ImageView ivLikeVideo,ivThinkReward,ivThisWeek,ivWatchMovie;
+	private ImageView ivLikeVideo,ivThinkReward,ivThisWeek,ivWatchMovie;
 	
 	private Animation likeAnimation,thinkAnimation,watchAnimation,thisWeekAnimation;
 	
@@ -26,10 +28,10 @@ public class PrivateMessageLauncherFragment extends LauncherBaseFragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 		View rooView=inflater.inflate(R.layout.fragment_private_message_launcher, null);
 		
-		/*ivLikeVideo=(ImageView) rooView.findViewById(R.id.iv_private_message_like_video);
+		ivLikeVideo=(ImageView) rooView.findViewById(R.id.iv_private_message_like_video);
 		ivThinkReward=(ImageView) rooView.findViewById(R.id.iv_private_message_think_reward);
 		ivWatchMovie=(ImageView) rooView.findViewById(R.id.iv_private_message_watch_movie);
-		ivThisWeek=(ImageView) rooView.findViewById(R.id.private_message_this_week);*/
+		ivThisWeek=(ImageView) rooView.findViewById(R.id.private_message_this_week);
 		return rooView;
 	}
 	
@@ -39,10 +41,10 @@ public class PrivateMessageLauncherFragment extends LauncherBaseFragment{
 		/**
 		 * 清空所有控件上的动画
 		 */
-//		ivLikeVideo.clearAnimation();
-//		ivThinkReward.clearAnimation();
-//		ivWatchMovie.clearAnimation();
-//		ivThisWeek.clearAnimation();
+		ivLikeVideo.clearAnimation();
+		ivThinkReward.clearAnimation();
+		ivWatchMovie.clearAnimation();
+		ivThisWeek.clearAnimation();
 	}
 	
 	
@@ -52,28 +54,28 @@ public class PrivateMessageLauncherFragment extends LauncherBaseFragment{
 		/**
 		 * 每次开启动画前先隐藏控件
 		 */
-//		ivLikeVideo.setVisibility(View.GONE);
-//		ivThinkReward.setVisibility(View.GONE);
-//		ivWatchMovie.setVisibility(View.GONE);
-//		ivThisWeek.setVisibility(View.GONE);
-//
-//		new Handler().postDelayed(new Runnable() {//延时0.5秒之后开启喜欢视频动画
-//			@Override
-//			public void run(){
-//				if(started)
-//					likeVideoAnimation();
-//			}
-//		},500);
+		ivLikeVideo.setVisibility(View.GONE);
+		ivThinkReward.setVisibility(View.GONE);
+		ivWatchMovie.setVisibility(View.GONE);
+		ivThisWeek.setVisibility(View.GONE);
+
+		new Handler().postDelayed(new Runnable() {//延时0.5秒之后开启喜欢视频动画
+			@Override
+			public void run(){
+				if(started)
+					likeVideoAnimation();
+			}
+		},500);
 	}
 	
 	/**
 	 * 好喜欢你的视频
 	 */
 	private void likeVideoAnimation(){
-//		ivLikeVideo.setVisibility(View.VISIBLE);
+		ivLikeVideo.setVisibility(View.VISIBLE);
 		
 		likeAnimation = AnimationUtils.loadAnimation(getActivity(),R.anim.private_message_launcher);
-//		ivLikeVideo.startAnimation(likeAnimation);//开启动画
+		ivLikeVideo.startAnimation(likeAnimation);//开启动画
 		likeAnimation.setAnimationListener(new AnimationListener(){  
             @Override  
             public void onAnimationStart(Animation animation) {}  
@@ -88,12 +90,12 @@ public class PrivateMessageLauncherFragment extends LauncherBaseFragment{
 	}
 	
 	/**
-	 * 谢谢你的打赏
+	 * 谢谢你的称赞
 	 */
 	private void thinkReward(){
-//		ivThinkReward.setVisibility(View.VISIBLE);
+		ivThinkReward.setVisibility(View.VISIBLE);
 		thinkAnimation = AnimationUtils.loadAnimation(getActivity(),R.anim.private_message_launcher);
-//		ivThinkReward.startAnimation(thinkAnimation);
+		ivThinkReward.startAnimation(thinkAnimation);
 		thinkAnimation.setAnimationListener(new AnimationListener(){  
             @Override  
             public void onAnimationStart(Animation animation) {}  
@@ -108,12 +110,12 @@ public class PrivateMessageLauncherFragment extends LauncherBaseFragment{
 	}
 	
 	/**
-	 * 一起看个电影呗
+	 * 当前交易
 	 */
 	private void watchMovie(){
-//		ivWatchMovie.setVisibility(View.VISIBLE);
+		ivWatchMovie.setVisibility(View.VISIBLE);
 		watchAnimation = AnimationUtils.loadAnimation(getActivity(),R.anim.private_message_launcher);
-//		ivWatchMovie.startAnimation(watchAnimation);
+		ivWatchMovie.startAnimation(watchAnimation);
 		watchAnimation.setAnimationListener(new AnimationListener(){  
             @Override  
             public void onAnimationStart(Animation animation) {}  
@@ -131,8 +133,8 @@ public class PrivateMessageLauncherFragment extends LauncherBaseFragment{
 	 * 好啊  这周末有空
 	 */
 	private void thisWeek(){
-//		ivThisWeek.setVisibility(View.VISIBLE);
+		ivThisWeek.setVisibility(View.VISIBLE);
 		thisWeekAnimation = AnimationUtils.loadAnimation(getActivity(),R.anim.private_message_launcher);  
-//		ivThisWeek.startAnimation(thisWeekAnimation);
+		ivThisWeek.startAnimation(thisWeekAnimation);
 	}
 }

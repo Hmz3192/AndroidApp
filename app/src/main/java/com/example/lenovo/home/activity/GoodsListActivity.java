@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
@@ -60,7 +61,7 @@ public class GoodsListActivity extends Activity implements View.OnClickListener 
             Constants.FOOD_STORE,
             Constants.SHOUSHI_STORE,
     };
-    private List<TypeListBean.ResultBean.PageDataBean> page_data;
+    private List<TypeListBean.ResultBean.PageDataBean> page_data,page_data2;
     private GoodsListAdapter adapter1;
 
     /*筛选的额外窗*/
@@ -173,6 +174,8 @@ public class GoodsListActivity extends Activity implements View.OnClickListener 
         if (v == ibGoodsListBack) {
             // Handle clicks for ibGoodsListBack
             finish();
+            overridePendingTransition(R.anim.slide_up_in,
+                    R.anim.slide_down_out);
         } else if (v == ibGoodsListHome) {
             // Handle clicks for ibGoodsListHome
             Constants.isBackHome = true;
@@ -189,9 +192,16 @@ public class GoodsListActivity extends Activity implements View.OnClickListener 
             if (click_count % 2 == 1) {
                 // 箭头向下红
                 ivGoodsListArrow.setBackgroundResource(R.drawable.new_price_sort_desc);
+                /*价格由高到低,倒序*/
+                TypeListBean.SortList<TypeListBean.ResultBean.PageDataBean> sortList = new TypeListBean.SortList<>();
+                sortList.Sort(page_data, "getCover_price", "desc");
+                setAdapter();
             } else {
                 // 箭头向上红
                 ivGoodsListArrow.setBackgroundResource(R.drawable.new_price_sort_asc);
+                TypeListBean.SortList<TypeListBean.ResultBean.PageDataBean> sortList = new TypeListBean.SortList<>();
+                sortList.Sort(page_data, "getCover_price", null);
+                setAdapter();
             }
         } else if (v == tvGoodsListSort) {
             //综合排序点击事件
@@ -199,6 +209,8 @@ public class GoodsListActivity extends Activity implements View.OnClickListener 
             ivGoodsListArrow.setBackgroundResource(R.drawable.new_price_sort_normal);
             tvGoodsListPrice.setTextColor(Color.parseColor("#333538"));
             tvGoodsListSort.setTextColor(Color.parseColor("#ed4141"));
+            page_data = page_data2;
+            setAdapter();
         } else if (v == tvGoodsListSelect) {
             //筛选的点击事件
             tvGoodsListSelect.setTextColor(Color.parseColor("#ed4141"));
@@ -229,7 +241,7 @@ public class GoodsListActivity extends Activity implements View.OnClickListener 
         } else if (v == ib_drawer_layout_confirm) {
             /*筛选的确定*/
             dl_left.closeDrawers();
-        }else if (v == btn_drawer_layout_cancel) {
+        } else if (v == btn_drawer_layout_cancel) {
 //            Toast.makeText(GoodsListActivity.this, "取消", Toast.LENGTH_SHORT).show();
 
             ll_select_root.setVisibility(View.VISIBLE);
@@ -285,10 +297,12 @@ public class GoodsListActivity extends Activity implements View.OnClickListener 
 
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         setContentView(R.layout.activity_goods_list);
         findViews();
 
@@ -341,7 +355,7 @@ public class GoodsListActivity extends Activity implements View.OnClickListener 
         child = new ArrayList<>();
         //去掉默认箭头
         listView.setGroupIndicator(null);
-        addInfo("全部", new String[]{"上衣","下装"});
+        addInfo("全部", new String[]{"上衣", "下装"});
         addInfo("上衣", new String[]{"古风", "和风", "lolita", "日常"});
         addInfo("下装", new String[]{"日常", "泳衣", "汉风", "lolita", "创意T恤"});
         addInfo("外套", new String[]{"汉风", "古风", "lolita", "胖次", "南瓜裤", "日常"});
@@ -402,25 +416,9 @@ public class GoodsListActivity extends Activity implements View.OnClickListener 
                         processData(response);
                         GridLayoutManager manager = new GridLayoutManager(GoodsListActivity.this, 2);
                         recyclerview.setLayoutManager(manager);
-                        adapter1 = new GoodsListAdapter(GoodsListActivity.this, page_data);
-//                        recyclerview.addItemDecoration(new DividerItemDecoration(GoodsListActivity.this, manager.getOrientation()));
                         recyclerview.addItemDecoration(new SpaceItemDecoration(10));
-                        recyclerview.setAdapter(adapter1);
-
-                        adapter1.setOnItemClickListener(new GoodsListAdapter.OnItemClickListener() {
-                            @Override
-                            public void setOnItemClickListener(TypeListBean.ResultBean.PageDataBean data) {
-                                String name = data.getName();
-                                String cover_price = data.getCover_price();
-                                String figure = data.getFigure();
-                                String product_id = data.getProduct_id();
-
-                                GoodsInfo goodsBean = new GoodsInfo(cover_price, figure, name, product_id);
-                                Intent intent = new Intent(GoodsListActivity.this, GoodsInfoActivity.class);
-                                intent.putExtra("goodsbean", goodsBean);
-                                startActivity(intent);
-                            }
-                        });
+                        setAdapter();
+                        page_data2 = page_data;
                     }
                     break;
                 case 101:
@@ -431,11 +429,36 @@ public class GoodsListActivity extends Activity implements View.OnClickListener 
         }
     }
 
+    private void setAdapter() {
+//        GridLayoutManager manager = new GridLayoutManager(GoodsListActivity.this, 2);
+//        recyclerview.setLayoutManager(manager);
+        adapter1 = new GoodsListAdapter(GoodsListActivity.this, page_data);
+//                        recyclerview.addItemDecoration(new DividerItemDecoration(GoodsListActivity.this, manager.getOrientation()));
+//        recyclerview.addItemDecoration(new SpaceItemDecoration(10));
+        recyclerview.setAdapter(adapter1);
+        adapter1.setOnItemClickListener(new GoodsListAdapter.OnItemClickListener() {
+            @Override
+            public void setOnItemClickListener(TypeListBean.ResultBean.PageDataBean data) {
+                String name = data.getName();
+                String cover_price = data.getCover_price();
+                String figure = data.getFigure();
+                String product_id = data.getProduct_id();
+
+                GoodsInfo goodsBean = new GoodsInfo(cover_price, figure, name, product_id);
+                Intent intent = new Intent(GoodsListActivity.this, GoodsInfoActivity.class);
+                intent.putExtra("goodsbean", goodsBean);
+                startActivity(intent);
+            }
+        });
+    }
+
     private void processData(String response) {
         Gson gson = new Gson();
         TypeListBean typeListBean = gson.fromJson(response, TypeListBean.class);
         page_data = typeListBean.getResult().getPage_data();
     }
+
+
 }
 
 

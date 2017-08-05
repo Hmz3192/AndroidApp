@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
@@ -88,6 +89,8 @@ public class ShoppingCartActivity extends Activity implements View.OnClickListen
         /*返回*/
         if (v == ibShopcartBack) {
             finish();
+            overridePendingTransition(R.anim.slide_up_in,
+                    R.anim.slide_down_out);
             // Handle clicks for ibShopcartBack
         } else if (v == tvShopcartEdit) {
             //设置编辑的点击事件
@@ -114,6 +117,8 @@ public class ShoppingCartActivity extends Activity implements View.OnClickListen
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
+            overridePendingTransition(R.anim.push_left_in,
+                    R.anim.push_left_out);
         }
     }
 
@@ -141,10 +146,12 @@ public class ShoppingCartActivity extends Activity implements View.OnClickListen
 
         adapter.showTotalPrice();
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         setContentView(R.layout.activity_shopping_cart);
         findViews();
         showData();

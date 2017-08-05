@@ -71,10 +71,13 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="3ecea51f560650b1ed8a4b99808f52e8" />
 
-        <activity android:name="com.example.lenovo.app.WelcomeActivity" >
-        </activity>
-        <activity android:name="com.example.lenovo.app.MainActivity" />
-        <activity android:name="com.example.lenovo.app.LoginActivity" />
+        <activity android:name="com.example.lenovo.app.WelcomeActivity" />
+        <activity
+            android:name="com.example.lenovo.app.MainActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name="com.example.lenovo.app.LoginActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity android:name="com.example.lenovo.app.GoodsInfoActivity" />
         <activity android:name="com.example.lenovo.controller.activity.AddContactActivity" />
         <activity android:name="com.example.lenovo.controller.activity.InviteActivity" />
@@ -86,8 +89,7 @@
         <activity android:name="com.example.lenovo.shoppingcart.Activity.ShoppingCartActivity" />
         <activity android:name="com.example.lenovo.home.activity.GoodsListActivity" />
         <activity android:name="com.example.lenovo.home.activity.MessageCenterActivity" />
-        <activity android:name="com.example.lenovo.app.VedioActivity">
-        </activity>
+        <activity android:name="com.example.lenovo.test.VedioActivity" />
         <activity android:name="com.example.lenovo.app.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -95,6 +97,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.example.lenovo.home.activity.GoodsMoreActivity" />
+        <activity android:name="com.example.lenovo.controller.activity.settingActivity.DiagnoseActivity" />
+        <activity android:name="com.example.lenovo.controller.activity.settingActivity.BlacklistActivity" />
+        <activity android:name="com.example.lenovo.controller.activity.settingActivity.MyCodeActivity"/>
     </application>
 
 </manifest>
