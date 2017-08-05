@@ -26,6 +26,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.baidu.location.BDLocation;
@@ -55,7 +56,7 @@ public class EaseBaiduMapActivity extends EaseBaseActivity {
 	FrameLayout mMapViewContainer = null;
 	LocationClient mLocClient;
 	public MyLocationListenner myListener = new MyLocationListenner();
-
+	private ImageView la_back;
 	Button sendButton = null;
 
 	EditText indexText = null;
@@ -92,7 +93,12 @@ public class EaseBaiduMapActivity extends EaseBaseActivity {
 		setContentView(R.layout.ease_activity_baidumap);
 		mMapView = (MapView) findViewById(R.id.bmapView);
 		sendButton = (Button) findViewById(R.id.btn_location_send);
+		initBack();
 		Intent intent = getIntent();
+		String sure = intent.getStringExtra("sure");
+		if (sure != null && !sure.isEmpty()) {
+			sendButton.setText(sure);
+		}
 		double latitude = intent.getDoubleExtra("latitude", 0);
 		LocationMode mCurrentMode = LocationMode.NORMAL;
 		mBaiduMap = mMapView.getMap();
@@ -118,6 +124,16 @@ public class EaseBaiduMapActivity extends EaseBaseActivity {
 		iFilter.addAction(SDKInitializer.SDK_BROADCAST_ACTION_STRING_NETWORK_ERROR);
 		mBaiduReceiver = new BaiduSDKReceiver();
 		registerReceiver(mBaiduReceiver, iFilter);
+	}
+
+	private void initBack() {
+		la_back = findViewById(R.id.la_back);
+		la_back.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				finish();
+			}
+		});
 	}
 
 	private void showMap(double latitude, double longtitude, String address) {

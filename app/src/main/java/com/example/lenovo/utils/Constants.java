@@ -21,6 +21,12 @@ public class Constants {
     public static Boolean isBackHome = false;
 
 
+    /*单个订单*/
+    public static final String ORDER_INFO = BASE_URL_JSON + "/ORDER_INFO.json";
+    /*所有订单*/
+    public static final String ALL_ORDER_INFO = BASE_URL_JSON + "/ALL_ORDER.json";
+
+
     //服饰
     public static final String CLOSE_STORE = BASE_URL_JSON + "/CLOSE_STORE.json";
     //游戏

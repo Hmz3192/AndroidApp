@@ -100,7 +100,9 @@
         <activity android:name="com.example.lenovo.home.activity.GoodsMoreActivity" />
         <activity android:name="com.example.lenovo.controller.activity.settingActivity.DiagnoseActivity" />
         <activity android:name="com.example.lenovo.controller.activity.settingActivity.BlacklistActivity" />
-        <activity android:name="com.example.lenovo.controller.activity.settingActivity.MyCodeActivity"/>
+        <activity android:name="com.example.lenovo.controller.activity.settingActivity.MyCodeActivity" />
+        <activity android:name="com.example.lenovo.controller.activity.settingActivity.LocationActivity" />
+        <activity android:name="com.example.lenovo.setting.activity.OrderActivity"></activity>
     </application>
 
 </manifest>

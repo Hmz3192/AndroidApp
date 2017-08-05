@@ -74,7 +74,7 @@
                 android:layout_height="1dp"
                 android:background="#eee" />
 
-           <!-- <LinearLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp">
@@ -91,6 +91,7 @@
                     android:textColor="#5d5d5d" />
 
                 <TextView
+                    android:id="@+id/tv_user_send"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -108,7 +109,7 @@
                     android:drawablePadding="10dp"
                     android:drawableTop="@drawable/new_order_status_shouhuo"
                     android:gravity="center"
-                    android:text="待收获"
+                    android:text="待收货"
                     android:textColor="#5d5d5d" />
 
                 <TextView
@@ -133,7 +134,6 @@
                     android:text="售后/退款"
                     android:textColor="#5d5d5d" />
             </LinearLayout>
--->
             <View
                 android:layout_width="match_parent"
                 android:layout_height="8dp"
@@ -171,7 +171,7 @@
                 android:background="#eee" />
 
             <TextView
-                android:id="@+id/tv_user_location"
+                android:id="@+id/tv_location"
                 style="@style/TextStyle"
                 android:drawableLeft="@drawable/user_channel_icon_address"
                 android:text="收货地址" />
@@ -213,10 +213,10 @@
                 android:layout_marginLeft="45dp"
                 android:background="#eee" />
             <TextView
-                android:id="@+id/tv_user_prize1"
+                android:id="@+id/tv_user_version"
                 style="@style/TextStyle"
-                android:drawableLeft="@drawable/user_channel_icon_prize"
-                android:text="我的奖品" />
+                android:drawableLeft="@drawable/user_channel_icon_score"
+                android:text="团队版权信息" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="8dp"

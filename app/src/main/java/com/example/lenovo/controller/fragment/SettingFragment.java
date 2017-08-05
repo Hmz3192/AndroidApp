@@ -25,9 +25,11 @@ import com.chenyu.library.XToast;
 import com.example.lenovo.app.LoginActivity;
 import com.example.lenovo.controller.activity.settingActivity.BlacklistActivity;
 import com.example.lenovo.controller.activity.settingActivity.DiagnoseActivity;
+import com.example.lenovo.controller.activity.settingActivity.LocationActivity;
 import com.example.lenovo.controller.activity.settingActivity.MyCodeActivity;
 import com.example.lenovo.model.Model;
 import com.example.lenovo.myapplication.R;
+import com.example.lenovo.setting.activity.OrderActivity;
 import com.example.lenovo.utils.BitmapUtils;
 import com.hyphenate.EMCallBack;
 import com.hyphenate.chat.EMClient;
@@ -67,6 +69,15 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
     private LinearLayout blacklistContainer;
 
     private TextView ib_drawer_layout_confirm,tv_user_code;
+    private TextView tv_location;
+    private TextView tv_user_version;
+    private TextView tv_all_order;
+
+    private TextView tv_user_pay;
+    private TextView tv_user_send;
+    private TextView tv_user_receive;
+    private TextView tv_user_finish;
+    private TextView tv_user_drawback;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -98,8 +109,9 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
 
         textview1 = (TextView) view.findViewById(R.id.textview1);
         textview2 = (TextView) view.findViewById(R.id.textview2);
+        tv_location = view.findViewById(R.id.tv_location);
 
-
+        tv_user_version = view.findViewById(R.id.tv_user_version);
         tv_user_code = view.findViewById(R.id.tv_user_code);
         bt_setting_out = (TextView) view.findViewById(R.id.bt_setting_out);
         tvUsercenter = (TextView) view.findViewById(R.id.tv_usercenter);
@@ -110,8 +122,27 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
         ll_dl = view.findViewById(R.id.ll_dl);
         ib_drawer_back = view.findViewById(R.id.ib_drawer_back);
 
+        tv_all_order = view.findViewById(R.id.tv_all_order);
+
+        tv_user_drawback = view.findViewById(R.id.tv_user_drawback);
+        tv_user_finish = view.findViewById(R.id.tv_user_finish);
+        tv_user_receive = view.findViewById(R.id.tv_user_receive);
+        tv_user_send = view.findViewById(R.id.tv_user_send);
+        tv_user_pay = view.findViewById(R.id.tv_user_pay);
+
+
+        tv_user_pay.setOnClickListener(this);
+        tv_user_send.setOnClickListener(this);
+        tv_user_receive.setOnClickListener(this);
+        tv_user_finish.setOnClickListener(this);
+        tv_user_drawback.setOnClickListener(this);
+
         tv_user_code.setOnClickListener(this);
 
+        tv_all_order.setOnClickListener(this);
+
+        tv_user_version.setOnClickListener(this);
+        tv_location.setOnClickListener(this);
         ib_drawer_layout_confirm.setOnClickListener(this);
         rl_switch_notification.setOnClickListener(this);
         rl_switch_sound.setOnClickListener(this);
@@ -349,6 +380,60 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
                 intent.putExtra("context",EMClient.getInstance().getCurrentUser());
                 startActivity(intent);
 
+                break;
+
+            case R.id.tv_location:
+                /*收获地址*/
+                Intent intent1 = new Intent(getActivity(), LocationActivity.class);
+                startActivity(intent1);
+                break;
+            case R.id.tv_user_version:
+                XToast.create(getActivity())
+                        .setText("Copyright ©2017 校淘 Powered By AndroidApp Version 5.0.0")
+                        .setAnimation(AnimationUtils.ANIMATION_DRAWER) //Drawer Type
+                        .setDuration(XToast.XTOAST_DURATION_LONG)
+                        .setOnDisappearListener(new XToast.OnDisappearListener() {
+                            @Override
+                            public void onDisappear(XToast xToast) {
+                                Log.d("cylog", "The XToast has disappeared..");
+                            }
+                        }).show();
+                break;
+            case R.id.tv_all_order:
+                /*查看全部订单*/
+                Intent intent2 = new Intent(getActivity(), OrderActivity.class);
+                intent2.putExtra("which", "ALL");
+                startActivity(intent2);
+                break;
+            case R.id.tv_user_pay:
+                /*待付款*/
+                Intent intent3 = new Intent(getActivity(), OrderActivity.class);
+                intent3.putExtra("which", "PAY");
+                startActivity(intent3);
+                break;
+            case R.id.tv_user_send:
+                /*代发货*/
+                Intent intent4 = new Intent(getActivity(), OrderActivity.class);
+                intent4.putExtra("which", "SEND");
+                startActivity(intent4);
+                break;
+            case R.id.tv_user_receive:
+                /*收货*/
+                Intent intent5 = new Intent(getActivity(), OrderActivity.class);
+                intent5.putExtra("which", "GET");
+                startActivity(intent5);
+                break;
+            case R.id.tv_user_finish:
+                /*完成*/
+                Intent intent6 = new Intent(getActivity(), OrderActivity.class);
+                intent6.putExtra("which", "FINISH");
+                startActivity(intent6);
+                break;
+            case R.id.tv_user_drawback:
+                /*售后*/
+                Intent intent7 = new Intent(getActivity(), OrderActivity.class);
+                intent7.putExtra("which", "BACK");
+                startActivity(intent7);
                 break;
 
         }
