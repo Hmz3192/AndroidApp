@@ -1,7 +1,6 @@
 package com.example.lenovo.controller.activity.settingActivity;
 
 import android.app.Activity;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -19,18 +18,16 @@ public class DiagnoseActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(0xffed3f3f);
-        }
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_diagnose);
         TextView currentVersion = (TextView) findViewById(R.id.tv_version);
         la_back = findViewById(R.id.la_back);
         la_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                back(la_back);
+                back1();
 
             }
         });
@@ -52,7 +49,7 @@ public class DiagnoseActivity extends Activity {
     }
 
 
-    public void back(View view) {
+    public void back1() {
         finish();
     }
 

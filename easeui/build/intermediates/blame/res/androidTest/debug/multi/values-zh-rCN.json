@@ -5745,8 +5745,8 @@
                     "startLine": 304,
                     "startColumn": 4,
                     "startOffset": 17166,
-                    "endColumn": 57,
-                    "endOffset": 17219
+                    "endColumn": 55,
+                    "endOffset": 17217
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\bundles\\debug\\res\\values-zh-rCN\\values-zh-rCN.xml",
@@ -5754,8 +5754,8 @@
                         "startLine": 283,
                         "startColumn": 4,
                         "startOffset": 15168,
-                        "endColumn": 57,
-                        "endOffset": 15221
+                        "endColumn": 55,
+                        "endOffset": 15219
                     }
                 }
             },
@@ -5763,18 +5763,18 @@
                 "to": {
                     "startLine": 305,
                     "startColumn": 4,
-                    "startOffset": 17224,
-                    "endColumn": 60,
-                    "endOffset": 17280
+                    "startOffset": 17222,
+                    "endColumn": 58,
+                    "endOffset": 17276
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\bundles\\debug\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "position": {
                         "startLine": 284,
                         "startColumn": 4,
-                        "startOffset": 15226,
-                        "endColumn": 60,
-                        "endOffset": 15282
+                        "startOffset": 15224,
+                        "endColumn": 58,
+                        "endOffset": 15278
                     }
                 }
             },
@@ -5782,18 +5782,18 @@
                 "to": {
                     "startLine": 306,
                     "startColumn": 4,
-                    "startOffset": 17285,
+                    "startOffset": 17281,
                     "endColumn": 58,
-                    "endOffset": 17339
+                    "endOffset": 17335
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\bundles\\debug\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "position": {
                         "startLine": 285,
                         "startColumn": 4,
-                        "startOffset": 15287,
+                        "startOffset": 15283,
                         "endColumn": 58,
-                        "endOffset": 15341
+                        "endOffset": 15337
                     }
                 }
             },
@@ -5801,18 +5801,18 @@
                 "to": {
                     "startLine": 307,
                     "startColumn": 4,
-                    "startOffset": 17344,
+                    "startOffset": 17340,
                     "endColumn": 61,
-                    "endOffset": 17401
+                    "endOffset": 17397
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\bundles\\debug\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "position": {
                         "startLine": 286,
                         "startColumn": 4,
-                        "startOffset": 15346,
+                        "startOffset": 15342,
                         "endColumn": 61,
-                        "endOffset": 15403
+                        "endOffset": 15399
                     }
                 }
             },
@@ -5820,18 +5820,18 @@
                 "to": {
                     "startLine": 308,
                     "startColumn": 4,
-                    "startOffset": 17406,
+                    "startOffset": 17402,
                     "endColumn": 54,
-                    "endOffset": 17456
+                    "endOffset": 17452
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\bundles\\debug\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "position": {
                         "startLine": 287,
                         "startColumn": 4,
-                        "startOffset": 15408,
+                        "startOffset": 15404,
                         "endColumn": 54,
-                        "endOffset": 15458
+                        "endOffset": 15454
                     }
                 }
             },
@@ -5839,18 +5839,18 @@
                 "to": {
                     "startLine": 309,
                     "startColumn": 4,
-                    "startOffset": 17461,
+                    "startOffset": 17457,
                     "endColumn": 63,
-                    "endOffset": 17520
+                    "endOffset": 17516
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\bundles\\debug\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "position": {
                         "startLine": 288,
                         "startColumn": 4,
-                        "startOffset": 15463,
+                        "startOffset": 15459,
                         "endColumn": 63,
-                        "endOffset": 15522
+                        "endOffset": 15518
                     }
                 }
             },
@@ -5858,18 +5858,18 @@
                 "to": {
                     "startLine": 310,
                     "startColumn": 4,
-                    "startOffset": 17525,
+                    "startOffset": 17521,
                     "endColumn": 51,
-                    "endOffset": 17572
+                    "endOffset": 17568
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\bundles\\debug\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "position": {
                         "startLine": 289,
                         "startColumn": 4,
-                        "startOffset": 15527,
+                        "startOffset": 15523,
                         "endColumn": 51,
-                        "endOffset": 15574
+                        "endOffset": 15570
                     }
                 }
             },
@@ -5877,18 +5877,18 @@
                 "to": {
                     "startLine": 311,
                     "startColumn": 4,
-                    "startOffset": 17577,
+                    "startOffset": 17573,
                     "endColumn": 60,
-                    "endOffset": 17633
+                    "endOffset": 17629
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\bundles\\debug\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "position": {
                         "startLine": 290,
                         "startColumn": 4,
-                        "startOffset": 15579,
+                        "startOffset": 15575,
                         "endColumn": 60,
-                        "endOffset": 15635
+                        "endOffset": 15631
                     }
                 }
             },
@@ -5896,18 +5896,18 @@
                 "to": {
                     "startLine": 312,
                     "startColumn": 4,
-                    "startOffset": 17638,
+                    "startOffset": 17634,
                     "endColumn": 55,
-                    "endOffset": 17689
+                    "endOffset": 17685
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\bundles\\debug\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "position": {
                         "startLine": 291,
                         "startColumn": 4,
-                        "startOffset": 15640,
+                        "startOffset": 15636,
                         "endColumn": 55,
-                        "endOffset": 15691
+                        "endOffset": 15687
                     }
                 }
             },
@@ -5915,18 +5915,18 @@
                 "to": {
                     "startLine": 313,
                     "startColumn": 4,
-                    "startOffset": 17694,
+                    "startOffset": 17690,
                     "endColumn": 64,
-                    "endOffset": 17754
+                    "endOffset": 17750
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\bundles\\debug\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "position": {
                         "startLine": 292,
                         "startColumn": 4,
-                        "startOffset": 15696,
+                        "startOffset": 15692,
                         "endColumn": 64,
-                        "endOffset": 15756
+                        "endOffset": 15752
                     }
                 }
             },
@@ -5934,18 +5934,18 @@
                 "to": {
                     "startLine": 314,
                     "startColumn": 4,
-                    "startOffset": 17759,
+                    "startOffset": 17755,
                     "endColumn": 46,
-                    "endOffset": 17801
+                    "endOffset": 17797
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\bundles\\debug\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "position": {
                         "startLine": 293,
                         "startColumn": 4,
-                        "startOffset": 15761,
+                        "startOffset": 15757,
                         "endColumn": 46,
-                        "endOffset": 15803
+                        "endOffset": 15799
                     }
                 }
             },
@@ -5953,18 +5953,18 @@
                 "to": {
                     "startLine": 315,
                     "startColumn": 4,
-                    "startOffset": 17806,
+                    "startOffset": 17802,
                     "endColumn": 55,
-                    "endOffset": 17857
+                    "endOffset": 17853
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\bundles\\debug\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "position": {
                         "startLine": 294,
                         "startColumn": 4,
-                        "startOffset": 15808,
+                        "startOffset": 15804,
                         "endColumn": 55,
-                        "endOffset": 15859
+                        "endOffset": 15855
                     }
                 }
             },
@@ -5972,18 +5972,18 @@
                 "to": {
                     "startLine": 316,
                     "startColumn": 4,
-                    "startOffset": 17862,
+                    "startOffset": 17858,
                     "endColumn": 40,
-                    "endOffset": 17898
+                    "endOffset": 17894
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\bundles\\debug\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "position": {
                         "startLine": 295,
                         "startColumn": 4,
-                        "startOffset": 15864,
+                        "startOffset": 15860,
                         "endColumn": 40,
-                        "endOffset": 15900
+                        "endOffset": 15896
                     }
                 }
             },
@@ -5991,18 +5991,18 @@
                 "to": {
                     "startLine": 317,
                     "startColumn": 4,
-                    "startOffset": 17903,
+                    "startOffset": 17899,
                     "endColumn": 41,
-                    "endOffset": 17940
+                    "endOffset": 17936
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\bundles\\debug\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "position": {
                         "startLine": 296,
                         "startColumn": 4,
-                        "startOffset": 15905,
+                        "startOffset": 15901,
                         "endColumn": 41,
-                        "endOffset": 15942
+                        "endOffset": 15938
                     }
                 }
             },
@@ -6010,18 +6010,18 @@
                 "to": {
                     "startLine": 318,
                     "startColumn": 4,
-                    "startOffset": 17945,
+                    "startOffset": 17941,
                     "endColumn": 38,
-                    "endOffset": 17979
+                    "endOffset": 17975
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\bundles\\debug\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "position": {
                         "startLine": 297,
                         "startColumn": 4,
-                        "startOffset": 15947,
+                        "startOffset": 15943,
                         "endColumn": 38,
-                        "endOffset": 15981
+                        "endOffset": 15977
                     }
                 }
             },
@@ -6029,18 +6029,18 @@
                 "to": {
                     "startLine": 319,
                     "startColumn": 4,
-                    "startOffset": 17984,
+                    "startOffset": 17980,
                     "endColumn": 45,
-                    "endOffset": 18025
+                    "endOffset": 18021
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\bundles\\debug\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "position": {
                         "startLine": 298,
                         "startColumn": 4,
-                        "startOffset": 15986,
+                        "startOffset": 15982,
                         "endColumn": 45,
-                        "endOffset": 16027
+                        "endOffset": 16023
                     }
                 }
             },
@@ -6048,18 +6048,18 @@
                 "to": {
                     "startLine": 320,
                     "startColumn": 4,
-                    "startOffset": 18030,
+                    "startOffset": 18026,
                     "endColumn": 36,
-                    "endOffset": 18062
+                    "endOffset": 18058
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\bundles\\debug\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "position": {
                         "startLine": 299,
                         "startColumn": 4,
-                        "startOffset": 16032,
+                        "startOffset": 16028,
                         "endColumn": 36,
-                        "endOffset": 16064
+                        "endOffset": 16060
                     }
                 }
             },
@@ -6067,18 +6067,18 @@
                 "to": {
                     "startLine": 321,
                     "startColumn": 4,
-                    "startOffset": 18067,
+                    "startOffset": 18063,
                     "endColumn": 45,
-                    "endOffset": 18108
+                    "endOffset": 18104
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\bundles\\debug\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "position": {
                         "startLine": 300,
                         "startColumn": 4,
-                        "startOffset": 16069,
+                        "startOffset": 16065,
                         "endColumn": 45,
-                        "endOffset": 16110
+                        "endOffset": 16106
                     }
                 }
             },
@@ -6086,18 +6086,18 @@
                 "to": {
                     "startLine": 322,
                     "startColumn": 4,
-                    "startOffset": 18113,
+                    "startOffset": 18109,
                     "endColumn": 45,
-                    "endOffset": 18154
+                    "endOffset": 18150
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\bundles\\debug\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "position": {
                         "startLine": 301,
                         "startColumn": 4,
-                        "startOffset": 16115,
+                        "startOffset": 16111,
                         "endColumn": 45,
-                        "endOffset": 16156
+                        "endOffset": 16152
                     }
                 }
             },
@@ -6105,18 +6105,18 @@
                 "to": {
                     "startLine": 323,
                     "startColumn": 4,
-                    "startOffset": 18159,
+                    "startOffset": 18155,
                     "endColumn": 49,
-                    "endOffset": 18204
+                    "endOffset": 18200
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\bundles\\debug\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "position": {
                         "startLine": 302,
                         "startColumn": 4,
-                        "startOffset": 16161,
+                        "startOffset": 16157,
                         "endColumn": 49,
-                        "endOffset": 16206
+                        "endOffset": 16202
                     }
                 }
             },
@@ -6124,18 +6124,18 @@
                 "to": {
                     "startLine": 324,
                     "startColumn": 4,
-                    "startOffset": 18209,
+                    "startOffset": 18205,
                     "endColumn": 49,
-                    "endOffset": 18254
+                    "endOffset": 18250
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\bundles\\debug\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "position": {
                         "startLine": 303,
                         "startColumn": 4,
-                        "startOffset": 16211,
+                        "startOffset": 16207,
                         "endColumn": 49,
-                        "endOffset": 16256
+                        "endOffset": 16252
                     }
                 }
             },
@@ -6143,18 +6143,18 @@
                 "to": {
                     "startLine": 325,
                     "startColumn": 4,
-                    "startOffset": 18259,
+                    "startOffset": 18255,
                     "endColumn": 54,
-                    "endOffset": 18309
+                    "endOffset": 18305
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\bundles\\debug\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "position": {
                         "startLine": 304,
                         "startColumn": 4,
-                        "startOffset": 16261,
+                        "startOffset": 16257,
                         "endColumn": 54,
-                        "endOffset": 16311
+                        "endOffset": 16307
                     }
                 }
             }

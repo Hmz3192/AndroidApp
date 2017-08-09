@@ -8,6 +8,15 @@ import java.util.List;
  */
 
 public class OrderInfo {
+    public OrderInfo() {
+    }
+
+    public OrderInfo(int code, String msg, ResultBean result) {
+
+        this.code = code;
+        this.msg = msg;
+        this.result = result;
+    }
 
     /**
      * code : 200
@@ -50,6 +59,18 @@ public class OrderInfo {
         private List<FinishOrderBean> finish_order;
         private List<BackOrderBean> back_order;
 
+        public ResultBean() {
+        }
+
+        public ResultBean(List<BuyOrderBean> buy_order, List<SendOrderBean> send_order, List<GetOrderBean> get_order, List<FinishOrderBean> finish_order, List<BackOrderBean> back_order) {
+
+            this.buy_order = buy_order;
+            this.send_order = send_order;
+            this.get_order = get_order;
+            this.finish_order = finish_order;
+            this.back_order = back_order;
+        }
+
         public List<BuyOrderBean> getBuy_order() {
             return buy_order;
         }
@@ -91,6 +112,15 @@ public class OrderInfo {
         }
 
         public static class BuyOrderBean {
+            public BuyOrderBean(String id, String url, String name, String cover_price, String num, String status) {
+                this.id = id;
+                this.url = url;
+                this.name = name;
+                this.cover_price = cover_price;
+                this.num = num;
+                this.status = status;
+            }
+
             /**
              * id : 11111111101
              * url : /1477360350123.png
@@ -100,12 +130,17 @@ public class OrderInfo {
              * status : 未付款
              */
 
+
             private String id;
             private String url;
             private String name;
             private String cover_price;
             private String num;
             private String status;
+
+            public BuyOrderBean() {
+
+            }
 
             public String getId() {
                 return id;
@@ -157,6 +192,9 @@ public class OrderInfo {
         }
 
         public static class SendOrderBean {
+            public SendOrderBean() {
+            }
+
             /**
              * id : 11111111104
              * url : /1477360350123.png
@@ -172,6 +210,15 @@ public class OrderInfo {
             private String cover_price;
             private String num;
             private String status;
+
+            public SendOrderBean(String id, String url, String name, String cover_price, String num, String status) {
+                this.id = id;
+                this.url = url;
+                this.name = name;
+                this.cover_price = cover_price;
+                this.num = num;
+                this.status = status;
+            }
 
             public String getId() {
                 return id;
@@ -223,7 +270,11 @@ public class OrderInfo {
         }
 
         public static class GetOrderBean {
+            public GetOrderBean() {
+            }
+
             /**
+
              * id : 11111111107
              * url : /1477360350123.png
              * name : 现货【一方尘寰】剑侠情缘三剑三七秀 干将莫邪 90橙武仿烧蓝复古对簪
@@ -238,6 +289,15 @@ public class OrderInfo {
             private String cover_price;
             private String num;
             private String status;
+
+            public GetOrderBean(String id, String url, String name, String cover_price, String num, String status) {
+                this.id = id;
+                this.url = url;
+                this.name = name;
+                this.cover_price = cover_price;
+                this.num = num;
+                this.status = status;
+            }
 
             public String getId() {
                 return id;
@@ -289,7 +349,11 @@ public class OrderInfo {
         }
 
         public static class FinishOrderBean {
+            public FinishOrderBean() {
+            }
+
             /**
+
              * id : 11111111110
              * url : /1477360350123.png
              * name : 现货【一方尘寰】剑侠情缘三剑三七秀 干将莫邪 90橙武仿烧蓝复古对簪
@@ -304,6 +368,15 @@ public class OrderInfo {
             private String cover_price;
             private String num;
             private String status;
+
+            public FinishOrderBean(String id, String url, String name, String cover_price, String num, String status) {
+                this.id = id;
+                this.url = url;
+                this.name = name;
+                this.cover_price = cover_price;
+                this.num = num;
+                this.status = status;
+            }
 
             public String getId() {
                 return id;
@@ -355,8 +428,12 @@ public class OrderInfo {
         }
 
         public static class BackOrderBean {
+            public BackOrderBean() {
+            }
+
             /**
              * id : 11111111113
+
              * url : /1477360350123.png
              * name : 现货【一方尘寰】剑侠情缘三剑三七秀 干将莫邪 90橙武仿烧蓝复古对簪
              * cover_price : 143.10
@@ -370,6 +447,15 @@ public class OrderInfo {
             private String cover_price;
             private String num;
             private String status;
+
+            public BackOrderBean(String id, String url, String name, String cover_price, String num, String status) {
+                this.id = id;
+                this.url = url;
+                this.name = name;
+                this.cover_price = cover_price;
+                this.num = num;
+                this.status = status;
+            }
 
             public String getId() {
                 return id;

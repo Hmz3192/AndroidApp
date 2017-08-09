@@ -7,7 +7,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.lenovo.model.bean.UserInfo;
+import com.example.lenovo.model.bean.UserInfoBean;
 import com.example.lenovo.myapplication.R;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import java.util.List;
 public class GroupDetailAdapter extends BaseAdapter {
     private Context mContext;
     private boolean mIsCanModify;// 是否允许添加和删除群成员
-    private List<UserInfo> mUsers = new ArrayList<>();
+    private List<UserInfoBean> mUsers = new ArrayList<>();
     private boolean mIsDeleteModel;// 删除模式  true：表示可以删除； false:表示不可以删除
     private OnGroupDetailListener mOnGroupDetailListener;
 
@@ -41,7 +41,7 @@ public class GroupDetailAdapter extends BaseAdapter {
     }
 
     // 刷新数据
-    public void refresh(List<UserInfo> users) {
+    public void refresh(List<UserInfoBean> users) {
 
         if (users != null && users.size() >= 0) {
             mUsers.clear();
@@ -56,8 +56,8 @@ public class GroupDetailAdapter extends BaseAdapter {
     }
 
     private void initUsers() {
-        UserInfo add = new UserInfo("add");
-        UserInfo delete = new UserInfo("delete");
+        UserInfoBean add = new UserInfoBean("add");
+        UserInfoBean delete = new UserInfoBean("delete");
 
         mUsers.add(delete);
         mUsers.add(0, add);
@@ -98,7 +98,7 @@ public class GroupDetailAdapter extends BaseAdapter {
         }
 
         // 获取当前item数据
-        final UserInfo userInfo = mUsers.get(position);
+        final UserInfoBean userInfo = mUsers.get(position);
 
         // 显示数据
         if(mIsCanModify) {// 群主或开放了群权限
@@ -197,6 +197,6 @@ public class GroupDetailAdapter extends BaseAdapter {
         void onAddMembers();
 
         // 删除群成员方法
-        void onDeleteMember(UserInfo user);
+        void onDeleteMember(UserInfoBean user);
     }
 }

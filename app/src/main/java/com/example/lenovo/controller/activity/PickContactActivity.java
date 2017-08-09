@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.example.lenovo.controller.adapter.PickContactAdapter;
 import com.example.lenovo.model.Model;
 import com.example.lenovo.model.bean.PickContactInfo;
-import com.example.lenovo.model.bean.UserInfo;
+import com.example.lenovo.model.bean.UserInfoBean;
 import com.example.lenovo.myapplication.R;
 import com.example.lenovo.utils.Constant;
 import com.hyphenate.chat.EMClient;
@@ -107,13 +107,13 @@ public class PickContactActivity extends Activity {
     private void initData() {
 
         // 从本地数据库中获取所有的联系人信息
-        List<UserInfo> contacts = Model.getInstance().getDbManager().getContactTableDao().getContacts();
+        List<UserInfoBean> contacts = Model.getInstance().getDbManager().getContactTableDao().getContacts();
 
         mPicks = new ArrayList<>();
 
         if (contacts != null && contacts.size() >= 0) {
             // 转换
-            for (UserInfo contact : contacts) {
+            for (UserInfoBean contact : contacts) {
                 PickContactInfo pickContactInfo = new PickContactInfo(contact, false);
                 mPicks.add(pickContactInfo);
             }

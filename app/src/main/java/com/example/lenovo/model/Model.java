@@ -2,7 +2,7 @@ package com.example.lenovo.model;
 
 import android.content.Context;
 
-import com.example.lenovo.model.bean.UserInfo;
+import com.example.lenovo.model.bean.UserInfoBean;
 import com.example.lenovo.model.dao.UserAccountDao;
 import com.example.lenovo.model.db.DBManager;
 import com.hyphenate.chat.EMClient;
@@ -51,7 +51,7 @@ public class Model {
     }
 
     // 用户登录成功后的处理方法
-    public void loginSuccess(UserInfo account) {
+    public void loginSuccess(UserInfoBean account) {
 
         // 校验
         if(account == null) {

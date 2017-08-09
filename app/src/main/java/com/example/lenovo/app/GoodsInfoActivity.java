@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -23,6 +24,7 @@ import com.bumptech.glide.Glide;
 import com.chenyu.library.Utils.AnimationUtils;
 import com.chenyu.library.XToast;
 import com.example.lenovo.controller.activity.ChatActivity;
+import com.example.lenovo.controller.activity.SettingDB.CollectDao;
 import com.example.lenovo.home.bean.GoodsInfo;
 import com.example.lenovo.home.utils.VirtualkeyboardHeight;
 import com.example.lenovo.myapplication.R;
@@ -31,8 +33,12 @@ import com.example.lenovo.shoppingcart.utils.CartStorage;
 import com.example.lenovo.shoppingcart.view.AddSubView;
 import com.example.lenovo.utils.Constants;
 import com.hyphenate.easeui.EaseConstant;
+import com.tencent.connect.share.QQShare;
+import com.tencent.tauth.IUiListener;
+import com.tencent.tauth.Tencent;
+import com.tencent.tauth.UiError;
 
-public class GoodsInfoActivity extends FragmentActivity implements View.OnClickListener {
+public class GoodsInfoActivity extends FragmentActivity  implements IUiListener {
     private ImageButton ibGoodInfoBack;
     private ImageButton ibGoodInfoMore;
     private ImageView ivGoodInfoImage, sc_image;
@@ -53,9 +59,14 @@ public class GoodsInfoActivity extends FragmentActivity implements View.OnClickL
     private GoodsInfo goodsInfo;
     private GoodsInfo dataForView;
     private LinearLayout ll_root;
-    private int enable = 0;
+    private String  enable;
     private CartStorage cartProvider;
     private String TAG;
+    private CollectDao collectDao;
+
+    private Tencent mTencent;
+
+    private String APP_ID = "1106333790";
 
     /**
      * Find the Views in the layout<br />
@@ -84,19 +95,133 @@ public class GoodsInfoActivity extends FragmentActivity implements View.OnClickL
         btn_more = findViewById(R.id.btn_more);
 
         ll_root = (LinearLayout) findViewById(R.id.ll_root);
-        ibGoodInfoBack.setOnClickListener(this);
-        ibGoodInfoMore.setOnClickListener(this);
-        btnGoodInfoAddcart.setOnClickListener(this);
+        initClickListener();
 
-        tvGoodInfoCallcenter.setOnClickListener(this);
-        tvGoodInfoCollection.setOnClickListener(this);
-        tvGoodInfoCart.setOnClickListener(this);
+    }
 
-        tv_more_share.setOnClickListener(this);
-        tv_more_search.setOnClickListener(this);
-        tv_more_home.setOnClickListener(this);
-        btn_more.setOnClickListener(this);
+    private void initClickListener() {
+        ibGoodInfoBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Handle clicks for ibGoodInfoBack
+                finish();
+                overridePendingTransition(R.anim.slide_up_in,
+                        R.anim.slide_down_out);
+            }
+        });
+        ibGoodInfoMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Handle clicks for ibGoodInfoMore
+                if (ll_root.getVisibility() == View.VISIBLE) {
+                    ll_root.setVisibility(View.GONE);
+                } else {
+                    ll_root.setVisibility(View.VISIBLE);
+                }
+           /* Toast.makeText(this, "更多", Toast.LENGTH_SHORT).show();*/
+            }
+        });
+        btnGoodInfoAddcart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Handle clicks for btnGoodInfoAddcart
+//            CartStorage.getInstance().addData(goodsInfo);
+//            Toast.makeText(this, "添加到成功了", Toast.LENGTH_SHORT).show();
+                showPopwindow();
+            }
+        });
 
+        tvGoodInfoCallcenter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+         /*   Toast.makeText(this, "客服", Toast.LENGTH_SHORT).show();*/
+                tvGoodInfoCallcenter.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                    /*设置点击事件跳转到会话页面*/
+                        Intent intent = new Intent(GoodsInfoActivity.this, ChatActivity.class);
+
+                        // 传递参数
+                        intent.putExtra(EaseConstant.EXTRA_USER_ID, "admin");
+
+                        startActivity(intent);
+                        overridePendingTransition(R.anim.push_up_in,
+                                R.anim.push_up_out);
+                    }
+                });
+            }
+        });
+        tvGoodInfoCollection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (enable.equalsIgnoreCase("1")) {
+//                Toast.makeText(this, "收藏成功", Toast.LENGTH_SHORT).show();
+                    tvGoodInfoCollection.setText("已收藏");
+                    tvGoodInfoCollection.setCompoundDrawablesWithIntrinsicBounds(null,
+                            ContextCompat.getDrawable(getBaseContext(),R.drawable.good_uncollected_selected), null, null);
+                    enable = "0";
+                    collectDao.addCollect(goodsInfo.getProduct_id(),goodsInfo.getName(), goodsInfo.getCover_price(), goodsInfo.getFigure(),enable);
+                } else if (enable.equalsIgnoreCase("0")) {
+//                Toast.makeText(this, "取消收藏", Toast.LENGTH_SHORT).show();
+                    tvGoodInfoCollection.setCompoundDrawablesWithIntrinsicBounds(null,
+                            ContextCompat.getDrawable(getBaseContext(),R.drawable.good_uncollected), null, null);
+
+                    tvGoodInfoCollection.setText("收藏");
+                    enable = "1";
+                    collectDao.updateById(goodsInfo.getProduct_id(),enable);
+
+                }
+            }
+        });
+        tvGoodInfoCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+//            Toast.makeText(this, "跳转购物车", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(GoodsInfoActivity.this, ShoppingCartActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.scale_rotate,
+                        R.anim.my_alpha_action);
+            }
+        });
+
+        tv_more_share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+//                Toast.makeText(GoodsInfoActivity.this, "抱歉，功能暂未开放", Toast.LENGTH_SHORT).show();
+                shareToQZone(view);
+
+            }
+        });
+        tv_more_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Toast.makeText(GoodsInfoActivity.this, "搜索", Toast.LENGTH_SHORT).show();
+            }
+        });
+        tv_more_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+//            Toast.makeText(this, "主页", Toast.LENGTH_SHORT).show();
+            /*起作用的主要是finish（）结束了当前的activity*/
+//            Constants.isBackHome = true;
+                finish();
+            }
+        });
+        btn_more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (ll_root.getVisibility() == View.VISIBLE) {
+                    ll_root.setVisibility(View.GONE);
+                }
+            }
+        });
     }
 
     /**
@@ -105,95 +230,26 @@ public class GoodsInfoActivity extends FragmentActivity implements View.OnClickL
      * Auto-created on 2017-07-15 09:51:02 by Android Layout Finder
      * (http://www.buzzingandroid.com/tools/android-layout-finder)
      */
-    @Override
-    public void onClick(View v) {
-
-        if (v == ibGoodInfoBack) {
-            // Handle clicks for ibGoodInfoBack
-            finish();
-            overridePendingTransition(R.anim.slide_up_in,
-                    R.anim.slide_down_out);
-        } else if (v == ibGoodInfoMore) {
-            // Handle clicks for ibGoodInfoMore
-            if (ll_root.getVisibility() == View.VISIBLE) {
-                ll_root.setVisibility(View.GONE);
-            } else {
-                ll_root.setVisibility(View.VISIBLE);
-            }
-           /* Toast.makeText(this, "更多", Toast.LENGTH_SHORT).show();*/
-        } else if (v == btnGoodInfoAddcart) {
-            // Handle clicks for btnGoodInfoAddcart
-//            CartStorage.getInstance().addData(goodsInfo);
-//            Toast.makeText(this, "添加到成功了", Toast.LENGTH_SHORT).show();
-            showPopwindow();
-        } else if (v == tvGoodInfoCallcenter) {
-         /*   Toast.makeText(this, "客服", Toast.LENGTH_SHORT).show();*/
-            tvGoodInfoCallcenter.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    /*设置点击事件跳转到会话页面*/
-                    Intent intent = new Intent(GoodsInfoActivity.this, ChatActivity.class);
-
-                    // 传递参数
-                    intent.putExtra(EaseConstant.EXTRA_USER_ID, "admin");
-
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.push_up_in,
-                            R.anim.push_up_out);
-                }
-            });
-        } else if (v == tvGoodInfoCollection) {
-            if (enable == 0) {
-//                Toast.makeText(this, "收藏成功", Toast.LENGTH_SHORT).show();
-                tvGoodInfoCollection.setText("已收藏");
-                tvGoodInfoCollection.setCompoundDrawablesWithIntrinsicBounds(null,
-                        ContextCompat.getDrawable(getBaseContext(),R.drawable.good_uncollected_selected), null, null);
-                enable = 1;
-            } else if (enable == 1) {
-//                Toast.makeText(this, "取消收藏", Toast.LENGTH_SHORT).show();
-                tvGoodInfoCollection.setCompoundDrawablesWithIntrinsicBounds(null,
-                        ContextCompat.getDrawable(getBaseContext(),R.drawable.good_uncollected), null, null);
-
-                tvGoodInfoCollection.setText("收藏");
-                enable = 0;
-            }
-        } else if (v == tvGoodInfoCart) {
-//            Toast.makeText(this, "跳转购物车", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this, ShoppingCartActivity.class);
-            startActivity(intent);
-            overridePendingTransition(R.anim.scale_rotate,
-                    R.anim.my_alpha_action);
-        } else if (v == tv_more_share) {
-            Toast.makeText(this, "抱歉，功能暂未开放", Toast.LENGTH_SHORT).show();
-        } else if (v == tv_more_search) {
-            Toast.makeText(this, "搜索", Toast.LENGTH_SHORT).show();
-        } else if (v == tv_more_home) {
-//            Toast.makeText(this, "主页", Toast.LENGTH_SHORT).show();
-            /*起作用的主要是finish（）结束了当前的activity*/
-//            Constants.isBackHome = true;
-            finish();
-        } else if (v == btn_more) {
-            if (ll_root.getVisibility() == View.VISIBLE) {
-                ll_root.setVisibility(View.GONE);
-            }
-        }
-
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        this.getWindow().setFlags(
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_goods_info);
         findViews();
+
+        mTencent = Tencent.createInstance(APP_ID, getApplicationContext());
+
+        collectDao = new CollectDao(getApplication());
+
 
         cartProvider = CartStorage.getInstance();
         /*接受数据*/
         goodsInfo = (GoodsInfo) getIntent().getSerializableExtra("goodsbean");
+        setCollectPic();
 
         Log.e(TAG, "------"+goodsInfo);
         if (goodsInfo != null) {
@@ -201,6 +257,31 @@ public class GoodsInfoActivity extends FragmentActivity implements View.OnClickL
             setDataForView(goodsInfo);
         }
 
+
+    }
+
+    private void setCollectPic() {
+        enable = (collectDao.getGoodById(goodsInfo.getProduct_id())).getEnable();
+        if(enable != null){
+        if (enable.equalsIgnoreCase("0")) {
+//                Toast.makeText(this, "收藏成功", Toast.LENGTH_SHORT).show();
+            tvGoodInfoCollection.setText("已收藏");
+            tvGoodInfoCollection.setCompoundDrawablesWithIntrinsicBounds(null,
+                    ContextCompat.getDrawable(getBaseContext(), R.drawable.good_uncollected_selected), null, null);
+//            enable = "1";
+//            collectDao.addCollect(goodsInfo.getName(), goodsInfo.getCover_price(), goodsInfo.getFigure(),enable);
+        } else if (enable.equalsIgnoreCase("1")) {
+//                Toast.makeText(this, "取消收藏", Toast.LENGTH_SHORT).show();
+            tvGoodInfoCollection.setCompoundDrawablesWithIntrinsicBounds(null,
+                    ContextCompat.getDrawable(getBaseContext(),R.drawable.good_uncollected), null, null);
+
+            tvGoodInfoCollection.setText("收藏");
+//            enable = "0";
+//            collectDao.updateByName(goodsInfo.getName(),enable);
+
+        }}else
+            enable = "1";
+            return;
 
     }
 
@@ -314,6 +395,53 @@ public class GoodsInfoActivity extends FragmentActivity implements View.OnClickL
 
     }
 
+    @Override
+    public void onComplete(Object o) {
+//        Toast.makeText(this, o.toString(), Toast.LENGTH_LONG).show();
+        XToast.create(GoodsInfoActivity.this)
+                .setText("分享成功")
+                .setAnimation(AnimationUtils.ANIMATION_DRAWER) //Drawer Type
+                .setDuration(XToast.XTOAST_DURATION_LONG)
+                .setOnDisappearListener(new XToast.OnDisappearListener() {
+                    @Override
+                    public void onDisappear(XToast xToast) {
+                        Log.d("cylog", "The XToast has disappeared..");
+                    }
+                }).show();
+
+    }
+
+    @Override
+    public void onError(UiError uiError) {
+        Toast.makeText(this, uiError.errorMessage + "--" + uiError.errorCode + "---" + uiError.errorDetail, Toast.LENGTH_LONG).show();
+
+    }
+
+    @Override
+    public void onCancel() {
+        Toast.makeText(this, "取消", Toast.LENGTH_SHORT).show();
+
+    }
+
+    public void shareToQZone(View view) {
+        Bundle params = new Bundle();
+        params.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE, QQShare.SHARE_TO_QQ_TYPE_DEFAULT);
+        params.putString(QQShare.SHARE_TO_QQ_TITLE, "校淘商城");
+        params.putString(QQShare.SHARE_TO_QQ_SUMMARY, goodsInfo.getName());
+        params.putString(QQShare.SHARE_TO_QQ_TARGET_URL, Constants.BASE_URL_IMAGE + goodsInfo.getFigure());
+        params.putString(QQShare.SHARE_TO_QQ_IMAGE_URL, Constants.BASE_URL_IMAGE + goodsInfo.getFigure() );
+        params.putString(QQShare.SHARE_TO_QQ_APP_NAME, "校  淘 APP");
+        params.putInt(QQShare.SHARE_TO_QQ_EXT_INT, QQShare.SHARE_TO_QQ_FLAG_QZONE_AUTO_OPEN);
+        mTencent.shareToQQ(this, params, this);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (mTencent != null) {
+            Tencent.onActivityResultData(requestCode, resultCode, data, this);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
     /*  public void setWebViewData(String product_id) {
         if (product_id != null) {
             wbGoodInfoMore.loadUrl("#");

@@ -13,6 +13,8 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/banner" />
             <option value="$PROJECT_DIR$/easeui" />
+            <option value="$PROJECT_DIR$/library" />
+            <option value="$PROJECT_DIR$/swiplayout" />
             <option value="$PROJECT_DIR$/tBViewer" />
           </set>
         </option>

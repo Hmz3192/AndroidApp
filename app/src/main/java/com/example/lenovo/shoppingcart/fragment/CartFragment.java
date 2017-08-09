@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.lenovo.app.MainActivity;
 import com.example.lenovo.base.BaseFragment;
+import com.example.lenovo.controller.activity.SettingDB.CollectDao;
 import com.example.lenovo.home.bean.GoodsInfo;
 import com.example.lenovo.myapplication.R;
 import com.example.lenovo.shoppingcart.Adapter.ShoppingCartAdapter;
@@ -43,13 +44,14 @@ public class CartFragment extends BaseFragment {
     private ImageView ivEmpty;
     private TextView tvEmptyCartTobuy;
     private ShoppingCartAdapter adapter;
-
+    private CollectDao collectDao;
     private LinearLayout ll_empty_shopcart;
 
     /*编辑状态*/
     private static final int ACTION_EDIT = 1;
     /*完成状态*/
     private static final int ACTION_COMPLETE = 2;
+
     /**
      * Handle button click events<br />
      * <br />
@@ -62,9 +64,11 @@ public class CartFragment extends BaseFragment {
     public View initView() {
         Log.e(TAG, "购物车UI初始化");
         View view = View.inflate(mcontext, R.layout.fragment_shopping_cart, null);
+        collectDao = new CollectDao(mcontext);
         findView(view);
         return view;
     }
+
     @Override
     public void initData() {
         super.initData();
@@ -72,6 +76,7 @@ public class CartFragment extends BaseFragment {
         Log.e(TAG, "购物车数据初始化");
         showData();
     }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -128,14 +133,26 @@ public class CartFragment extends BaseFragment {
                 Intent intent = new Intent(mcontext, MainActivity.class);
                 startActivity(intent);
                 getActivity().finish();
-                getActivity(). overridePendingTransition(R.anim.push_left_in,
+                getActivity().overridePendingTransition(R.anim.push_left_in,
                         R.anim.push_left_out);
 //                Constants.isBackHome = true;
 
             }
         });
 
+        btnCollection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                List<GoodsInfo> goodsInfos = adapter.collectDatas();
+                for (GoodsInfo goodsInfo : goodsInfos) {
+                    String enable = "0";
+                    collectDao.addCollect(goodsInfo.getProduct_id(),goodsInfo.getName(), goodsInfo.getCover_price(), goodsInfo.getFigure(), enable);
+                }
+            }
+        });
+
     }
+
     private void checkData() {
         if (adapter != null && adapter.getItemCount() > 0) {
             tvShopcartEdit.setVisibility(View.VISIBLE);
@@ -147,6 +164,7 @@ public class CartFragment extends BaseFragment {
 
         }
     }
+
     private void hideDelete() {
   /*设置状态和文本-编辑*/
         tvShopcartEdit.setTag(ACTION_EDIT);
@@ -180,16 +198,15 @@ public class CartFragment extends BaseFragment {
     }
 
 
-
     /*展示数据*/
     private void showData() {
         CartStorage cartProvider = CartStorage.getInstance();
-        List<GoodsInfo> goodsInfoList =cartProvider.getAllData();
+        List<GoodsInfo> goodsInfoList = cartProvider.getAllData();
         if (goodsInfoList != null && goodsInfoList.size() > 0) {
             /*有数据则隐藏无数据页面*/
             ll_empty_shopcart.setVisibility(View.GONE);
             tvShopcartEdit.setVisibility(View.VISIBLE);
-            adapter = new ShoppingCartAdapter(mcontext, goodsInfoList,tvShopcartTotal,cartProvider,checkboxAll,cbAll);
+            adapter = new ShoppingCartAdapter(mcontext, goodsInfoList, tvShopcartTotal, cartProvider, checkboxAll, cbAll);
             recyclerview.setAdapter(adapter);
             /*设置布局管理器*/
             recyclerview.setLayoutManager(new LinearLayoutManager(mcontext, LinearLayoutManager.VERTICAL, false));

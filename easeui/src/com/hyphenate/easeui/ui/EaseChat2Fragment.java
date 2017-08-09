@@ -15,6 +15,7 @@ import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -27,6 +28,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
 import com.hyphenate.EMChatRoomChangeListener;
 import com.hyphenate.EMMessageListener;
 import com.hyphenate.EMValueCallBack;
@@ -44,6 +46,7 @@ import com.hyphenate.easeui.controller.EaseUI;
 import com.hyphenate.easeui.domain.EaseEmojicon;
 import com.hyphenate.easeui.domain.EaseUser;
 import com.hyphenate.easeui.model.EaseAtMessageHelper;
+import com.hyphenate.easeui.util.QQUser;
 import com.hyphenate.easeui.utils.EaseCommonUtils;
 import com.hyphenate.easeui.utils.EaseUserUtils;
 import com.hyphenate.easeui.widget.EaseAlertDialog;
@@ -52,15 +55,20 @@ import com.hyphenate.easeui.widget.EaseChatExtendMenu;
 import com.hyphenate.easeui.widget.EaseChatInputMenu;
 import com.hyphenate.easeui.widget.EaseChatInputMenu.ChatInputMenuListener;
 import com.hyphenate.easeui.widget.EaseChatMessageList;
+import com.hyphenate.easeui.widget.EaseTitleBar;
 import com.hyphenate.easeui.widget.EaseVoiceRecorderView;
 import com.hyphenate.easeui.widget.EaseVoiceRecorderView.EaseVoiceRecorderCallback;
 import com.hyphenate.easeui.widget.chatrow.EaseCustomChatRowProvider;
 import com.hyphenate.util.EMLog;
 import com.hyphenate.util.PathUtil;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.List;
+
+import okhttp3.Call;
 
 /**
  * you can new an EaseChatFragment to use or you can inherit it to expand.
@@ -74,13 +82,14 @@ public class EaseChat2Fragment extends EaseBaseFragment implements EMMessageList
     protected static final int REQUEST_CODE_MAP = 1;
     protected static final int REQUEST_CODE_CAMERA = 2;
     protected static final int REQUEST_CODE_LOCAL = 3;
+    private static QQUser.UserBean userBean;
 
     /**
      * params to fragment
      */
     protected Bundle fragmentArgs;
     protected int chatType;
-    protected String toChatUsername;
+    protected static String toChatUsername;
     protected EaseChatMessageList messageList;
     protected EaseChatInputMenu inputMenu;
 
@@ -108,9 +117,9 @@ public class EaseChat2Fragment extends EaseBaseFragment implements EMMessageList
     private static final int ITEM_FILE = 12;
     private static final int ITEM_VOICE_CALL = 13;
     private static final int ITEM_VIDEO_CALL = 14;
-/*选择图片的requestcode*/
+    /*选择图片的requestcode*/
     private static final int REQUEST_CODE_SELECT_FILE = 12;
-/*选择视屏的requestcode*/
+    /*选择视屏的requestcode*/
     private static final int REQUEST_CODE_SELECT_VIDEO = 11;
 
     protected int[] itemStrings = {R.string.attach_take_pic, R.string.attach_picture, R.string.attach_location, R.string.attach_video, R.string.attach_file, R.string.attach_voice_call, R.string.attach_video_call};
@@ -136,6 +145,7 @@ public class EaseChat2Fragment extends EaseBaseFragment implements EMMessageList
         toChatUsername = fragmentArgs.getString(EaseConstant.EXTRA_USER_ID);
 
         super.onActivityCreated(savedInstanceState);
+
     }
 
     /**
@@ -194,13 +204,15 @@ public class EaseChat2Fragment extends EaseBaseFragment implements EMMessageList
         titleBar.setTitle(toChatUsername);
         if (chatType == EaseConstant.CHATTYPE_SINGLE) {
             // set title
-            if (EaseUserUtils.getUserInfo(toChatUsername) != null) {
+           /* if (EaseUserUtils.getUserInfo(toChatUsername) != null) {
                 EaseUser user = EaseUserUtils.getUserInfo(toChatUsername);
                 if (user != null) {
                     titleBar.setTitle(user.getNick());
                 }
-            }
-            titleBar.setRightImageResource(R.drawable.ease_mm_title_remove);
+            }*/
+            new MyThread(getActivity(), titleBar).start();
+//            titleBar.setTitle(userBean.getNickname());
+//            titleBar.setRightImageResource(R.drawable.ease_mm_title_remove);
         } else {
             titleBar.setRightImageResource(R.drawable.ease_to_group_details_normal);
             if (chatType == EaseConstant.CHATTYPE_GROUP) {
@@ -676,6 +688,7 @@ public class EaseChat2Fragment extends EaseBaseFragment implements EMMessageList
         }
 
     }
+
     /**
      * make a voice call
      */
@@ -703,6 +716,7 @@ public class EaseChat2Fragment extends EaseBaseFragment implements EMMessageList
             inputMenu.hideExtendMenuContainer();
         }
     }
+
     /**
      * select file
      */
@@ -718,6 +732,7 @@ public class EaseChat2Fragment extends EaseBaseFragment implements EMMessageList
         }
         startActivityForResult(intent, REQUEST_CODE_SELECT_FILE);
     }
+
     /**
      * input @
      *
@@ -1145,4 +1160,49 @@ public class EaseChat2Fragment extends EaseBaseFragment implements EMMessageList
         EaseCustomChatRowProvider onSetCustomChatRowProvider();
     }
 
+
+    public static class MyThread extends Thread {
+
+        //继承Thread类，并改写其run方法
+        private final static String TAG = "My Thread ===> ";
+        private final Context context;
+        private final EaseTitleBar titleBar;
+
+        public MyThread(Context context, EaseTitleBar titleBar) {
+            this.context = context;
+            this.titleBar = titleBar;
+        }
+
+        public void run() {
+            Log.d(TAG, "run");
+            String url = "http://101.201.234.133:8111/AndroidCon/user/getPic";
+            OkHttpUtils
+                    .get()
+                    .url(url)
+                    .addParams("hxid", toChatUsername)
+                    .build()
+                    .execute(new StringCallback() {
+
+                        @Override
+                        public void onError(Call call, Exception e, int id) {
+                            Log.i("info", "failed");
+                        }
+
+                        @Override
+                        public void onResponse(String response, int id) {
+                            processData(response);
+                        }
+
+                    });
+        }
+
+        private void processData(String response) {
+            userBean = JSON.parseObject(response, QQUser.UserBean.class);
+            titleBar.setTitle(userBean.getNickname());
+            titleBar.setRightImageResource(R.drawable.ease_mm_title_remove);
+
+
+        }
+
+    }
 }

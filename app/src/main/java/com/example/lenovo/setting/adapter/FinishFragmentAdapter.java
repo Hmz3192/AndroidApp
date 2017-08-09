@@ -1,6 +1,8 @@
 package com.example.lenovo.setting.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.lenovo.myapplication.R;
 import com.example.lenovo.setting.bean.OrderInfo;
+import com.example.lenovo.setting.db.OrderDao;
 import com.example.lenovo.utils.Constants;
 
 import java.util.List;
@@ -24,10 +27,14 @@ public class FinishFragmentAdapter extends RecyclerView.Adapter {
     private final Context mcontext;
     private final List<OrderInfo.ResultBean.FinishOrderBean> datas;
     private OnItemClickListener onItemClickListener;
+    private AlertDialog.Builder builder;
+    private OrderDao orderDao;
 
     public FinishFragmentAdapter(Context mcontext, List<OrderInfo.ResultBean.FinishOrderBean> resultBean) {
         this.mcontext = mcontext;
         this.datas = resultBean;
+        orderDao = new OrderDao(mcontext);
+
     }
 
     @Override
@@ -36,11 +43,52 @@ public class FinishFragmentAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         FinishFragmentAdapter.ViewHolder viewHolder = (FinishFragmentAdapter.ViewHolder) holder;
         viewHolder.setData(datas.get(position));
-    }
+        viewHolder.tv_delete_order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                    Toast.makeText(mcontext, "删除"+getLayoutPosition(), Toast.LENGTH_SHORT).show();
+                showSimpleDialog(view,position);
 
+//                            del_id.setVisibility(View.GONE);
+            }
+        });
+    }
+    private void showSimpleDialog(View view, final int position) {
+        builder=new AlertDialog.Builder(mcontext);
+        builder.setIcon(R.mipmap.atguigu_logo_1);
+        builder.setTitle("提示消息");
+        builder.setMessage("确定要删除吗？");
+
+        //监听下方button点击事件
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+//                    Toast.makeText(getApplicationContext(),R.string.toast_postive,Toast.LENGTH_SHORT).show();
+                String id = datas.get(position).getId();
+                orderDao.addAccount(id);
+                datas.remove(position);
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(0,datas.size());
+
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+//                    Toast.makeText(getApplicationContext(), R.string.toast_negative, Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+        });
+
+        //设置对话框是可取消的
+        builder.setCancelable(true);
+        AlertDialog dialog=builder.create();
+        dialog.show();
+    }
     @Override
     public int getItemCount() {
         return datas.size();
@@ -57,7 +105,7 @@ public class FinishFragmentAdapter extends RecyclerView.Adapter {
         private TextView order_show_num;
         private TextView order_show_price;
         private TextView tv_delete_order;
-        private OrderInfo.ResultBean.FinishOrderBean data;
+        private OrderInfo.ResultBean.FinishOrderBean datas;
 
 
         public ViewHolder(View itemView) {
@@ -68,7 +116,7 @@ public class FinishFragmentAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onClick(View v) {
                     if (onItemClickListener != null) {
-                        onItemClickListener.setOnItemClickListener(data);
+                        onItemClickListener.setOnItemClickListener(getLayoutPosition());
                     }
                 }
             });
@@ -91,17 +139,16 @@ public class FinishFragmentAdapter extends RecyclerView.Adapter {
         }
 
         public void setData(OrderInfo.ResultBean.FinishOrderBean data) {
-            this.data = data;
-            Glide.with(mcontext).load(Constants.BASE_URL_IMAGE + data.getUrl()).into(order_pic);
-            order_id.setText("    "+data.getId()+"  >");
-            order_status.setText(data.getStatus());
-            order_name.setText(data.getName());
-            tv_now_price.setText("$"+ data.getCover_price());
-            tv_or_price.setText("$" + data.getCover_price());
-            order_num.setText("x" +  data.getNum());
-            order_show_num.setText("共"+data.getNum()+"件商品,合计:$ ");
-            order_show_price.setText(String.valueOf(Double.valueOf(data.getCover_price())*Double.valueOf(data.getNum())));
-
+            this.datas = data;
+                Glide.with(mcontext).load(Constants.BASE_URL_IMAGE + datas.getUrl()).into(order_pic);
+                order_id.setText("    " + datas.getId() + "  >");
+                order_status.setText(datas.getStatus());
+                order_name.setText(datas.getName());
+                tv_now_price.setText("$" + datas.getCover_price());
+                tv_or_price.setText("$" + datas.getCover_price());
+                order_num.setText("x" + datas.getNum());
+                order_show_num.setText("共" + datas.getNum() + "件商品,合计:$ ");
+                order_show_price.setText(String.valueOf(Double.valueOf(datas.getCover_price()) * Double.valueOf(data.getNum())));
         }
 
     }
@@ -109,7 +156,7 @@ public class FinishFragmentAdapter extends RecyclerView.Adapter {
 
 
     public interface OnItemClickListener {
-        void setOnItemClickListener(OrderInfo.ResultBean.FinishOrderBean data);
+        void setOnItemClickListener(int postion);
     }
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;

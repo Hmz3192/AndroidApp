@@ -21,7 +21,7 @@ import com.example.lenovo.controller.activity.ChatActivity;
 import com.example.lenovo.controller.activity.GroupListActivity;
 import com.example.lenovo.controller.activity.InviteActivity;
 import com.example.lenovo.model.Model;
-import com.example.lenovo.model.bean.UserInfo;
+import com.example.lenovo.model.bean.UserInfoBean;
 import com.example.lenovo.myapplication.R;
 import com.example.lenovo.utils.Constant;
 import com.example.lenovo.utils.SpUtils;
@@ -261,11 +261,14 @@ public class ContactListFragment extends EaseContactListFragment {
                     // 校验
                     if (hxids != null && hxids.size() >= 0) {
 
-                        List<UserInfo> contacts = new ArrayList<UserInfo>();
+                        List<UserInfoBean> contacts = new ArrayList<UserInfoBean>();
 
                         // 转换
                         for (String hxid : hxids) {
-                            UserInfo userInfo = new UserInfo(hxid);
+                            if (hxid.equalsIgnoreCase(EMClient.getInstance().getCurrentUser())) {
+                                return;
+                            }
+                            UserInfoBean userInfo = new UserInfoBean(hxid);
                             contacts.add(userInfo);
                         }
 
@@ -299,7 +302,7 @@ public class ContactListFragment extends EaseContactListFragment {
     private void refreshContact() {
 
         // 获取数据
-        List<UserInfo> contacts = Model.getInstance().getDbManager().getContactTableDao().getContacts();
+        List<UserInfoBean> contacts = Model.getInstance().getDbManager().getContactTableDao().getContacts();
 
         // 校验
         if (contacts != null && contacts.size() >= 0) {
@@ -308,7 +311,7 @@ public class ContactListFragment extends EaseContactListFragment {
             Map<String, EaseUser> contactsMap = new HashMap<>();
 
             // 转换
-            for (UserInfo contact : contacts) {
+            for (UserInfoBean contact : contacts) {
                 EaseUser easeUser = new EaseUser(contact.getHxid());
 
                 contactsMap.put(contact.getHxid(), easeUser);

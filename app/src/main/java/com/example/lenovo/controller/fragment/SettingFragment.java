@@ -1,12 +1,20 @@
 package com.example.lenovo.controller.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -20,28 +28,41 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
 import com.chenyu.library.Utils.AnimationUtils;
 import com.chenyu.library.XToast;
+import com.example.lenovo.app.Bean.QQUser;
 import com.example.lenovo.app.LoginActivity;
 import com.example.lenovo.controller.activity.settingActivity.BlacklistActivity;
+import com.example.lenovo.controller.activity.settingActivity.CollectActivity;
 import com.example.lenovo.controller.activity.settingActivity.DiagnoseActivity;
 import com.example.lenovo.controller.activity.settingActivity.LocationActivity;
 import com.example.lenovo.controller.activity.settingActivity.MyCodeActivity;
+import com.example.lenovo.controller.activity.settingActivity.UserActivity;
 import com.example.lenovo.model.Model;
 import com.example.lenovo.myapplication.R;
 import com.example.lenovo.setting.activity.OrderActivity;
 import com.example.lenovo.utils.BitmapUtils;
+import com.example.lenovo.utils.QQURL;
 import com.hyphenate.EMCallBack;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.easeui.widget.EaseSwitchButton;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+import java.io.ByteArrayInputStream;
+
+import okhttp3.Call;
 
 /**
  * Created by Administrator on 2016/9/23.
  */
 // 设置页面
-public class SettingFragment extends Fragment implements View.OnClickListener{
+public class SettingFragment extends Fragment implements View.OnClickListener {
     private TextView bt_setting_out;
     private TextView tvUsercenter;
     private ScrollView scrollView;
@@ -68,22 +89,34 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
     private LinearLayout llDiagnose;
     private LinearLayout blacklistContainer;
 
-    private TextView ib_drawer_layout_confirm,tv_user_code;
+    private TextView ib_drawer_layout_confirm, tv_user_code;
     private TextView tv_location;
     private TextView tv_user_version;
     private TextView tv_all_order;
+    private TextView tv_user_collect;
 
     private TextView tv_user_pay;
     private TextView tv_user_send;
     private TextView tv_user_receive;
     private TextView tv_user_finish;
     private TextView tv_user_drawback;
+    private QQUser.UserBean userBean;
+    private String currentUser;
+    private TextView tv_user;
+    private String a = "0";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = View.inflate(getActivity(), R.layout.fragment_setting, null);
         initView(view);
+        Log.i("info", "oncreaView");
         tvUsercenter.setAlpha(0);
+        handler.sendMessageDelayed(Message.obtain(), 0);
+
+
+
+
+
         ll_dl.setVisibility(View.VISIBLE);
         ib_drawer_back.setVisibility(View.VISIBLE);
 
@@ -105,7 +138,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
         ownerLeaveSwitch = (EaseSwitchButton) view.findViewById(R.id.switch_owner_leave);
 
         blacklistContainer = (LinearLayout) view.findViewById(R.id.ll_black_list);
-        llDiagnose=(LinearLayout) view.findViewById(R.id.ll_diagnose);
+        llDiagnose = (LinearLayout) view.findViewById(R.id.ll_diagnose);
 
         textview1 = (TextView) view.findViewById(R.id.textview1);
         textview2 = (TextView) view.findViewById(R.id.textview2);
@@ -121,7 +154,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
         dl_draw = view.findViewById(R.id.dl_draw);
         ll_dl = view.findViewById(R.id.ll_dl);
         ib_drawer_back = view.findViewById(R.id.ib_drawer_back);
-
+        tv_user_collect = view.findViewById(R.id.tv_user_collect);
         tv_all_order = view.findViewById(R.id.tv_all_order);
 
         tv_user_drawback = view.findViewById(R.id.tv_user_drawback);
@@ -129,7 +162,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
         tv_user_receive = view.findViewById(R.id.tv_user_receive);
         tv_user_send = view.findViewById(R.id.tv_user_send);
         tv_user_pay = view.findViewById(R.id.tv_user_pay);
-
+        tv_user = view.findViewById(R.id.tv_user);
 
         tv_user_pay.setOnClickListener(this);
         tv_user_send.setOnClickListener(this);
@@ -140,7 +173,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
         tv_user_code.setOnClickListener(this);
 
         tv_all_order.setOnClickListener(this);
-
+        tv_user_collect.setOnClickListener(this);
         tv_user_version.setOnClickListener(this);
         tv_location.setOnClickListener(this);
         ib_drawer_layout_confirm.setOnClickListener(this);
@@ -151,13 +184,19 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
         rl_switch_chatroom_leave.setOnClickListener(this);
         llDiagnose.setOnClickListener(this);
         blacklistContainer.setOnClickListener(this);
-
+        tv_user.setOnClickListener(this);
 
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+//        handler.sendMessageDelayed(Message.obtain(), 0);
+        Log.i("info", "onActivitycrea");
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("testSP", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("image", "no");
+        editor.commit();
         initData();
     }
 
@@ -180,11 +219,11 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
             }
         });
 
-        // 在button上显示当前用户名称
-        bt_setting_out.setText("退出登录（" + EMClient.getInstance().getCurrentUser() + ")");
 
 
-        setUserPic();
+
+
+
 
 
         /*打开画布*/
@@ -240,7 +279,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
                                         startActivity(intent);
 
                                         getActivity().finish();
-                                        getActivity(). overridePendingTransition(R.anim.hyperspace,
+                                        getActivity().overridePendingTransition(R.anim.hyperspace,
                                                 R.anim.hyperspace_out);
 
                                     }
@@ -269,15 +308,76 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
         });
     }
 
-    private void setUserPic() {
-        String currentUser = EMClient.getInstance().getCurrentUser();
+    private void setUserPic(QQUser.UserBean userBean) {
+        String photo = userBean.getPhoto();
+        if (!photo.equalsIgnoreCase(a)) {
+            try {
+//                int avatarResId = Integer.parseInt(user.getAvatar());
+                Picasso.with(getActivity())
+                        .load(userBean.getPhoto())
+                        .networkPolicy(NetworkPolicy.NO_CACHE)
+                        .memoryPolicy(MemoryPolicy.NO_CACHE)//不加载缓存
+                        .transform(new Transformation() {
+                    @Override
+                    public Bitmap transform(Bitmap bitmap) {
+                        //先对图片进行压缩
+//                Bitmap zoom = BitmapUtils.zoom(bitmap, DensityUtil.dip2px(mContext, 62), DensityUtil.dip2px(mContext, 62));
+                        Bitmap zoom = BitmapUtils.zoom(bitmap, 90, 90);
+                        //对请求回来的Bitmap进行圆形处理
+                        Bitmap ciceBitMap = BitmapUtils.circleBitmap(zoom);
+                        bitmap.recycle();//必须队更改之前的进行回收
+                        return ciceBitMap;
+                    }
 
-        String[] pic = new String[]{"/1.jpg",
-                "/2.jpg",
-                "/3.jpg",
-                "/4.jpg"
-        };
-        String PIC_RIL = "http://101.201.234.133:8080/Andro/pic";
+                    @Override
+                    public String key() {
+                        return "";
+                    }
+                }).into(ibUserIconAvator);
+            } catch (Exception e) {
+                //use default avatar
+//                Glide.with(context).load(username).diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(R.drawable.ease_appitem_del_btn_normal).into(imageView);
+                Picasso.with(getActivity()).load(R.drawable.ease_default_avatar).transform(new Transformation() {
+                    @Override
+                    public Bitmap transform(Bitmap bitmap) {
+                        //先对图片进行压缩
+//                Bitmap zoom = BitmapUtils.zoom(bitmap, DensityUtil.dip2px(mContext, 62), DensityUtil.dip2px(mContext, 62));
+                        Bitmap zoom = BitmapUtils.zoom(bitmap, 90, 90);
+                        //对请求回来的Bitmap进行圆形处理
+                        Bitmap ciceBitMap = BitmapUtils.circleBitmap(zoom);
+                        bitmap.recycle();//必须队更改之前的进行回收
+                        return ciceBitMap;
+                    }
+
+                    @Override
+                    public String key() {
+                        return "";
+                    }
+                }).into(ibUserIconAvator);
+            }
+        } else {
+            Picasso.with(getActivity()).load(R.drawable.ease_default_avatar).transform(new Transformation() {
+                @Override
+                public Bitmap transform(Bitmap bitmap) {
+                    //先对图片进行压缩
+//                Bitmap zoom = BitmapUtils.zoom(bitmap, DensityUtil.dip2px(mContext, 62), DensityUtil.dip2px(mContext, 62));
+                    Bitmap zoom = BitmapUtils.zoom(bitmap, 90, 90);
+                    //对请求回来的Bitmap进行圆形处理
+                    Bitmap ciceBitMap = BitmapUtils.circleBitmap(zoom);
+                    bitmap.recycle();//必须队更改之前的进行回收
+                    return ciceBitMap;
+                }
+
+                @Override
+                public String key() {
+                    return "";
+                }
+            }).into(ibUserIconAvator);
+//            Glide.with().load(R.drawable.ease_default_avatar).into(imageView);
+        }
+//        String photo = userBean.getPhoto();
+
+      /*  String PIC_RIL = "http://101.201.234.133:8080/Andro/pic/1.png";
         String avatar = null;
         if (currentUser.equalsIgnoreCase("112")) {
             avatar = pic[0];
@@ -286,25 +386,52 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
         } else if (currentUser.equalsIgnoreCase("111")) {
             avatar = pic[2];
         } else
-            avatar = pic[3];
+            avatar = pic[3];*/
         /*设置头像*/
-        Picasso.with(getActivity()).load(PIC_RIL+avatar).transform(new Transformation() {
-            @Override
-            public Bitmap transform(Bitmap bitmap) {
-                //先对图片进行压缩
-//                Bitmap zoom = BitmapUtils.zoom(bitmap, DensityUtil.dip2px(mContext, 62), DensityUtil.dip2px(mContext, 62));
-                Bitmap zoom = BitmapUtils.zoom(bitmap, 90, 90);
-                //对请求回来的Bitmap进行圆形处理
-                Bitmap ciceBitMap = BitmapUtils.circleBitmap(zoom);
-                bitmap.recycle();//必须队更改之前的进行回收
-                return ciceBitMap;
+
+    }
+    private Handler handler = new Handler() {
+        public void handleMessage(Message message) {
+
+            /*如果当前activity已经退出，那么不处理handler中的消息*/
+            if (getActivity().isFinishing()) {
+                return;
             }
 
-            @Override
-            public String key() {
-                return "";
-            }
-        }).into(ibUserIconAvator);
+            getDataFromMy();
+
+        }
+    };
+    private void getDataFromMy() {
+        currentUser = EMClient.getInstance().getCurrentUser();
+        String url = QQURL.GETONEINFO;
+        OkHttpUtils
+                .get()
+                .url(url)
+                .addParams("hxid", currentUser)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        setMes(response);
+                        Log.i("info", "成功获取数据：" + response);
+                    }
+
+                });
+    }
+
+    private void setMes(String json) {
+        userBean = JSON.parseObject(json, QQUser.UserBean.class);
+        if (userBean != null) {
+            setUserPic(userBean);
+            // 在button上显示当前用户名称
+//            bt_setting_out.setText("退出登录（" + userBean.getNickname() + ")");
+        }
     }
 
     @Override
@@ -354,12 +481,17 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
 //                    settingsModel.setSettingMsgVibrate(true);
                 }
                 break;
+            /*跳转收藏页面*/
+            case R.id.tv_user_collect:
+                startActivity(new Intent(getActivity(), CollectActivity.class));
+                break;
+
             case R.id.rl_switch_chatroom_owner_leave:
-                if(ownerLeaveSwitch.isSwitchOpen()){
+                if (ownerLeaveSwitch.isSwitchOpen()) {
                     ownerLeaveSwitch.closeSwitch();
 //                    settingsModel.allowChatroomOwnerLeave(false);
 //                    chatOptions.allowChatroomOwnerLeave(false);
-                }else{
+                } else {
                     ownerLeaveSwitch.openSwitch();
 //                    settingsModel.allowChatroomOwnerLeave(true);
 //                    chatOptions.allowChatroomOwnerLeave(true);
@@ -377,7 +509,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
             case R.id.tv_user_code:
                 //二维码
                 Intent intent = new Intent(getActivity(), MyCodeActivity.class);
-                intent.putExtra("context",EMClient.getInstance().getCurrentUser());
+                intent.putExtra("context", EMClient.getInstance().getCurrentUser());
                 startActivity(intent);
 
                 break;
@@ -435,7 +567,46 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
                 intent7.putExtra("which", "BACK");
                 startActivity(intent7);
                 break;
+            case R.id.tv_user:
+                Intent intent8 = new Intent(getActivity(), UserActivity.class);
+                intent8.putExtra("photo", userBean.getPhoto());
+                intent8.putExtra("nickName", userBean.getNickname());
+                intent8.putExtra("sex", String.valueOf(userBean.getSex()));
+                intent8.putExtra("sign", userBean.getSignture());
+                startActivity(intent8);
 
+                break;
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.i("info", "onresume");
+        SharedPreferences sp = getActivity().getSharedPreferences("testSP", Context.MODE_PRIVATE);
+        //取得
+        String url = sp.getString("image", "no");//如果取不到值就取后面的""
+        String nu = "no";
+        if (!url.equalsIgnoreCase(nu)) {
+            byte[] base64Bytes = Base64.decode(url.getBytes(),
+                    Base64.DEFAULT);
+            ByteArrayInputStream bais = new ByteArrayInputStream(base64Bytes);
+            Bitmap bitmap = BitmapFactory.decodeStream(bais);
+            Bitmap photo1 = BitmapUtils.zoom(bitmap, 90, 90);
+            Bitmap photo2 = BitmapUtils.circleBitmap(photo1);
+            photo1.recycle();
+            Drawable drawable = new BitmapDrawable(getResources(), photo2);
+            ibUserIconAvator.setImageDrawable(drawable);
+        }
+//        handler.sendMessageDelayed(Message.obtain(), 0);
+//        Log.i("info", "-----------------------" + "重现成功");
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        handler.removeCallbacksAndMessages(null);
+
     }
 }

@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.example.lenovo.controller.adapter.GroupDetailAdapter;
 import com.example.lenovo.model.Model;
-import com.example.lenovo.model.bean.UserInfo;
+import com.example.lenovo.model.bean.UserInfoBean;
 import com.example.lenovo.myapplication.R;
 import com.example.lenovo.utils.Constant;
 import com.hyphenate.chat.EMClient;
@@ -45,7 +45,7 @@ public class GroupDetailActivity extends Activity {
 
         // 删除群成员方法
         @Override
-        public void onDeleteMember(final UserInfo user) {
+        public void onDeleteMember(final UserInfoBean user) {
             Model.getInstance().getGlobalThreadPool().execute(new Runnable() {
                 @Override
                 public void run() {
@@ -114,7 +114,7 @@ public class GroupDetailActivity extends Activity {
         }
     }
 
-    private List<UserInfo> mUsers;
+    private List<UserInfoBean> mUsers;
     private GroupDetailAdapter groupDetailAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -181,11 +181,11 @@ public class GroupDetailActivity extends Activity {
                     List<String> members = emGroup.getMembers();
 
                     if (members != null && members.size() >= 0) {
-                        mUsers = new ArrayList<UserInfo>();
+                        mUsers = new ArrayList<UserInfoBean>();
 
                         // 转换
                         for (String member : members) {
-                            UserInfo userInfo = new UserInfo(member);
+                            UserInfoBean userInfo = new UserInfoBean(member);
                             mUsers.add(userInfo);
                         }
                     }

@@ -30,8 +30,18 @@
             android:screenOrientation="portrait"
             android:theme="@style/horizontal_slide"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name="com.hyphenate.easeui.ui.VoiceCallActivity" />
-        <activity android:name="com.hyphenate.easeui.ui.VideoCallActivity" />
+        <activity
+            android:name="com.hyphenate.easeui.ui.VoiceCallActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/nornal_style" />
+        <activity
+            android:name="com.hyphenate.easeui.ui.VideoCallActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" >
+        </activity>
     </application>
 
 </manifest>

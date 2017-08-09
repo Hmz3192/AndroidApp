@@ -28,6 +28,9 @@ dependencies {
     compile project(':easeui')
     compile project(':library')
     compile files('libs/core-3.2.1.jar')
+    compile files('libs/libammsdk.jar')
+    compile files('libs/open_sdk_r5756.jar')
+    compile files('libs/mta-sdk-1.6.2.jar')
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.jakewharton:butterknife:7.0.1'

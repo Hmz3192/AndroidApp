@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.lenovo.model.bean.UserInfo;
+import com.example.lenovo.model.bean.UserInfoBean;
 import com.example.lenovo.model.db.DBHelper;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class ContactTableDao {
     }
 
     // 获取所有联系人
-    public List<UserInfo> getContacts() {
+    public List<UserInfoBean> getContacts() {
 
         // 获取数据库链接
         SQLiteDatabase db = mHelper.getReadableDatabase();
@@ -31,10 +31,10 @@ public class ContactTableDao {
         String sql = "select * from " + ContactTable.TAB_NAME + " where " + ContactTable.COL_IS_CONTACT + "=1";
         Cursor cursor = db.rawQuery(sql, null);
 
-        List<UserInfo> users = new ArrayList<>();
+        List<UserInfoBean> users = new ArrayList<>();
 
         while (cursor.moveToNext()) {
-            UserInfo userInfo = new UserInfo();
+            UserInfoBean userInfo = new UserInfoBean();
 
             userInfo.setHxid(cursor.getString(cursor.getColumnIndex(ContactTable.COL_HXID)));
             userInfo.setName(cursor.getString(cursor.getColumnIndex(ContactTable.COL_NAME)));
@@ -52,7 +52,7 @@ public class ContactTableDao {
     }
 
     // 通过环信id获取联系人单个信息
-    public UserInfo getContactByHx(String hxId) {
+    public UserInfoBean getContactByHx(String hxId) {
 
         if (hxId == null) {
             return null;
@@ -65,10 +65,10 @@ public class ContactTableDao {
         String sql = "select * from " + ContactTable.TAB_NAME + " where " + ContactTable.COL_HXID + "=?";
         Cursor cursor = db.rawQuery(sql, new String[]{hxId});
 
-        UserInfo userInfo = null;
+        UserInfoBean userInfo = null;
 
         if (cursor.moveToNext()) {
-            userInfo = new UserInfo();
+            userInfo = new UserInfoBean();
 
             userInfo.setHxid(cursor.getString(cursor.getColumnIndex(ContactTable.COL_HXID)));
             userInfo.setName(cursor.getString(cursor.getColumnIndex(ContactTable.COL_NAME)));
@@ -84,17 +84,17 @@ public class ContactTableDao {
     }
 
     // 通过环信id获取用户联系人信息
-    public List<UserInfo> getContactsByHx(List<String> hxIds) {
+    public List<UserInfoBean> getContactsByHx(List<String> hxIds) {
 
         if (hxIds == null || hxIds.size() <= 0) {
             return null;
         }
 
-        List<UserInfo> contacts = new ArrayList<>();
+        List<UserInfoBean> contacts = new ArrayList<>();
 
         // 遍历hxIds，来查找
         for (String hxid : hxIds) {
-            UserInfo contact = getContactByHx(hxid);
+            UserInfoBean contact = getContactByHx(hxid);
 
             contacts.add(contact);
         }
@@ -104,7 +104,7 @@ public class ContactTableDao {
     }
 
     // 保存单个联系人
-    public void saveContact(UserInfo user, boolean isMyContact) {
+    public void saveContact(UserInfoBean user, boolean isMyContact) {
 
         if (user == null) {
             return;
@@ -126,13 +126,13 @@ public class ContactTableDao {
 
 
     // 保存联系人信息
-    public void saveContacts(List<UserInfo> contacts, boolean isMyContact) {
+    public void saveContacts(List<UserInfoBean> contacts, boolean isMyContact) {
 
         if (contacts == null || contacts.size() <= 0) {
             return;
         }
 
-        for (UserInfo contact : contacts) {
+        for (UserInfoBean contact : contacts) {
             saveContact(contact, isMyContact);
         }
     }

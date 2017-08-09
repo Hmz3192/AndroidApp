@@ -10,12 +10,14 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class SettinDB extends SQLiteOpenHelper {
+
     public SettinDB(Context context) {
         super(context, "order.db", null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        sqLiteDatabase.execSQL(OrderTableDB.CREATE_TAB);
 
     }
 

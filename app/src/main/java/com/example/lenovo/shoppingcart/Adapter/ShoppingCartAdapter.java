@@ -15,6 +15,7 @@ import com.example.lenovo.shoppingcart.utils.CartStorage;
 import com.example.lenovo.shoppingcart.view.AddSubView;
 import com.example.lenovo.utils.Constants;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -107,6 +108,8 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
                 checkAll_none(isCheck);
             }
         });
+
+
     }
 
 
@@ -223,6 +226,24 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
     @Override
     public int getItemCount() {
         return datas.size();
+    }
+
+    public List<GoodsInfo> collectDatas() {
+        List<GoodsInfo> goodsInfos = new ArrayList<>();
+        if (datas != null && datas.size() > 0) {
+            /*迭代器*/
+            for (Iterator iterator = datas.iterator(); iterator.hasNext(); ) {
+
+                GoodsInfo cart = (GoodsInfo) iterator.next();
+
+                if (cart.isSelected()) {
+                    goodsInfos.add(cart);
+
+                }
+            }
+
+        }
+        return goodsInfos;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

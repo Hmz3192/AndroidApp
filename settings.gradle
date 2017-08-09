@@ -1,2 +1,2 @@
-include ':app', ':banner', ':addsubview', ':easeui', ':ViewChange', ':library'
+include ':app', ':banner', ':addsubview', ':easeui', ':ViewChange', ':library', ':swiplayout'
 include ':tBViewer'

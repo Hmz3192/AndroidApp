@@ -14,8 +14,17 @@ public class GoodsInfo implements Serializable{
     //名称
     private String name;
     //id
-    private String product_id;
+    private String product_id = null;
 
+    public String getEnable() {
+        return enable;
+    }
+
+    public void setEnable(String enable) {
+        this.enable = enable;
+    }
+
+    private String enable = null;
     /*数量*/
     private int number = 1;
 

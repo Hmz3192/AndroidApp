@@ -11,10 +11,12 @@ import com.example.lenovo.base.BaseFragment;
 import com.example.lenovo.myapplication.R;
 import com.example.lenovo.setting.adapter.SendFragmentAdapter;
 import com.example.lenovo.setting.bean.OrderInfo;
+import com.example.lenovo.setting.db.OrderDao;
 import com.example.lenovo.utils.Constants;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.Call;
@@ -28,14 +30,15 @@ public class sendFragment extends BaseFragment {
     private static final String TAG = "info";
     private RecyclerView rvOrder;
     private List<OrderInfo.ResultBean.SendOrderBean> resultBean;
-    private SendFragmentAdapter adapter;
+    public SendFragmentAdapter adapter;
+    private OrderDao orderDao ;
 
 
     @Override
     public View initView() {
         View view = View.inflate(mcontext, R.layout.fragment_order, null);
         rvOrder = view.findViewById(R.id.recyclerview1);
-
+        orderDao = new OrderDao(mcontext);
         return view;
     }
 
@@ -76,18 +79,27 @@ public class sendFragment extends BaseFragment {
     private void procssData(String json) {
         OrderInfo resultBeanData = JSON.parseObject(json, OrderInfo.class);
         resultBean = resultBeanData.getResult().getSend_order();
+        List<OrderInfo.ResultBean.SendOrderBean> datas = new ArrayList<>();
         if (resultBean != null) {
             //有数据
+            //是否删除了
+            for (OrderInfo.ResultBean.SendOrderBean data : resultBean) {
+                OrderInfo.ResultBean.SendOrderBean sendOrderBean;
+                if (orderDao.getAccountById(data.getId())) {
+                    sendOrderBean = new OrderInfo.ResultBean.SendOrderBean(data.getId(), data.getUrl(), data.getName(), data.getCover_price(), data.getNum(), data.getStatus());
+                    datas.add(sendOrderBean);
+                }
+
+            }
+
             //设置适配器
-            adapter = new SendFragmentAdapter(mcontext, resultBean);
+            adapter = new SendFragmentAdapter(mcontext, datas);
             GridLayoutManager manager = new GridLayoutManager(mcontext, 1);
             rvOrder.setAdapter(adapter);
             /*设置布局管理者*/
             rvOrder.setLayoutManager(manager);
 
-
         } else
-
         {
             //没有数据
             Toast.makeText(mcontext, "no data", Toast.LENGTH_LONG).show();
@@ -95,6 +107,11 @@ public class sendFragment extends BaseFragment {
 //        Log.e(TAG, "解析对象==" + resultBean.getHot_info().get(0).getName());
 
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 }
 

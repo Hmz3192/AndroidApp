@@ -229,6 +229,14 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
                 "/1474370572805.jpg",
                 "/1475045805488.jpg"};
 
+        String[] array_num = new String[]{"67677",
+                "4545",
+                "345355",
+                "6768",
+                "77878",
+                "56565",
+                "4546",
+                "7557"};
         Random random = new Random();
         String price = String.valueOf(random.nextInt(300));
         int i = random.nextInt(8);
@@ -237,7 +245,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         goodsInfo.setName(text);
         goodsInfo.setCover_price(price);
         goodsInfo.setFigure(array[i]);
-
+        goodsInfo.setProduct_id(array_num[i]);
         Intent intent = new Intent(mcontext, GoodsInfoActivity.class);
         intent.putExtra("goodsbean", goodsInfo);
         mcontext.startActivity(intent);

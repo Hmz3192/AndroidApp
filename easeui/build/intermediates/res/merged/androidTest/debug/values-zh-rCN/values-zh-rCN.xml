@@ -300,10 +300,10 @@
     <string name="the_current_group">当前群聊已被群创建者解散</string>
     <string name="the_current_network">当前网络不可用，请检查网络设置</string>
     <string name="title_user_profile">个人资料</string>
-    <string name="toast_nick_not_isnull">昵称不能为空！</string>
+    <string name="toast_nick_not_isnull">输入不能为空！</string>
     <string name="toast_no_support">暂不支持！</string>
-    <string name="toast_updatenick_fail">更新昵称失败!</string>
-    <string name="toast_updatenick_success">更新昵称成功!</string>
+    <string name="toast_updatenick_fail">更新失败!</string>
+    <string name="toast_updatenick_success">更新成功!</string>
     <string name="toast_updatephoto_fail">更新头像失败!</string>
     <string name="toast_updatephoto_success">更新头像成功!</string>
     <string name="unable_to_connect">不能连接到服务器</string>

@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.lenovo.model.bean.InvationInfo;
-import com.example.lenovo.model.bean.UserInfo;
+import com.example.lenovo.model.bean.UserInfoBean;
 import com.example.lenovo.myapplication.R;
 
 import java.util.ArrayList;
@@ -82,7 +82,7 @@ public class InviteAdapter extends BaseAdapter {
         invationInfo = mInvitationInfos.get(position);
 
         // 3 显示当前item数据
-        UserInfo user = invationInfo.getUser();
+        UserInfoBean user = invationInfo.getUser();
 
         if (user != null) {// 联系人
             // 名称的展示

@@ -7,8 +7,9 @@ package com.example.lenovo.utils;
 /*配置所有页面联网地址*/
 public class Constants {
 
-        public static String Base_URL = "http://101.201.234.133:8080/Andro";
-//    public static String Base_URL = "http://192.168.1.108:8080/atguigu";
+    public static String Base_URL = "http://101.201.234.133:8080/Andro";
+    //    public static String Base_URL = "http://192.168.1.108:8080/atguigu";
+
 
     public static String BASE_URL_JSON = Base_URL + "/json";
 

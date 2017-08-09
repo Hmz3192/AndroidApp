@@ -8,6 +8,8 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/banner/banner.iml" filepath="$PROJECT_DIR$/banner/banner.iml" />
       <module fileurl="file://$PROJECT_DIR$/easeui/easeui.iml" filepath="$PROJECT_DIR$/easeui/easeui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/swiplayout/swiplayout.iml" filepath="$PROJECT_DIR$/swiplayout/swiplayout.iml" />
       <module fileurl="file://$PROJECT_DIR$/tBViewer/tBViewer.iml" filepath="$PROJECT_DIR$/tBViewer/tBViewer.iml" />
     </modules>
   </component>

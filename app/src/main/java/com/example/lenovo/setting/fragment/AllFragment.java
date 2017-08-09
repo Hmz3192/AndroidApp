@@ -11,10 +11,12 @@ import com.example.lenovo.base.BaseFragment;
 import com.example.lenovo.myapplication.R;
 import com.example.lenovo.setting.adapter.AllFragmentAdapter;
 import com.example.lenovo.setting.bean.AllOrder;
+import com.example.lenovo.setting.db.OrderDao;
 import com.example.lenovo.utils.Constants;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.Call;
@@ -29,12 +31,17 @@ public class AllFragment extends BaseFragment {
     private RecyclerView rvOrder;
     private List<AllOrder.ResultBean.AllOrderBean> resultBean;
     private AllFragmentAdapter adapter;
+    private String id;
+    private OrderDao orderDao;
+    private ArrayList<AllOrder.ResultBean.AllOrderBean> datas = new ArrayList<>();
+
 
 
     @Override
     public View initView() {
         View view = View.inflate(mcontext, R.layout.fragment_order, null);
         rvOrder = view.findViewById(R.id.recyclerview1);
+        orderDao = new OrderDao(mcontext);
 
         return view;
     }
@@ -74,25 +81,29 @@ public class AllFragment extends BaseFragment {
     }
 
     private void procssData(String json) {
+//        orderDao.delAccount();
         AllOrder resultBeanData = JSON.parseObject(json, AllOrder.class);
         resultBean = resultBeanData.getResult().getAll_order();
         if (resultBean != null) {
             //有数据
+            if (resultBean != null) {
+                //有数据
+                //是否删除了
+                for (AllOrder.ResultBean.AllOrderBean data : resultBean) {
+                    AllOrder.ResultBean.AllOrderBean backOrderBean;
+                    if (orderDao.getAccountById(data.getId())) {
+                        backOrderBean = new AllOrder.ResultBean.AllOrderBean(data.getId(), data.getUrl(), data.getName(), data.getCover_price(), data.getNum(), data.getStatus());
+                        datas.add(backOrderBean);
+                    }
+
+                }
+            }
             //设置适配器
-            adapter = new AllFragmentAdapter(mcontext, resultBean);
+            adapter = new AllFragmentAdapter(mcontext, datas);
             GridLayoutManager manager = new GridLayoutManager(mcontext, 1);
             rvOrder.setAdapter(adapter);
             /*设置布局管理者*/
             rvOrder.setLayoutManager(manager);
-            /*设置item的点击事件*/
-            adapter.setOnItemClickListener(new AllFragmentAdapter.OnItemClickListener() {
-                @Override
-                public void setOnItemClickListener(int postion) {
-                    Toast.makeText(mcontext, "这是"+postion, Toast.LENGTH_SHORT).show();
-                    AllOrder.ResultBean.AllOrderBean data = resultBean.get(postion);
-                    String id = data.getId();
-                }
-            });
 
         }else {
             //没有数据

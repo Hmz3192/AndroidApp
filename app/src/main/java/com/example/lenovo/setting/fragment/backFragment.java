@@ -11,10 +11,12 @@ import com.example.lenovo.base.BaseFragment;
 import com.example.lenovo.myapplication.R;
 import com.example.lenovo.setting.adapter.BackFragmentAdapter;
 import com.example.lenovo.setting.bean.OrderInfo;
+import com.example.lenovo.setting.db.OrderDao;
 import com.example.lenovo.utils.Constants;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.Call;
@@ -30,12 +32,14 @@ public class backFragment extends BaseFragment {
     private RecyclerView rvOrder;
     private List<OrderInfo.ResultBean.BackOrderBean> resultBean;
     private BackFragmentAdapter adapter;
+    private OrderDao orderDao;
 
 
     @Override
     public View initView() {
         View view = View.inflate(mcontext, R.layout.fragment_order, null);
         rvOrder = view.findViewById(R.id.recyclerview1);
+        orderDao = new OrderDao(mcontext);
 
         return view;
     }
@@ -77,15 +81,27 @@ public class backFragment extends BaseFragment {
     private void procssData(String json) {
         OrderInfo resultBeanData = JSON.parseObject(json, OrderInfo.class);
         resultBean = resultBeanData.getResult().getBack_order();
+        ArrayList<OrderInfo.ResultBean.BackOrderBean> datas = new ArrayList<>();
         if (resultBean != null) {
             //有数据
+            if (resultBean != null) {
+                //有数据
+                //是否删除了
+                for (OrderInfo.ResultBean.BackOrderBean data : resultBean) {
+                    OrderInfo.ResultBean.BackOrderBean backOrderBean;
+                    if (orderDao.getAccountById(data.getId())) {
+                        backOrderBean = new OrderInfo.ResultBean.BackOrderBean(data.getId(), data.getUrl(), data.getName(), data.getCover_price(), data.getNum(), data.getStatus());
+                        datas.add(backOrderBean);
+                    }
+
+                }
+            }
             //设置适配器
-            adapter = new BackFragmentAdapter(mcontext, resultBean);
+            adapter = new BackFragmentAdapter(mcontext, datas);
             GridLayoutManager manager = new GridLayoutManager(mcontext, 1);
             rvOrder.setAdapter(adapter);
             /*设置布局管理者*/
             rvOrder.setLayoutManager(manager);
-
 
         } else
 

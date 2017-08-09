@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipToPadding="true"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
   >
@@ -38,7 +37,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:text="用户名："
+            android:text="账    号："
             android:textSize="25sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -73,25 +72,29 @@
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:gravity="center">
         <TextView
             android:id="@+id/bt_login"
-            android:layout_marginLeft="10dp"
             android:gravity="center"
             android:text="登录"
             android:background="@drawable/shape_buton"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
             android:id="@+id/bt_regist"
             android:gravity="center"
             android:text="注册"
             android:background="@drawable/shape_buton"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-
+        <TextView
+            android:id="@+id/bt_qq"
+            android:gravity="center"
+            android:text="qq登陆"
+            android:background="@drawable/shape_buton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

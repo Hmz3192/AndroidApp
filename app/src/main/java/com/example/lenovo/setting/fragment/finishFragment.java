@@ -11,10 +11,12 @@ import com.example.lenovo.base.BaseFragment;
 import com.example.lenovo.myapplication.R;
 import com.example.lenovo.setting.adapter.FinishFragmentAdapter;
 import com.example.lenovo.setting.bean.OrderInfo;
+import com.example.lenovo.setting.db.OrderDao;
 import com.example.lenovo.utils.Constants;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.Call;
@@ -29,12 +31,16 @@ public class finishFragment extends BaseFragment {
     private RecyclerView rvOrder;
     private List<OrderInfo.ResultBean.FinishOrderBean> resultBean;
     private FinishFragmentAdapter adapter;
+    private OrderDao orderDao;
+    private ArrayList<OrderInfo.ResultBean.FinishOrderBean> datas = new ArrayList<>();
+
 
 
     @Override
     public View initView() {
         View view = View.inflate(mcontext, R.layout.fragment_order, null);
         rvOrder = view.findViewById(R.id.recyclerview1);
+        orderDao = new OrderDao(mcontext);
 
         return view;
     }
@@ -78,8 +84,20 @@ public class finishFragment extends BaseFragment {
         resultBean = resultBeanData.getResult().getFinish_order();
         if (resultBean != null) {
             //有数据
+            if (resultBean != null) {
+                //有数据
+                //是否删除了
+                for (OrderInfo.ResultBean.FinishOrderBean data : resultBean) {
+                    OrderInfo.ResultBean.FinishOrderBean backOrderBean;
+                    if (orderDao.getAccountById(data.getId())) {
+                        backOrderBean = new OrderInfo.ResultBean.FinishOrderBean(data.getId(), data.getUrl(), data.getName(), data.getCover_price(), data.getNum(), data.getStatus());
+                        datas.add(backOrderBean);
+                    }
+
+                }
+            }
             //设置适配器
-            adapter = new FinishFragmentAdapter(mcontext, resultBean);
+            adapter = new FinishFragmentAdapter(mcontext, datas);
             GridLayoutManager manager = new GridLayoutManager(mcontext, 1);
             rvOrder.setAdapter(adapter);
             /*设置布局管理者*/

@@ -302,12 +302,12 @@
     <string name="setting_nickname">设置昵称</string>
     <string name="dl_ok">确定</string>
     <string name="dl_cancel">取消</string>
-    <string name="toast_nick_not_isnull">昵称不能为空！</string>
+    <string name="toast_nick_not_isnull">输入不能为空！</string>
     <string name="dl_update_nick">更新昵称</string>
     <string name="dl_update_photo">更新头像</string>
     <string name="dl_waiting">请等待...</string>
-    <string name="toast_updatenick_success">更新昵称成功!</string>
-    <string name="toast_updatenick_fail">更新昵称失败!</string>
+    <string name="toast_updatenick_success">更新成功!</string>
+    <string name="toast_updatenick_fail">更新失败!</string>
     <string name="toast_updatephoto_success">更新头像成功!</string>
     <string name="toast_updatephoto_fail">更新头像失败!</string>
 </resources>

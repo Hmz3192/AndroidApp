@@ -5,7 +5,7 @@ package com.example.lenovo.model.bean;
  */
 // 邀请信息的bean类
 public class InvationInfo {
-    private UserInfo user;          // 联系人
+    private UserInfoBean user;          // 联系人
     private GroupInfo group;        // 群组
 
     private String reason;          // 邀请原因
@@ -15,7 +15,7 @@ public class InvationInfo {
     public InvationInfo() {
     }
 
-    public InvationInfo(UserInfo user, GroupInfo group, String reason, InvitationStatus status) {
+    public InvationInfo(UserInfoBean user, GroupInfo group, String reason, InvitationStatus status) {
         this.user = user;
         this.group = group;
         this.reason = reason;
@@ -23,11 +23,11 @@ public class InvationInfo {
     }
 
 
-    public UserInfo getUser() {
+    public UserInfoBean getUser() {
         return user;
     }
 
-    public void setUser(UserInfo user) {
+    public void setUser(UserInfoBean user) {
         this.user = user;
     }
 

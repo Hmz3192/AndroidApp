@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.lenovo.model.bean.GroupInfo;
 import com.example.lenovo.model.bean.InvationInfo;
-import com.example.lenovo.model.bean.UserInfo;
+import com.example.lenovo.model.bean.UserInfoBean;
 import com.example.lenovo.model.db.DBHelper;
 
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ public class InviteTableDao {
         values.put(InviteTable.COL_REASON, invitationInfo.getReason());// 原因
         values.put(InviteTable.COL_STATUS, invitationInfo.getStatus().ordinal());// 状态
 
-        UserInfo user = invitationInfo.getUser();
+        UserInfoBean user = invitationInfo.getUser();
 
         if (user != null) {// 联系人
             values.put(InviteTable.COL_USER_HXID, invitationInfo.getUser().getHxid());
@@ -68,7 +68,7 @@ public class InviteTableDao {
 
             if (groupId == null) {// 联系人的邀请信息
 
-                UserInfo userInfo = new UserInfo();
+                UserInfoBean userInfo = new UserInfoBean();
 
                 userInfo.setHxid(cursor.getString(cursor.getColumnIndex(InviteTable.COL_USER_HXID)));
                 userInfo.setName(cursor.getString(cursor.getColumnIndex(InviteTable.COL_USER_NAME)));

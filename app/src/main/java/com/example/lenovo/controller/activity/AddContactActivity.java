@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lenovo.model.Model;
-import com.example.lenovo.model.bean.UserInfo;
+import com.example.lenovo.model.bean.UserInfoBean;
 import com.example.lenovo.myapplication.R;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.exceptions.HyphenateException;
@@ -26,7 +26,7 @@ public class AddContactActivity extends Activity {
     private RelativeLayout rl_add;
     private TextView tv_add_name;
     private Button bt_add_add;
-    private UserInfo userInfo;
+    private UserInfoBean userInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +76,7 @@ public class AddContactActivity extends Activity {
             @Override
             public void run() {
                 // 去服务器判断当前查找的用户是否存在
-                userInfo = new UserInfo(name);
+                userInfo = new UserInfoBean(name);
 
                 // 更新UI显示
                 runOnUiThread(new Runnable() {

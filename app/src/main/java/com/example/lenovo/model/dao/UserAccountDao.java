@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.lenovo.model.bean.UserInfo;
+import com.example.lenovo.model.bean.UserInfoBean;
 import com.example.lenovo.model.db.UserAccountDB;
 
 
@@ -22,7 +22,7 @@ public class UserAccountDao {
     }
 
     // 添加用户到数据库
-    public void addAccount(UserInfo user) {
+    public void addAccount(UserInfoBean user) {
         // 获取数据库对象
         SQLiteDatabase db = mHelper.getReadableDatabase();
 
@@ -38,7 +38,7 @@ public class UserAccountDao {
     }
 
     // 根据环信id获取所有用户信息
-    public UserInfo getAccountByHxId(String hxId) {
+    public UserInfoBean getAccountByHxId(String hxId) {
         // 获取数据库对象
         SQLiteDatabase db = mHelper.getReadableDatabase();
 
@@ -46,9 +46,9 @@ public class UserAccountDao {
         String sql = "select * from " + UserAccountTable.TAB_NAME + " where " + UserAccountTable.COL_HXID + "=?";
         Cursor cursor = db.rawQuery(sql, new String[]{hxId});
 
-        UserInfo userInfo = null;
+        UserInfoBean userInfo = null;
         if(cursor.moveToNext()) {
-            userInfo = new UserInfo();
+            userInfo = new UserInfoBean();
 
             // 封装对象
             userInfo.setHxid(cursor.getString(cursor.getColumnIndex(UserAccountTable.COL_HXID)));

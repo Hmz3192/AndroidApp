@@ -5745,17 +5745,17 @@
                     "startLine": 304,
                     "startColumn": 4,
                     "startOffset": 17166,
-                    "endColumn": 57,
-                    "endOffset": 17219
+                    "endColumn": 55,
+                    "endOffset": 17217
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\res\\values-zh-rCN\\ease_strings.xml",
                     "position": {
                         "startLine": 309,
                         "startColumn": 4,
-                        "startOffset": 16468,
-                        "endColumn": 57,
-                        "endOffset": 16521
+                        "startOffset": 16466,
+                        "endColumn": 55,
+                        "endOffset": 16517
                     }
                 }
             },
@@ -5763,9 +5763,9 @@
                 "to": {
                     "startLine": 305,
                     "startColumn": 4,
-                    "startOffset": 17224,
-                    "endColumn": 60,
-                    "endOffset": 17280
+                    "startOffset": 17222,
+                    "endColumn": 58,
+                    "endOffset": 17276
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\res\\values-zh-rCN\\ease_strings.xml",
@@ -5773,8 +5773,8 @@
                         "startLine": 308,
                         "startColumn": 4,
                         "startOffset": 16406,
-                        "endColumn": 60,
-                        "endOffset": 16462
+                        "endColumn": 58,
+                        "endOffset": 16460
                     }
                 }
             },
@@ -5782,18 +5782,18 @@
                 "to": {
                     "startLine": 306,
                     "startColumn": 4,
-                    "startOffset": 17285,
+                    "startOffset": 17281,
                     "endColumn": 58,
-                    "endOffset": 17339
+                    "endOffset": 17335
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\res\\values-zh-rCN\\ease_strings.xml",
                     "position": {
                         "startLine": 311,
                         "startColumn": 4,
-                        "startOffset": 16590,
+                        "startOffset": 16586,
                         "endColumn": 58,
-                        "endOffset": 16644
+                        "endOffset": 16640
                     }
                 }
             },
@@ -5801,18 +5801,18 @@
                 "to": {
                     "startLine": 307,
                     "startColumn": 4,
-                    "startOffset": 17344,
+                    "startOffset": 17340,
                     "endColumn": 61,
-                    "endOffset": 17401
+                    "endOffset": 17397
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\res\\values-zh-rCN\\ease_strings.xml",
                     "position": {
                         "startLine": 310,
                         "startColumn": 4,
-                        "startOffset": 16527,
+                        "startOffset": 16523,
                         "endColumn": 61,
-                        "endOffset": 16584
+                        "endOffset": 16580
                     }
                 }
             },
@@ -5820,9 +5820,9 @@
                 "to": {
                     "startLine": 308,
                     "startColumn": 4,
-                    "startOffset": 17406,
+                    "startOffset": 17402,
                     "endColumn": 54,
-                    "endOffset": 17456
+                    "endOffset": 17452
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\res\\values-zh-rCN\\ease_strings.xml",
@@ -5839,9 +5839,9 @@
                 "to": {
                     "startLine": 309,
                     "startColumn": 4,
-                    "startOffset": 17461,
+                    "startOffset": 17457,
                     "endColumn": 63,
-                    "endOffset": 17520
+                    "endOffset": 17516
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\res\\values-zh-rCN\\ease_strings.xml",
@@ -5858,9 +5858,9 @@
                 "to": {
                     "startLine": 310,
                     "startColumn": 4,
-                    "startOffset": 17525,
+                    "startOffset": 17521,
                     "endColumn": 51,
-                    "endOffset": 17572
+                    "endOffset": 17568
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\res\\values-zh-rCN\\ease_strings.xml",
@@ -5877,9 +5877,9 @@
                 "to": {
                     "startLine": 311,
                     "startColumn": 4,
-                    "startOffset": 17577,
+                    "startOffset": 17573,
                     "endColumn": 60,
-                    "endOffset": 17633
+                    "endOffset": 17629
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\res\\values-zh-rCN\\ease_strings.xml",
@@ -5896,9 +5896,9 @@
                 "to": {
                     "startLine": 312,
                     "startColumn": 4,
-                    "startOffset": 17638,
+                    "startOffset": 17634,
                     "endColumn": 55,
-                    "endOffset": 17689
+                    "endOffset": 17685
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\res\\values-zh-rCN\\ease_strings.xml",
@@ -5915,9 +5915,9 @@
                 "to": {
                     "startLine": 313,
                     "startColumn": 4,
-                    "startOffset": 17694,
+                    "startOffset": 17690,
                     "endColumn": 64,
-                    "endOffset": 17754
+                    "endOffset": 17750
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\res\\values-zh-rCN\\ease_strings.xml",
@@ -5934,9 +5934,9 @@
                 "to": {
                     "startLine": 314,
                     "startColumn": 4,
-                    "startOffset": 17759,
+                    "startOffset": 17755,
                     "endColumn": 46,
-                    "endOffset": 17801
+                    "endOffset": 17797
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\res\\values-zh-rCN\\ease_strings.xml",
@@ -5953,9 +5953,9 @@
                 "to": {
                     "startLine": 315,
                     "startColumn": 4,
-                    "startOffset": 17806,
+                    "startOffset": 17802,
                     "endColumn": 55,
-                    "endOffset": 17857
+                    "endOffset": 17853
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\res\\values-zh-rCN\\ease_strings.xml",
@@ -5972,9 +5972,9 @@
                 "to": {
                     "startLine": 316,
                     "startColumn": 4,
-                    "startOffset": 17862,
+                    "startOffset": 17858,
                     "endColumn": 40,
-                    "endOffset": 17898
+                    "endOffset": 17894
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\res\\values-zh-rCN\\ease_strings.xml",
@@ -5991,9 +5991,9 @@
                 "to": {
                     "startLine": 317,
                     "startColumn": 4,
-                    "startOffset": 17903,
+                    "startOffset": 17899,
                     "endColumn": 41,
-                    "endOffset": 17940
+                    "endOffset": 17936
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\res\\values-zh-rCN\\ease_strings.xml",
@@ -6010,9 +6010,9 @@
                 "to": {
                     "startLine": 318,
                     "startColumn": 4,
-                    "startOffset": 17945,
+                    "startOffset": 17941,
                     "endColumn": 38,
-                    "endOffset": 17979
+                    "endOffset": 17975
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\res\\values-zh-rCN\\ease_strings.xml",
@@ -6029,9 +6029,9 @@
                 "to": {
                     "startLine": 319,
                     "startColumn": 4,
-                    "startOffset": 17984,
+                    "startOffset": 17980,
                     "endColumn": 45,
-                    "endOffset": 18025
+                    "endOffset": 18021
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\res\\values-zh-rCN\\ease_strings.xml",
@@ -6048,9 +6048,9 @@
                 "to": {
                     "startLine": 320,
                     "startColumn": 4,
-                    "startOffset": 18030,
+                    "startOffset": 18026,
                     "endColumn": 36,
-                    "endOffset": 18062
+                    "endOffset": 18058
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\res\\values-zh-rCN\\ease_strings.xml",
@@ -6067,9 +6067,9 @@
                 "to": {
                     "startLine": 321,
                     "startColumn": 4,
-                    "startOffset": 18067,
+                    "startOffset": 18063,
                     "endColumn": 45,
-                    "endOffset": 18108
+                    "endOffset": 18104
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\res\\values-zh-rCN\\ease_strings.xml",
@@ -6086,9 +6086,9 @@
                 "to": {
                     "startLine": 322,
                     "startColumn": 4,
-                    "startOffset": 18113,
+                    "startOffset": 18109,
                     "endColumn": 45,
-                    "endOffset": 18154
+                    "endOffset": 18150
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\res\\values-zh-rCN\\ease_strings.xml",
@@ -6105,9 +6105,9 @@
                 "to": {
                     "startLine": 323,
                     "startColumn": 4,
-                    "startOffset": 18159,
+                    "startOffset": 18155,
                     "endColumn": 49,
-                    "endOffset": 18204
+                    "endOffset": 18200
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\res\\values-zh-rCN\\ease_strings.xml",
@@ -6124,9 +6124,9 @@
                 "to": {
                     "startLine": 324,
                     "startColumn": 4,
-                    "startOffset": 18209,
+                    "startOffset": 18205,
                     "endColumn": 49,
-                    "endOffset": 18254
+                    "endOffset": 18250
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\res\\values-zh-rCN\\ease_strings.xml",
@@ -6143,9 +6143,9 @@
                 "to": {
                     "startLine": 325,
                     "startColumn": 4,
-                    "startOffset": 18259,
+                    "startOffset": 18255,
                     "endColumn": 54,
-                    "endOffset": 18309
+                    "endOffset": 18305
                 },
                 "from": {
                     "file": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\res\\values-zh-rCN\\ease_strings.xml",

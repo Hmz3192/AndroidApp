@@ -592,12 +592,12 @@
         "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\drawable-hdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png"
     },
     {
-        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png",
-        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\drawable-hdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png"
-    },
-    {
         "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ee_16.png",
         "source": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ee_16.png"
+    },
+    {
+        "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png",
+        "source": "C:\\Users\\ThinKPad\\.android\\build-cache\\88a36f4e69c35bfc95e57adeb1a8a05d661b86d2\\output\\res\\drawable-hdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
         "merged": "E:\\WorkSpace\\AsWorkSpace\\AndroidApp\\easeui\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ease_type_select_btn_nor.png",

@@ -9,6 +9,7 @@ import java.util.List;
 
 public class AllOrder {
 
+
     /**
      * code : 200
      * msg : 请求成功
@@ -18,7 +19,15 @@ public class AllOrder {
     private int code;
     private String msg;
     private ResultBean result;
+    public AllOrder() {
+    }
 
+    public AllOrder(int code, String msg, ResultBean result) {
+
+        this.code = code;
+        this.msg = msg;
+        this.result = result;
+    }
     public int getCode() {
         return code;
     }
@@ -44,6 +53,14 @@ public class AllOrder {
     }
 
     public static class ResultBean {
+        public ResultBean() {
+        }
+
+        public ResultBean(List<AllOrderBean> all_order) {
+
+            this.all_order = all_order;
+        }
+
         private List<AllOrderBean> all_order;
 
         public List<AllOrderBean> getAll_order() {
@@ -55,6 +72,8 @@ public class AllOrder {
         }
 
         public static class AllOrderBean {
+
+
             /**
              * id : 11111111101
              * url : /1477360350123.png
@@ -70,6 +89,18 @@ public class AllOrder {
             private String cover_price;
             private String num;
             private String status;
+
+            public AllOrderBean(String id, String url, String name, String cover_price, String num, String status) {
+                this.id = id;
+                this.url = url;
+                this.name = name;
+                this.cover_price = cover_price;
+                this.num = num;
+                this.status = status;
+            }
+
+            public AllOrderBean() {
+            }
 
             public String getId() {
                 return id;

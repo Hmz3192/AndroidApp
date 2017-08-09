@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.lenovo.model.db.DeleteBean;
+import com.example.lenovo.setting.bean.DeleteBean;
 
 /**
  * User--Hu mingzhi on 2017/8/5.
@@ -21,23 +21,29 @@ public class OrderDao {
 
 
     // 删除用户到数据库
-    public void addAccount(DeleteBean data) {
+    public void addAccount(String Id) {
         // 获取数据库对象
-        SQLiteDatabase db = mHelper.getReadableDatabase();
+        SQLiteDatabase db = mHelper.getWritableDatabase();
 
 
         // 执行添加操作
         ContentValues values = new ContentValues();
-        values.put(OrderTableDB.COL_ID, data.getID());
-        values.put(OrderTableDB.COL_DEL, data.getDEL());
+        values.put(OrderTableDB.COL_ID,Id);
 
         db.replace(OrderTableDB.TAB_NAME, null, values);
     }
 
-    // 根据环信id获取所有用户信息
-    public DeleteBean getAccountById(String Id) {
+    // 删除用户到数据库
+    public void delAccount() {
         // 获取数据库对象
-        SQLiteDatabase db = mHelper.getReadableDatabase();
+        SQLiteDatabase db = mHelper.getWritableDatabase();
+
+        db.delete(OrderTableDB.TAB_NAME,null,null);
+    }
+
+    public Boolean getAccountById(String Id) {
+        // 获取数据库对象
+        SQLiteDatabase db = mHelper.getWritableDatabase();
 
         // 执行查询语句
         String sql = "select * from " + OrderTableDB.TAB_NAME + " where " + OrderTableDB.COL_ID + "=?";
@@ -49,13 +55,14 @@ public class OrderDao {
 
             // 封装对象
             data.setID(cursor.getString(cursor.getColumnIndex(OrderTableDB.COL_ID)));
-            data.setDEL(cursor.getString(cursor.getColumnIndex(OrderTableDB.COL_DEL)));
         }
 
         // 关闭资源
         cursor.close();
-
+        if (data == null || data.getID().isEmpty()) {
+            return true;
+        }
         // 返回数据
-        return  data;
+        return  false;
     }
 }
