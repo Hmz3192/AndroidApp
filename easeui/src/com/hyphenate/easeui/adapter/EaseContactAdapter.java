@@ -43,7 +43,7 @@ public class EaseContactAdapter extends ArrayAdapter<EaseUser> implements Sectio
         copyUserList.addAll(objects);
         layoutInflater = LayoutInflater.from(context);
     }
-    
+
     private static class ViewHolder {
         ImageView avatar;
         TextView nameView;
@@ -100,7 +100,7 @@ public class EaseContactAdapter extends ArrayAdapter<EaseUser> implements Sectio
         
         return convertView;
     }
-    
+
     @Override
     public EaseUser getItem(int position) {
         return super.getItem(position);

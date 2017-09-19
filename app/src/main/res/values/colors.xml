@@ -4,4 +4,10 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="transparent">#00000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="iron">#0e0e0e</color>
+    <color name="primary">#9fd1fb</color>
+    <color name="primary_dark">#2196F3</color>
+    <color name="primary_darker">#1d7ede</color>
+    <color name="accent">#448AFF</color>
 </resources>

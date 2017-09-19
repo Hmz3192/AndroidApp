@@ -21,6 +21,12 @@ public class UserInfoBean {
         this.nick = name;
     }
 
+    public UserInfoBean(String hxid, String nick, String photo) {
+        this.nick = nick;
+        this.hxid = name;
+        this.nick = name;
+    }
+
     public String getName() {
         return name;
     }

@@ -2,6 +2,7 @@ package com.example.lenovo.app;
 
 import android.app.Application;
 import android.content.Context;
+import android.support.multidex.MultiDex;
 
 import com.example.lenovo.model.Model;
 import com.hyphenate.chat.EMOptions;
@@ -51,6 +52,14 @@ public class MyApplication extends Application {
     }
     // 获取全局上下文对象
     public static Context getGlobalApplication(){
+
+
         return mContext;
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 }

@@ -1,15 +1,23 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'key1'
+            keyPassword '123456'
+            storeFile file('E:/APKFile/APP.jks')
+        }
+    }
     compileSdkVersion 26
     buildToolsVersion "26.0.0"
     defaultConfig {
         applicationId "com.example.lenovo.myapplication"
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 5
-        versionName "5.0"
+        versionCode 6
+        versionName "6.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -24,6 +32,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    compile 'com.android.support:multidex:'
     compile project(':banner')
     compile project(':easeui')
     compile project(':library')
@@ -33,12 +42,13 @@ dependencies {
     compile files('libs/mta-sdk-1.6.2.jar')
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.jakewharton:butterknife:6.1.0'
     compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
     compile 'com.zhy:okhttputils:2.6.2'
     compile 'com.alibaba:fastjson:1.1.59.android'
     compile 'com.zhy:magic-viewpager:1.0.1'
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.squareup.picasso:picasso:2.5.2'
-    testCompile 'junit:junit:4.12'
+    compile 'com.github.ctiao:DanmakuFlameMaster:0.5.3'
+    compile 'com.android.support:design:26.0.0-alpha1'
 }

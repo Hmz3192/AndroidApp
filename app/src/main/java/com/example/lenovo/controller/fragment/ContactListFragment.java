@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.chenyu.library.Utils.AnimationUtils;
 import com.chenyu.library.XToast;
+import com.example.lenovo.app.Bean.QQUser;
 import com.example.lenovo.controller.activity.AddContactActivity;
 import com.example.lenovo.controller.activity.ChatActivity;
 import com.example.lenovo.controller.activity.GroupListActivity;
@@ -70,6 +71,8 @@ public class ContactListFragment extends EaseContactListFragment {
             SpUtils.getInstance().save(SpUtils.IS_NEW_INVITE, true);
         }
     };
+    private QQUser.UserBean userBean;
+    private List<UserInfoBean> contacts;
 
     @Override
     protected void initView() {
@@ -258,6 +261,7 @@ public class ContactListFragment extends EaseContactListFragment {
                     // 获取到所有的好友的环信id
                     List<String> hxids = EMClient.getInstance().contactManager().getAllContactsFromServer();
 
+
                     // 校验
                     if (hxids != null && hxids.size() >= 0) {
 
@@ -302,7 +306,7 @@ public class ContactListFragment extends EaseContactListFragment {
     private void refreshContact() {
 
         // 获取数据
-        List<UserInfoBean> contacts = Model.getInstance().getDbManager().getContactTableDao().getContacts();
+         contacts = Model.getInstance().getDbManager().getContactTableDao().getContacts();
 
         // 校验
         if (contacts != null && contacts.size() >= 0) {
@@ -312,7 +316,7 @@ public class ContactListFragment extends EaseContactListFragment {
 
             // 转换
             for (UserInfoBean contact : contacts) {
-                EaseUser easeUser = new EaseUser(contact.getHxid());
+                EaseUser easeUser = new EaseUser(contact.getHxid(), contact.getNick(), contact.getPhoto());
 
                 contactsMap.put(contact.getHxid(), easeUser);
             }
@@ -323,6 +327,8 @@ public class ContactListFragment extends EaseContactListFragment {
             refresh();
         }
     }
+
+
 
     @Override
     public void onDestroy() {

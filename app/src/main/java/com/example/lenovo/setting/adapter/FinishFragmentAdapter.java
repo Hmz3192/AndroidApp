@@ -3,6 +3,7 @@ package com.example.lenovo.setting.adapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.lenovo.app.RatingActivity;
 import com.example.lenovo.myapplication.R;
 import com.example.lenovo.setting.bean.OrderInfo;
 import com.example.lenovo.setting.db.OrderDao;
@@ -46,6 +48,15 @@ public class FinishFragmentAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         FinishFragmentAdapter.ViewHolder viewHolder = (FinishFragmentAdapter.ViewHolder) holder;
         viewHolder.setData(datas.get(position));
+        viewHolder.tv_pinglun.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mcontext, RatingActivity.class);
+                intent.putExtra("photo", datas.get(position).getUrl());
+                mcontext.startActivity(intent);
+
+            }
+        });
         viewHolder.tv_delete_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,6 +115,7 @@ public class FinishFragmentAdapter extends RecyclerView.Adapter {
         private TextView order_num;
         private TextView order_show_num;
         private TextView order_show_price;
+        private TextView tv_pinglun;
         private TextView tv_delete_order;
         private OrderInfo.ResultBean.FinishOrderBean datas;
 
@@ -133,8 +145,9 @@ public class FinishFragmentAdapter extends RecyclerView.Adapter {
             order_show_num = itemView.findViewById(R.id.order_show_num);
             order_show_price = itemView.findViewById(R.id.order_show_price);
             tv_delete_order = itemView.findViewById(R.id.tv_delete_order);
+            tv_pinglun = itemView.findViewById(R.id.tv_pinglun);
 
-
+            tv_pinglun.setVisibility(View.VISIBLE);
 
         }
 

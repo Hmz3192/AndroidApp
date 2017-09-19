@@ -1,17 +1,26 @@
 package com.example.lenovo.controller.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
+import com.example.lenovo.app.Bean.QQUser;
 import com.example.lenovo.model.bean.UserInfoBean;
 import com.example.lenovo.myapplication.R;
+import com.example.lenovo.utils.QQURL;
+import com.squareup.picasso.Picasso;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.Call;
 
 /**
  * Created by Administrator on 2016/9/26.
@@ -130,8 +139,9 @@ public class GroupDetailAdapter extends BaseAdapter {
                 convertView.setVisibility(View.VISIBLE);
                 holder.name.setVisibility(View.VISIBLE);
 
-                holder.name.setText(userInfo.getName());
-                holder.photo.setImageResource(R.drawable.em_default_avatar);
+//                holder.name.setText(userInfo.getName());
+//                holder.photo.setImageResource(R.drawable.em_default_avatar);
+                getDataFromMy(userInfo.getName(), holder.name, holder.photo);
 
                 if(mIsDeleteModel) {
                     holder.delete.setVisibility(View.VISIBLE);
@@ -172,11 +182,12 @@ public class GroupDetailAdapter extends BaseAdapter {
                 convertView.setVisibility(View.GONE);
             }else {
                 convertView.setVisibility(View.VISIBLE);
+                getDataFromMy(userInfo.getName(), holder.name, holder.photo);
 
                 // 名称
-                holder.name.setText(userInfo.getName());
+//                holder.name.setText(userInfo.getName());
                 // 头像
-                holder.photo.setImageResource(R.drawable.em_default_avatar);
+//                holder.photo.setImageResource(R.drawable.em_default_avatar);
                 // 删除
                 holder.delete.setVisibility(View.GONE);
             }
@@ -190,6 +201,37 @@ public class GroupDetailAdapter extends BaseAdapter {
         private ImageView photo;
         private ImageView delete;
         private TextView name;
+    }
+
+    private void getDataFromMy(String hxid, final TextView tv_name, final ImageView tv_photo) {
+        String url = QQURL.GETONEINFO;
+        OkHttpUtils
+                .get()
+                .url(url)
+                .addParams("hxid", hxid)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        Log.i("info", "成功获取数据：" + response);
+                        QQUser.UserBean userBean = JSON.parseObject(response, QQUser.UserBean.class);
+                        tv_name.setText(userBean.getNickname());
+                        if (!userBean.getPhoto().equalsIgnoreCase("0")) {
+                            Picasso.with(mContext)
+                                    .load(userBean.getPhoto())
+//                                    .networkPolicy(NetworkPolicy.NO_CACHE)
+//                                    .memoryPolicy(MemoryPolicy.NO_CACHE)//不加载缓存
+                                    .into(tv_photo);
+                        }
+
+                    }
+
+                });
     }
 
     public interface OnGroupDetailListener{

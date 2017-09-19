@@ -81,6 +81,8 @@ public class UserActivity extends Activity implements View.OnClickListener {
     private String b = "3";
     private String STORE_URL;
     private File file;
+    private TextView te_hxid;
+    private String hxidge;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,13 +96,15 @@ public class UserActivity extends Activity implements View.OnClickListener {
         nickName = intent.getStringExtra("nickName");
         sex = intent.getStringExtra("sex");
         sign = intent.getStringExtra("sign");
+        hxidge = intent.getStringExtra("hxid");
         initView();
 
         setView(photo);
-        setText(nickName, sex, sign);
+        setText(hxidge,nickName, sex, sign);
     }
 
-    private void setText(String nickName, String sex, String sign) {
+    private void setText(String hxidge,String nickName, String sex, String sign) {
+        te_hxid.setText(hxidge);
         if (nickName.equalsIgnoreCase(a)) {
             te_nick.setText("未设置");
 
@@ -208,6 +212,7 @@ public class UserActivity extends Activity implements View.OnClickListener {
     }
 
     private void initView() {
+        te_hxid = findViewById(R.id.te_hxid);
         la_back_user = (ImageView) findViewById(R.id.la_back_user);
         title = (RelativeLayout) findViewById(R.id.title);
         user_head_avatar = (ImageView) findViewById(R.id.user_head_avatar);
@@ -239,7 +244,10 @@ public class UserActivity extends Activity implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.rl_nickname:
                 final EditText editText = new EditText(this);
-                new AlertDialog.Builder(this).setTitle(R.string.setting_nickname).setIcon(android.R.drawable.ic_dialog_info).setView(editText)
+                new AlertDialog.Builder(this)
+                        .setTitle(R.string.setting_nickname)
+                        .setIcon(android.R.drawable.ic_dialog_info)
+                        .setView(editText)
                         .setPositiveButton(R.string.dl_ok, new DialogInterface.OnClickListener() {
 
                             @Override

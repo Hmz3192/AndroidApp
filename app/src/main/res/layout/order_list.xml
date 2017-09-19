@@ -152,17 +152,32 @@
         android:gravity="right"
         android:orientation="horizontal">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_pinglun"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_delete"
+            android:gravity="center"
+            android:layout_marginLeft="190dp"
+            android:text="评论"
+            android:textColor="@color/holo_red_light"
+            android:textSize="15sp"
+            android:visibility="gone"/>
         <TextView
             android:id="@+id/tv_delete_order"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="150dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginLeft="250dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/shape_delete"
             android:gravity="center"
             android:text="删除订单"
             android:textColor="@color/holo_red_light"
             android:textSize="15sp" />
+        </RelativeLayout>
     </LinearLayout>
 
     <View

@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,10 +46,10 @@ import static android.content.ContentValues.TAG;
 public class LoginActivity extends Activity {
     private EditText et_login_name;
     private EditText et_login_pass;
-    private TextView bt_regist;
-    private TextView bt_login;
-    private TextView tv_back;
-    private TextView bt_qq;
+    private TextView bt_regist,_signupLink;
+    private Button bt_login;
+//    private TextView tv_back;
+    private Button bt_qq;
     private UserInfo mUserInfo;
     private static final String APP_ID = "1106333790";
     private Tencent mTencent;
@@ -79,7 +80,7 @@ public class LoginActivity extends Activity {
 
     private void initListener() {
         /*注册按钮的点击事件*/
-        bt_regist.setOnClickListener(new View.OnClickListener() {
+       /* bt_regist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -89,7 +90,7 @@ public class LoginActivity extends Activity {
                 regist();
 
             }
-        });
+        });*/
 
          /*登录按钮的点击事件*/
         bt_login.setOnClickListener(new View.OnClickListener() {
@@ -100,12 +101,12 @@ public class LoginActivity extends Activity {
                 if (imm.isActive()) {
                     imm.hideSoftInputFromWindow(bt_login.getApplicationWindowToken(), 0);
                 }
-                login();
 
+                login();
             }
         });
         /*回退*/
-        tv_back.setOnClickListener(new View.OnClickListener() {
+       /* tv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, WelcomeActivity.class);
@@ -113,6 +114,18 @@ public class LoginActivity extends Activity {
                 finish();
                 overridePendingTransition(R.anim.scale_translate,
                         R.anim.my_alpha_action);
+            }
+        });*/
+
+        _signupLink.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // Start the Signup activity
+                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+                startActivity(intent);
+                finish();
+
             }
         });
 
@@ -221,25 +234,25 @@ public class LoginActivity extends Activity {
     }
 
     /*注册按钮的点击事件*/
-    private void regist() {
-        /*1.获取输入的用户名密码*/
+    /*private void regist() {
+        *//*1.获取输入的用户名密码*//*
         final String name = et_login_name.getText().toString().trim();
         final String pwd = et_login_pass.getText().toString().trim();
-        /*2.校验输入的用户名密码*/
+        *//*2.校验输入的用户名密码*//*
         if (TextUtils.isEmpty(name) || TextUtils.isEmpty(pwd)) {
             Toast.makeText(this, "↑↑↑↑↑输入的用户名密码再注册好吧！", Toast.LENGTH_SHORT).show();
-            /*退出注册逻辑判断*/
+            *//*退出注册逻辑判断*//*
             return;
         }
-        /*3.服务器注册账号*/
+        *//*3.服务器注册账号*//*
         Model.getInstance().getGlobalThreadPool().execute(new Runnable() {
             @Override
             public void run() {
                 try {
-                    /*服务器上注册*/
+                    *//*服务器上注册*//*
                     EMClient.getInstance().createAccount(name, pwd);
                     PostDataNor(name, pwd);
-                    /*更新页面显示*/
+                    *//*更新页面显示*//*
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -260,7 +273,7 @@ public class LoginActivity extends Activity {
 
             }
         });
-    }
+    }*/
 
     private void PostDataNor(String name,String pass) {
         String url = QQURL.REGISTER_NOR;
@@ -284,12 +297,13 @@ public class LoginActivity extends Activity {
     }
 
     private void initView() {
-        tv_back = findViewById(R.id.tv_back);
+//        tv_back = findViewById(tv_back);
         et_login_name = findViewById(R.id.et_login_name);
         et_login_pass = findViewById(R.id.et_login_pass);
-        bt_regist = findViewById(R.id.bt_regist);
+//        bt_regist = findViewById(R.id.bt_regist);
         bt_login = findViewById(R.id.bt_login);
         bt_qq = findViewById(R.id.bt_qq);
+        _signupLink = findViewById(R.id.link_signup);
     }
 
 

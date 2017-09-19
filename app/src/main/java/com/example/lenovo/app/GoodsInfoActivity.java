@@ -1,10 +1,11 @@
 package com.example.lenovo.app;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.Gravity;
@@ -23,6 +24,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.chenyu.library.Utils.AnimationUtils;
 import com.chenyu.library.XToast;
+import com.example.lenovo.app.Bean.RatingBean;
+import com.example.lenovo.app.DB.RatingUserDao;
 import com.example.lenovo.controller.activity.ChatActivity;
 import com.example.lenovo.controller.activity.SettingDB.CollectDao;
 import com.example.lenovo.home.bean.GoodsInfo;
@@ -38,7 +41,20 @@ import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
 import com.tencent.tauth.UiError;
 
-public class GoodsInfoActivity extends FragmentActivity  implements IUiListener {
+import java.util.List;
+import java.util.Random;
+
+import master.flame.danmaku.controller.DrawHandler;
+import master.flame.danmaku.danmaku.model.BaseDanmaku;
+import master.flame.danmaku.danmaku.model.DanmakuTimer;
+import master.flame.danmaku.danmaku.model.IDanmakus;
+import master.flame.danmaku.danmaku.model.android.DanmakuContext;
+import master.flame.danmaku.danmaku.model.android.Danmakus;
+import master.flame.danmaku.danmaku.parser.BaseDanmakuParser;
+import master.flame.danmaku.ui.widget.DanmakuView;
+
+
+public class GoodsInfoActivity extends Activity implements IUiListener {
     private ImageButton ibGoodInfoBack;
     private ImageButton ibGoodInfoMore;
     private ImageView ivGoodInfoImage, sc_image;
@@ -53,7 +69,7 @@ public class GoodsInfoActivity extends FragmentActivity  implements IUiListener 
     private TextView tvGoodInfoCart;
     private Button btnGoodInfoAddcart;
     private TextView tv_more_share;
-    private TextView tv_more_search;
+    private TextView tv_more_talk;
     private TextView tv_more_home;
     private Button btn_more;
     private GoodsInfo goodsInfo;
@@ -63,10 +79,22 @@ public class GoodsInfoActivity extends FragmentActivity  implements IUiListener 
     private CartStorage cartProvider;
     private String TAG;
     private CollectDao collectDao;
+    private boolean showDanmaku;
 
+    private DanmakuView danmakuView;
+
+    private DanmakuContext danmakuContext;
     private Tencent mTencent;
-
+    private RatingUserDao ratingUserDao;
     private String APP_ID = "1106333790";
+
+
+    private BaseDanmakuParser parser = new BaseDanmakuParser() {
+        @Override
+        protected IDanmakus parse() {
+            return new Danmakus();
+        }
+    };
 
     /**
      * Find the Views in the layout<br />
@@ -90,14 +118,115 @@ public class GoodsInfoActivity extends FragmentActivity  implements IUiListener 
         tvGoodInfoCart = (TextView) findViewById(R.id.tv_good_info_cart);
         btnGoodInfoAddcart = (Button) findViewById(R.id.btn_good_info_addcart);
         tv_more_share = findViewById(R.id.tv_more_share);
-        tv_more_search = findViewById(R.id.tv_more_search);
+        tv_more_talk = findViewById(R.id.tv_more_search);
         tv_more_home = findViewById(R.id.tv_more_home);
         btn_more = findViewById(R.id.btn_more);
 
         ll_root = (LinearLayout) findViewById(R.id.ll_root);
         initClickListener();
 
+
+        danmakuView = (DanmakuView) findViewById(R.id.danmaku_view);
+        danmakuView.enableDanmakuDrawingCache(true);
+        danmakuView.setCallback(new DrawHandler.Callback() {
+            @Override
+            public void prepared() {
+                showDanmaku = true;
+                danmakuView.start();
+                generateSomeDanmaku();
+            }
+
+            @Override
+            public void updateTimer(DanmakuTimer timer) {
+
+            }
+
+            @Override
+            public void danmakuShown(BaseDanmaku danmaku) {
+
+            }
+
+            @Override
+            public void drawingFinished() {
+
+            }
+        });
+        danmakuContext = DanmakuContext.create().setScrollSpeedFactor(1.5f);
+        /*DanmakuContext可以用于对弹幕的各种全局配置进行设定，如设置字体、设置最大显示行数等*/
+        danmakuView.prepare(parser, danmakuContext);
     }
+
+    /**
+     * 向弹幕View中添加一条弹幕
+     * @param content
+     *          弹幕的具体内容
+     * @param  withBorder
+     *          弹幕是否有边框
+     */
+    private void addDanmaku(String content, boolean withBorder) {
+        BaseDanmaku danmaku = danmakuContext.mDanmakuFactory.createDanmaku(BaseDanmaku.TYPE_SCROLL_RL);
+        danmaku.text = content;
+        danmaku.padding = 20;
+        danmaku.textSize = sp2px(20);
+        danmaku.textColor = Color.BLACK;
+        danmaku.setTime(/*danmakuView.getCurrentTime()*/4000);//显示时长 偏移时间
+        Log.i("info", String.valueOf(danmakuView.getCurrentTime()));
+        if (withBorder) {
+            danmaku.borderColor = Color.GREEN;
+        }
+        danmakuView.addDanmaku(danmaku);
+    }
+
+    /**
+     * 随机生成一些弹幕内容以供测试
+     */
+    private void generateSomeDanmaku() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(showDanmaku) {
+                    int time = new Random().nextInt(300);
+//                    String content = "" + <></>ime + time;
+                    List<RatingBean> rate = ratingUserDao.getRate();
+                    for (RatingBean ratingBean : rate) {
+                        String content = ratingBean.getRatingWord();
+                        addDanmaku(content, false);
+                    }
+//                    String content = "很好，商品很好！！！";
+                    try {
+                        Thread.sleep(time);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+    }
+
+    /**
+     * sp转px的方法。
+     */
+    public int sp2px(float spValue) {
+        final float fontScale = getResources().getDisplayMetrics().scaledDensity;
+        return (int) (spValue * fontScale + 0.5f);
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (danmakuView != null && danmakuView.isPrepared()) {
+            danmakuView.pause();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (danmakuView != null && danmakuView.isPrepared() && danmakuView.isPaused()) {
+            danmakuView.resume();
+        }
+    }
+
+
 
     private void initClickListener() {
         ibGoodInfoBack.setOnClickListener(new View.OnClickListener() {
@@ -143,7 +272,7 @@ public class GoodsInfoActivity extends FragmentActivity  implements IUiListener 
                         Intent intent = new Intent(GoodsInfoActivity.this, ChatActivity.class);
 
                         // 传递参数
-                        intent.putExtra(EaseConstant.EXTRA_USER_ID, "admin");
+                        intent.putExtra(EaseConstant.EXTRA_USER_ID, "111");
 
                         startActivity(intent);
                         overridePendingTransition(R.anim.push_up_in,
@@ -196,11 +325,13 @@ public class GoodsInfoActivity extends FragmentActivity  implements IUiListener 
 
             }
         });
-        tv_more_search.setOnClickListener(new View.OnClickListener() {
+        tv_more_talk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent inteng = new Intent(GoodsInfoActivity.this, RatingActivity.class);
+                inteng.putExtra("photo", goodsInfo.getFigure());
+                startActivity(inteng);
 
-                Toast.makeText(GoodsInfoActivity.this, "搜索", Toast.LENGTH_SHORT).show();
             }
         });
         tv_more_home.setOnClickListener(new View.OnClickListener() {
@@ -240,7 +371,7 @@ public class GoodsInfoActivity extends FragmentActivity  implements IUiListener 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_goods_info);
         findViews();
-
+        ratingUserDao = new RatingUserDao(getApplication());
         mTencent = Tencent.createInstance(APP_ID, getApplicationContext());
 
         collectDao = new CollectDao(getApplication());
@@ -392,6 +523,11 @@ public class GoodsInfoActivity extends FragmentActivity  implements IUiListener 
     protected void onDestroy() {
         super.onDestroy();
         finish();
+        showDanmaku = false;
+        if (danmakuView != null) {
+            danmakuView.release();
+            danmakuView = null;
+        }
 
     }
 

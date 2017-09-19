@@ -279,8 +279,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
                                         startActivity(intent);
 
                                         getActivity().finish();
-                                        getActivity().overridePendingTransition(R.anim.hyperspace,
-                                                R.anim.hyperspace_out);
+                                        getActivity(). overridePendingTransition(R.anim.fade, R.anim.hold);
 
                                     }
                                 });
@@ -573,6 +572,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
                 intent8.putExtra("nickName", userBean.getNickname());
                 intent8.putExtra("sex", String.valueOf(userBean.getSex()));
                 intent8.putExtra("sign", userBean.getSignture());
+                intent8.putExtra("hxid", userBean.getHxid());
                 startActivity(intent8);
 
                 break;

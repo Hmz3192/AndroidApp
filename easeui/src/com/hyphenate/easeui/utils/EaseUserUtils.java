@@ -7,12 +7,12 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.hyphenate.easeui.R;
 import com.hyphenate.easeui.controller.EaseUI;
 import com.hyphenate.easeui.controller.EaseUI.EaseUserProfileProvider;
 import com.hyphenate.easeui.domain.EaseUser;
 import com.hyphenate.easeui.util.QQUser;
+import com.squareup.picasso.Picasso;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -29,6 +29,8 @@ public class EaseUserUtils {
     static {
         userProvider = EaseUI.getInstance().getUserProfileProvider();
     }
+
+
 
     /**
      * get EaseUser according username
@@ -49,8 +51,8 @@ public class EaseUserUtils {
      * @param username
      */
     public static void setUserAvatar(Context context, String username, ImageView imageView) {
-        currentUser = username;
-        new MyThread(context,imageView).start();
+        ;
+        new MyThread(context,imageView,username).start();
 
     }
 
@@ -58,13 +60,14 @@ public class EaseUserUtils {
      * set user's nickname
      */
     public static void setUserNick(String username, TextView textView) {
-        if (textView != null) {
-            if (userBean != null && userBean.getNickname() != null) {
-                textView.setText(userBean.getNickname());
-            } else {
-                textView.setText(username);
-            }
-        }
+        new MyThread1(textView,username).start();
+//        if (textView != null) {
+//            if (userBean != null && userBean.getNickname() != null) {
+//                textView.setText(userBean.getNickname());
+//            } else {
+//                textView.setText(username);
+//            }
+//        }
     }
     public static class MyThread extends Thread {
 
@@ -72,9 +75,11 @@ public class EaseUserUtils {
         private final static String TAG = "My Thread ===> ";
         private final Context context;
         private final ImageView imageView;
+        private final String userName;
 
-        public MyThread(Context context,ImageView imageView) {
+        public MyThread(Context context,ImageView imageView,String userName) {
             this.context = context;
+            this.userName = userName;
             this.imageView = imageView;
         }
 
@@ -84,7 +89,7 @@ public class EaseUserUtils {
             OkHttpUtils
                     .get()
                     .url(url)
-                    .addParams("hxid", currentUser)
+                    .addParams("hxid", userName)
                     .build()
                     .execute(new StringCallback(){
 
@@ -103,24 +108,72 @@ public class EaseUserUtils {
 
         private void processData(String response) {
             userBean = JSON.parseObject(response, QQUser.UserBean.class);
-            Log.i("info", userBean.getPhoto() + "=-------------");
-            Log.e(TAG, "-----------------------------" + currentUser);
 
             if (userBean.getPhoto() != null) {
                 try {
 //                int avatarResId = Integer.parseInt(user.getAvatar());
-                    Glide.with(context).load(userBean.getPhoto()).into(imageView);
+                   /* Glide.with(context)
+                            .load(userBean.getPhoto())
+                            .diskCacheStrategy( DiskCacheStrategy.NONE )//禁用磁盘缓存
+                            .skipMemoryCache( true )//跳过内存缓存
+                            .into(imageView);*/
+                    Picasso.with(context)
+                            .load(userBean.getPhoto())
+//                            .networkPolicy(NetworkPolicy.NO_CACHE)
+//                            .memoryPolicy(MemoryPolicy.NO_CACHE)//不加载缓存
+                            .into(imageView);
                 } catch (Exception e) {
                     //use default avatar
                     Glide.with(context)
                             .load(currentUser)
-                            .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .placeholder(R.drawable.ease_default_avatar)
                             .into(imageView);
                 }
             } else {
                 Glide.with(context).load(R.drawable.ease_default_avatar).into(imageView);
             }
+        }
+    }
+    public static class MyThread1 extends Thread {
+
+        //继承Thread类，并改写其run方法
+        private final static String TAG = "My Thread ===> ";
+        private final TextView textView;
+        private final String userName;
+        private QQUser.UserBean userBean1;
+
+        public MyThread1(TextView textView,String userName) {
+            this.textView = textView;
+            this.userName = userName;
+        }
+
+        public void run() {
+            Log.d(TAG, "run");
+            String url = "http://101.201.234.133:8111/AndroidCon/user/getPic";
+            OkHttpUtils
+                    .get()
+                    .url(url)
+                    .addParams("hxid", userName)
+                    .build()
+                    .execute(new StringCallback() {
+
+                        @Override
+                        public void onError(Call call, Exception e, int id) {
+                            Log.i("info", "failed");
+                        }
+
+                        @Override
+                        public void onResponse(String response, int id) {
+                            processData(response);
+                        }
+
+                    });
+        }
+
+        private void processData(String response) {
+            userBean1 = JSON.parseObject(response, QQUser.UserBean.class);
+            textView.setText(userBean1.getNickname());
+
         }
     }
 }

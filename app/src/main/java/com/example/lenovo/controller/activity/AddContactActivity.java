@@ -1,23 +1,33 @@
 package com.example.lenovo.controller.activity;
 
 import android.app.Activity;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
+import com.example.lenovo.app.Bean.QQUser;
 import com.example.lenovo.model.Model;
 import com.example.lenovo.model.bean.UserInfoBean;
 import com.example.lenovo.myapplication.R;
+import com.example.lenovo.utils.QQURL;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.exceptions.HyphenateException;
+import com.squareup.picasso.Picasso;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+import okhttp3.Call;
 
 // 添加联系人页面
 public class AddContactActivity extends Activity {
@@ -26,16 +36,16 @@ public class AddContactActivity extends Activity {
     private RelativeLayout rl_add;
     private TextView tv_add_name;
     private Button bt_add_add;
+    private ImageView iv_add_photo;
     private UserInfoBean userInfo;
+    private RelativeLayout ll_not;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(0xffed3f3f);
-        }
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_add_contact);
         // 初始化view
         initView();
@@ -49,6 +59,12 @@ public class AddContactActivity extends Activity {
             @Override
             public void onClick(View v) {
                 find();
+                ll_not.setVisibility(View.GONE);
+                rl_add.setVisibility(View.GONE);
+                InputMethodManager imm  = (InputMethodManager) getApplication().getSystemService(INPUT_METHOD_SERVICE);
+                if (imm.isActive()) {
+                    imm.hideSoftInputFromWindow(tv_add_find.getApplicationWindowToken(), 0);
+                }
             }
         });
 
@@ -64,10 +80,10 @@ public class AddContactActivity extends Activity {
     // 查找按钮的处理
     private void find() {
         // 获取输入的用户名称
-        final String name = et_add_name.getText().toString();
+        final String hxdi = et_add_name.getText().toString();
 
         // 校验输入的名称
-        if (TextUtils.isEmpty(name)) {
+        if (TextUtils.isEmpty(hxdi)) {
             Toast.makeText(AddContactActivity.this, "输入的用户名称不能为空", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -76,20 +92,60 @@ public class AddContactActivity extends Activity {
             @Override
             public void run() {
                 // 去服务器判断当前查找的用户是否存在
-                userInfo = new UserInfoBean(name);
-
+                userInfo = new UserInfoBean(hxdi);
+                getDataFromMy(userInfo.getName(), rl_add, ll_not, tv_add_name,iv_add_photo);
                 // 更新UI显示
-                runOnUiThread(new Runnable() {
+              /*  runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         rl_add.setVisibility(View.VISIBLE);
                         tv_add_name.setText(userInfo.getName());
                     }
-                });
+                });*/
             }
         });
 
 
+    }
+
+    private void getDataFromMy(String hxid, final RelativeLayout rl_add, final RelativeLayout ll_not, final TextView tv_add_name, final ImageView iv_add_photo) {
+
+        String url = QQURL.GETONEINFO;
+        OkHttpUtils
+                .get()
+                .url(url)
+                .addParams("hxid", hxid)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        ll_not.setVisibility(View.INVISIBLE);
+
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        Log.i("info", "成功获取数据：" + response);
+                        QQUser.UserBean userBean = JSON.parseObject(response, QQUser.UserBean.class);
+                        try {
+                            tv_add_name.setText(userBean.getNickname());
+                            if (!userBean.getPhoto().equalsIgnoreCase("0")) {
+                                Picasso.with(getApplication())
+                                        .load(userBean.getPhoto())
+//                                    .networkPolicy(NetworkPolicy.NO_CACHE)
+//                                    .memoryPolicy(MemoryPolicy.NO_CACHE)//不加载缓存
+                                        .into(iv_add_photo);
+                            }
+                            rl_add.setVisibility(View.VISIBLE);
+                        } catch (Exception e) {
+                            ll_not.setVisibility(View.VISIBLE);
+                            tv_add_name.setText("");
+                        }
+
+
+                    }
+
+                });
     }
 
     // 添加按钮处理
@@ -126,6 +182,8 @@ public class AddContactActivity extends Activity {
         et_add_name = (EditText) findViewById(R.id.et_add_name);
         rl_add = (RelativeLayout) findViewById(R.id.rl_add);
         tv_add_name = (TextView) findViewById(R.id.tv_add_name);
+        ll_not = findViewById(R.id.ll_not);
         bt_add_add = (Button) findViewById(R.id.bt_add_add);
+        iv_add_photo = findViewById(R.id.iv_add_photo);
     }
 }
