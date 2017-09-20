@@ -27,7 +27,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-
         tools:replace="Android:icon, android:theme">
 
         <!-- 设置环信应用的AppKey -->
@@ -130,9 +129,11 @@
         <activity
             android:name="com.example.lenovo.app.RatingActivity"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name="com.example.lenovo.app.RegisterActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize"
-            android:theme="@style/AppTheme.Dark"></activity>
+        <activity
+            android:name="com.example.lenovo.app.RegisterActivity"
+            android:theme="@style/AppTheme.Dark"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity android:name="com.example.lenovo.controller.activity.settingActivity.ScoreActivity"></activity>
     </application>
 
 </manifest>

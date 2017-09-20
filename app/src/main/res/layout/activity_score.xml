@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.lenovo.controller.activity.settingActivity.ScoreActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_top_bar"
+        android:background="#9fd1fb"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/sco_back_user"
+            android:layout_marginLeft="11dp"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ease_mm_title_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="我的积分"
+            android:layout_marginBottom="10dp"
+            android:textColor="#fff"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+
+    <com.example.lenovo.utils.FishDrawableView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00FFFFFF"
+        >
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="327"
+            android:id="@+id/tv_score"
+            android:textSize="50sp"
+            android:textColor="@color/black_deep"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="70dp"
+            />
+        <View
+            android:layout_width="90dp"
+            android:layout_height="4dp"
+            android:background="#c6bfbf"
+            android:layout_below="@+id/tv_score"
+            android:layout_marginTop="5dp"
+            ></View>
+        </RelativeLayout>
+
+    </com.example.lenovo.utils.FishDrawableView>
+</LinearLayout>

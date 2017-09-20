@@ -38,6 +38,7 @@ import com.example.lenovo.controller.activity.settingActivity.CollectActivity;
 import com.example.lenovo.controller.activity.settingActivity.DiagnoseActivity;
 import com.example.lenovo.controller.activity.settingActivity.LocationActivity;
 import com.example.lenovo.controller.activity.settingActivity.MyCodeActivity;
+import com.example.lenovo.controller.activity.settingActivity.ScoreActivity;
 import com.example.lenovo.controller.activity.settingActivity.UserActivity;
 import com.example.lenovo.model.Model;
 import com.example.lenovo.myapplication.R;
@@ -103,6 +104,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
     private QQUser.UserBean userBean;
     private String currentUser;
     private TextView tv_user;
+    private TextView tv_user_feedback;
     private String a = "0";
 
     @Override
@@ -144,6 +146,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
         textview2 = (TextView) view.findViewById(R.id.textview2);
         tv_location = view.findViewById(R.id.tv_location);
 
+        tv_user_feedback = view.findViewById(R.id.tv_user_feedback);
         tv_user_version = view.findViewById(R.id.tv_user_version);
         tv_user_code = view.findViewById(R.id.tv_user_code);
         bt_setting_out = (TextView) view.findViewById(R.id.bt_setting_out);
@@ -169,7 +172,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
         tv_user_receive.setOnClickListener(this);
         tv_user_finish.setOnClickListener(this);
         tv_user_drawback.setOnClickListener(this);
-
+        tv_user_feedback.setOnClickListener(this);
         tv_user_code.setOnClickListener(this);
 
         tv_all_order.setOnClickListener(this);
@@ -574,8 +577,10 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
                 intent8.putExtra("sign", userBean.getSignture());
                 intent8.putExtra("hxid", userBean.getHxid());
                 startActivity(intent8);
-
                 break;
+            case R.id.tv_user_feedback:
+                Intent intent9 = new Intent(getActivity(), ScoreActivity.class);
+                startActivity(intent9);
         }
     }
 
