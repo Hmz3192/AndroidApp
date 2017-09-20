@@ -153,7 +153,7 @@
                 android:id="@+id/tv_user_invitation"
                 style="@style/TextStyle"
                 android:drawableLeft="@drawable/user_channel_icon_invitation"
-                android:text="邀请分享" />
+                android:text="上传商品" />
 
             <View
                 android:layout_width="match_parent"
@@ -164,7 +164,7 @@
                 android:id="@+id/tv_user_feedback"
                 style="@style/TextStyle"
                 android:drawableLeft="@drawable/user_channel_icon_feedback"
-                android:text="校淘资讯" />
+                android:text="我的积分" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="8dp"
@@ -205,7 +205,7 @@
                 android:id="@+id/tv_user_prize"
                 style="@style/TextStyle"
                 android:drawableLeft="@drawable/user_channel_icon_prize"
-                android:text="我的奖品" />
+                android:text="我的商品" />
 
             <View
                 android:layout_width="match_parent"
