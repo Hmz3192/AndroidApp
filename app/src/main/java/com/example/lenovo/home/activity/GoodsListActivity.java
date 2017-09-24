@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lenovo.app.GoodsInfoActivity;
+import com.example.lenovo.controller.activity.SettingDB.GoodDao;
 import com.example.lenovo.home.adapter.ExpandableListViewAdapter;
 import com.example.lenovo.home.adapter.GoodsListAdapter;
 import com.example.lenovo.home.bean.GoodsInfo;
@@ -62,7 +63,7 @@ public class GoodsListActivity extends Activity implements View.OnClickListener 
             Constants.FOOD_STORE,
             Constants.SHOUSHI_STORE,
     };
-    private List<TypeListBean.ResultBean.PageDataBean> page_data,page_data2;
+    private List<TypeListBean.ResultBean.PageDataBean> page_data, page_data2;
     private GoodsListAdapter adapter1;
 
     /*筛选的额外窗*/
@@ -98,7 +99,7 @@ public class GoodsListActivity extends Activity implements View.OnClickListener 
     private int price_statue = 1;
     private int them_statue = 1;
     private TextView ib_drawer_layout_confirm;
-
+    private GoodDao goodDao;
     /**
      * Find the Views in the layout<br />
      * <br />
@@ -196,13 +197,13 @@ public class GoodsListActivity extends Activity implements View.OnClickListener 
                 /*价格由高到低,倒序*/
                 TypeListBean.SortList<TypeListBean.ResultBean.PageDataBean> sortList = new TypeListBean.SortList<>();
                 sortList.Sort(page_data, "getCover_price", "desc");
-                setAdapter();
+                setAdapter(page_data);
             } else {
                 // 箭头向上红
                 ivGoodsListArrow.setBackgroundResource(R.drawable.new_price_sort_asc);
                 TypeListBean.SortList<TypeListBean.ResultBean.PageDataBean> sortList = new TypeListBean.SortList<>();
                 sortList.Sort(page_data, "getCover_price", null);
-                setAdapter();
+                setAdapter(page_data);
             }
         } else if (v == tvGoodsListSort) {
             //综合排序点击事件
@@ -211,7 +212,7 @@ public class GoodsListActivity extends Activity implements View.OnClickListener 
             tvGoodsListPrice.setTextColor(Color.parseColor("#333538"));
             tvGoodsListSort.setTextColor(Color.parseColor("#ed4141"));
             page_data = page_data2;
-            setAdapter();
+            setAdapter(page_data);
         } else if (v == tvGoodsListSelect) {
             //筛选的点击事件
             tvGoodsListSelect.setTextColor(Color.parseColor("#ed4141"));
@@ -305,17 +306,36 @@ public class GoodsListActivity extends Activity implements View.OnClickListener 
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_goods_list);
+        goodDao = new GoodDao(getApplication());
         findViews();
 
         Intent intent = getIntent();
         position = intent.getIntExtra("position", -1);
-
+        if (position == 9) {
+            getDataFromSQL();
+        } else {
         /*服务器获取数据*/
-        getDataFromNet();
+            getDataFromNet();
+        }
         ll_select_root.setVisibility(View.VISIBLE);
         ib_drawer_layout_back.setVisibility(View.VISIBLE);
         /*筛选页面*/
         showSelectorLayout();
+    }
+
+    private void getDataFromSQL() {
+        try {
+            page_data = goodDao.getGoods();
+        } catch (Exception e) {
+            finish();
+        }
+
+
+        GridLayoutManager manager = new GridLayoutManager(GoodsListActivity.this, 2);
+        recyclerview.setLayoutManager(manager);
+        recyclerview.addItemDecoration(new SpaceItemDecoration(10));
+        setAdapter(page_data);
+
     }
 
     //筛选页面
@@ -418,7 +438,7 @@ public class GoodsListActivity extends Activity implements View.OnClickListener 
                         GridLayoutManager manager = new GridLayoutManager(GoodsListActivity.this, 2);
                         recyclerview.setLayoutManager(manager);
                         recyclerview.addItemDecoration(new SpaceItemDecoration(10));
-                        setAdapter();
+                        setAdapter(page_data);
                         page_data2 = page_data;
                     }
                     break;
@@ -430,10 +450,10 @@ public class GoodsListActivity extends Activity implements View.OnClickListener 
         }
     }
 
-    private void setAdapter() {
+    private void setAdapter(List<TypeListBean.ResultBean.PageDataBean> page_data) {
 //        GridLayoutManager manager = new GridLayoutManager(GoodsListActivity.this, 2);
 //        recyclerview.setLayoutManager(manager);
-        adapter1 = new GoodsListAdapter(GoodsListActivity.this, page_data);
+        adapter1 = new GoodsListAdapter(GoodsListActivity.this, page_data,position);
 //                        recyclerview.addItemDecoration(new DividerItemDecoration(GoodsListActivity.this, manager.getOrientation()));
 //        recyclerview.addItemDecoration(new SpaceItemDecoration(10));
         recyclerview.setAdapter(adapter1);
@@ -448,6 +468,7 @@ public class GoodsListActivity extends Activity implements View.OnClickListener 
                 GoodsInfo goodsBean = new GoodsInfo(cover_price, figure, name, product_id);
                 Intent intent = new Intent(GoodsListActivity.this, GoodsInfoActivity.class);
                 intent.putExtra("goodsbean", goodsBean);
+                intent.putExtra("position", String.valueOf(position));
                 startActivity(intent);
             }
         });

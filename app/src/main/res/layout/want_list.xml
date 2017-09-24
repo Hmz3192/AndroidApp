@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="5dp"
+    android:id="@+id/ll_all"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="370dp"
+        android:layout_height="140dp"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/want_list"
+                android:layout_width="290dp"
+                android:layout_height="40dp"
+                android:text="标题一********$$$$$$$$$$"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/tv_inside"
+                style="@style/want_list"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:text="内容一内容一内容一内容一内容一内容一内容一内容一内容一内容一内容一内容一)"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/want_list"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text="来自胡*"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_date"
+                style="@style/want_list"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="发布于2017/09/12"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:src="@drawable/atguigu_logo" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#eee"></View>
+
+</LinearLayout>

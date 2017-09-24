@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -29,17 +30,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="我的积分"
+            android:text="我的鱼塘"
             android:layout_marginBottom="10dp"
             android:textColor="#fff"
             android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/iv_quest"
+            android:src="@drawable/question_png"
+
+            android:layout_alignBottom="@+id/sco_back_user"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp" />
     </RelativeLayout>
-
-
     <com.example.lenovo.utils.FishDrawableView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#00FFFFFF"
+        android:background="#00156769"
         >
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -63,6 +74,64 @@
             android:layout_marginTop="5dp"
             ></View>
         </RelativeLayout>
+        <com.github.clans.fab.FloatingActionMenu
+            android:id="@+id/menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="60dp"
+            android:layout_alignParentRight="true"
+            fab:menu_colorNormal="@color/accent"
+            fab:menu_colorPressed="@color/primary"
+            >
 
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/menu_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                fab:fab_size="mini"
+                android:src="@drawable/clean"
+                fab:fab_colorRipple="@color/primary_dark"
+                fab:fab_colorNormal="@color/primary"
+                fab:fab_label="喂食-1积分1次" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/menu_del"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                fab:fab_size="mini"
+                android:src="@drawable/food"
+
+                fab:fab_colorRipple="@color/primary_dark"
+                fab:fab_colorNormal="@color/primary"
+                fab:fab_label="打理-10积分1次" />
+        </com.github.clans.fab.FloatingActionMenu>
+
+        <RelativeLayout
+            android:id="@+id/leaf_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            >
+
+            <com.example.lenovo.utils.LeafLoadingView
+                android:id="@+id/leaf_loading"
+                android:layout_width="302dp"
+                android:layout_height="61dp"
+                android:layout_marginLeft="20dp" />
+
+            <ImageView
+                android:id="@+id/fan_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="55dp"
+                android:src="@drawable/fengshan" />
+        </RelativeLayout>
     </com.example.lenovo.utils.FishDrawableView>
+
+
+
 </LinearLayout>

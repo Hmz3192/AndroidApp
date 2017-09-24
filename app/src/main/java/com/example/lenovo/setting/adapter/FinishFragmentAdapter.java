@@ -53,6 +53,7 @@ public class FinishFragmentAdapter extends RecyclerView.Adapter {
             public void onClick(View view) {
                 Intent intent = new Intent(mcontext, RatingActivity.class);
                 intent.putExtra("photo", datas.get(position).getUrl());
+                intent.putExtra("see", "yes");
                 mcontext.startActivity(intent);
 
             }

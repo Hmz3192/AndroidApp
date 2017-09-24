@@ -13,7 +13,38 @@
         android:id="@+id/ivAdam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_centerInParent="true"
-        android:background="@drawable/view" />
+        android:layout_marginTop="170dp"
+
+        android:background="@drawable/view"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="让   二   手   更   方   便"
+        android:textSize="30sp"
+        android:textColor="#000"
+        android:id="@+id/tv_one"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/ivAdam"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="40dp" />
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="让   关   系   更   密   切"
+        android:textSize="30sp"
+        android:textColor="#000"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/tv_one"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp" />
 </RelativeLayout>

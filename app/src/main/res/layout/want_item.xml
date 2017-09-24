@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="68dp"
+            android:src="@drawable/atguigu_logo"
+            />
+        <TextView
+            android:layout_width="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_height="68dp"
+            android:gravity="center_vertical"
+            android:text="求购信息"
+            android:textSize="20sp"
+            android:textColor="#000"
+            />
+
+
+        <ViewFlipper
+            android:id="@+id/vf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoStart="true"
+            android:background="#fff"
+            android:flipInterval="3000"
+            android:inAnimation="@anim/anim_marquee_in"
+            android:outAnimation="@anim/anim_marquee_out"
+            android:layout_marginLeft="2dp"
+             />
+
+
+    </LinearLayout>
+
+</LinearLayout>

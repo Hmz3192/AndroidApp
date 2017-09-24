@@ -1,5 +1,7 @@
 package com.example.lenovo.home.adapter;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,11 +24,13 @@ public class GoodsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     private final List<TypeListBean.ResultBean.PageDataBean> datas;
     private final GoodsListActivity mcontext;
+    private final int position;
     private OnItemClickListener onItemClickListener;
 
-    public GoodsListAdapter(GoodsListActivity mContext, List<TypeListBean.ResultBean.PageDataBean> page_data) {
+    public GoodsListAdapter(GoodsListActivity mContext, List<TypeListBean.ResultBean.PageDataBean> page_data, int position) {
         this.mcontext = mContext;
         this.datas = page_data;
+        this.position = position;
     }
 
     @Override
@@ -71,7 +75,12 @@ public class GoodsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         public void setData(TypeListBean.ResultBean.PageDataBean data) {
             this.data = data;
-            Glide.with(mcontext).load(Constants.BASE_URL_IMAGE +data.getFigure()).into(iv_hot);
+            if (position == 9) {
+                Bitmap bm = BitmapFactory.decodeFile(data.getFigure());
+                iv_hot.setImageBitmap(bm);
+            } else {
+                Glide.with(mcontext).load(Constants.BASE_URL_IMAGE +data.getFigure()).into(iv_hot);
+            }
             tv_name.setText(data.getName());
             tv_price.setText("￥" + data.getCover_price());
 

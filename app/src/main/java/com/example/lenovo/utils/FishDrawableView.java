@@ -37,8 +37,8 @@ public class FishDrawableView extends RelativeLayout {
 	private int mScreenHeight;
 	private ImageView ivFish;
 	private FishDrawable fishDrawable;
-	private ObjectAnimator animator;
 	private ObjectAnimator rippleAnimator;
+	private ObjectAnimator animator;
 	private Paint mPaint;
 	private int alpha = 100;
 	private Canvas canvas;

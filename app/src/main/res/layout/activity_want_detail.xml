@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.lenovo.home.activity.WantDetailActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#9fd1fb">
+
+        <ImageButton
+            android:id="@+id/ib_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/top_bar_left_back" />
+
+        <TextView
+            android:id="@+id/tv_page"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="二手求购"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <!--分割线-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#eeee" />
+    <!--framelayout帧布局-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="2dp"
+        android:layout_weight="1">
+
+        <com.example.lenovo.view.ScrollViewContainer
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="回收二手手机电脑奢侈品平板等，安全放心，有意私我！"
+                        android:textColor="#000"
+                        android:textSize="28sp" />
+
+
+                    <TextView
+                        android:id="@+id/tv_user"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="小*米"
+                        android:textColor="#646262"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/tv_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="2017/12/09"
+                        android:textColor="#646262"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_one"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/atguigu_logo" />
+
+                    <TextView
+                        android:id="@+id/tv_one"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="大家好，楼主北方人，本人常年回收各种苹果三星魅族小米华为oppovivo等手机、各种型号笔记本电脑、单反相机、iPad平板、名贵手表、购物卡、汽车、电动车等等一切贵重物品都可以换钱。"
+                        android:textSize="25sp" />
+
+
+                    <ImageView
+                        android:id="@+id/iv_two"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/atguigu_logo" />
+
+                    <TextView
+                        android:id="@+id/tv_two"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="所有急用钱都可以找我、常年稳定，安全靠谱，已经成为生活的一部分了，绝对靠谱，绝对正规！微号 ***** 交友应急备用都可以！"
+                        android:textSize="25sp"></TextView>
+
+                    <ImageView
+                        android:id="@+id/iv_three"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/atguigu_logo" />
+
+                    <TextView
+                        android:id="@+id/tv_three"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="一律走宝，正规流程，假货勿扰】跟我打过交道的吧友都知道我很爽快，从来不墨迹！绝对靠谱、诚信本分，速度吧！另外有实力的朋友，一切内部渠道，公司内部优惠，ZF公职，特殊权限，帮助服务，等等一切能与人方便的也可以联系我，备用交友，长期资源互惠！"
+                        android:textSize="25sp"></TextView>
+
+                </LinearLayout>
+            </ScrollView>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="全部评论"
+                android:textColor="@color/holo_red_light"
+                android:textSize="20sp"
+                />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#eeee"
+                    ></View>
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/lv_comm"
+                    ></android.support.v7.widget.RecyclerView>
+
+                </LinearLayout>
+            </ScrollView>
+        </com.example.lenovo.view.ScrollViewContainer>
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="4dp"
+        android:background="#fff">
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/bt_talk"
+            android:layout_width="320dp"
+            android:background="@drawable/shape_buton_talk"
+            android:layout_height="35dp"
+            android:padding="12dp"
+            android:textSize="10sp"
+
+            android:hint="说点什么！"/>
+        <ImageView
+            android:id="@+id/btn_send"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="2dp"
+            android:src="@drawable/send"
+            />
+    </LinearLayout>
+</LinearLayout>
+

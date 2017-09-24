@@ -18,6 +18,7 @@
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name="com.example.lenovo.app.MyApplication"
@@ -133,7 +134,27 @@
             android:name="com.example.lenovo.app.RegisterActivity"
             android:theme="@style/AppTheme.Dark"
             android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity android:name="com.example.lenovo.controller.activity.settingActivity.ScoreActivity"></activity>
+        <activity android:name="com.example.lenovo.controller.activity.settingActivity.ScoreActivity" />
+        <activity
+            android:name="com.example.lenovo.controller.activity.settingActivity.UploadActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name="com.redare.imagepicker.activity.ImagesGridActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.redare.imagepicker.activity.ImagePreviewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.redare.imagepicker.activity.PreviewDelActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.lenovo.controller.activity.settingActivity.WantActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity android:name="com.example.lenovo.home.activity.WantListActivity" />
+        <activity
+            android:name="com.example.lenovo.home.activity.WantDetailActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity android:name="com.example.lenovo.controller.activity.settingActivity.PrizeActivity"></activity>
     </application>
 
 </manifest>

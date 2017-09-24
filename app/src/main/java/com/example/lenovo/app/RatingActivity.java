@@ -51,6 +51,8 @@ public class RatingActivity extends Activity implements RatingBar.OnRatingBarCha
     private TextView btn_send;
     private RatingUserDao dbHelper;
     private EditText ed_word;
+    private LinearLayout ll_see;
+    private String see = "yes";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,7 @@ public class RatingActivity extends Activity implements RatingBar.OnRatingBarCha
         dbHelper = new RatingUserDao(getApplication());
         Intent intent = getIntent();
         photo = intent.getStringExtra("photo");
+        see = intent.getStringExtra("see");
         initListener();
 
 
@@ -76,6 +79,7 @@ public class RatingActivity extends Activity implements RatingBar.OnRatingBarCha
         iv_pic = findViewById(R.id.iv_pic);
         setView();
         id_ping = findViewById(R.id.id_ping);
+        ll_see = findViewById(R.id.ll_see);
         ib_talk_back = findViewById(R.id.ib_talk_back);
         rb_niming = findViewById(R.id.rb_niming);
         tv_niming = findViewById(R.id.tv_niming);
@@ -120,6 +124,11 @@ public class RatingActivity extends Activity implements RatingBar.OnRatingBarCha
         });
         rabartwoBar = ((RatingBar) findViewById(R.id.rbTwo));
         rabartwoBar.setOnRatingBarChangeListener(this);
+
+            if (see.equalsIgnoreCase("no")) {
+                ll_see.setVisibility(View.GONE);
+            }
+
     }
 
     private void setView() {

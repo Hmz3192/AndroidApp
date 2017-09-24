@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+   <!-- <gradient
+        android:startColor="#dcdcdc"
+        android:endColor="@color/holo_red_light"
+        android:centerColor=""
+        android:angle="180"
+        android:centerX="0.4"
+        android:centerY="0.4"
+        android:type="linear"></gradient>-->
+    <stroke android:color="#aaaaaa"
+        android:width="1dp"></stroke>
+    <corners android:radius="100dp"></corners>
+    <solid android:color="#94c9f4"></solid>
+    <size android:width="140dp"
+        android:height="40dp"
+         ></size>
+
+</shape>
+
+<!--（1）solid：填充，设置填充的颜色；
+
+（2）stroke：描边，设置边界的宽度、颜色等；
+
+（3）corners：圆角，五个属性，全部设置的话，会覆盖；
+
+　　android:radius="20dp"                          设置四个角的半径
+　　android:topLeftRadius="20dp"              设置左上角的半径
+　　android:topRightRadius="20dp"            设置右上角的半径
+　　android:bottomLeftRadius="20dp"        设置右下角的半径
+　　android:bottomRightRadius="20dp"      设置左下角的半径
+
+（4）padding：定义内容离边界的距离，其中的属性类似于android:padding_left,android:padding_right；
+
+（5）gradient：对应颜色渐变；当设置填充颜色后，无渐变效果，android:angle 是指从哪个角度开始变，angle的值必须是45的倍数（包括0），仅在type="linear"有效，不然会报错；
+
+（6）size：设置大小；-->

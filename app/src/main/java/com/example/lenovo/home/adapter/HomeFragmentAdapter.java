@@ -16,13 +16,16 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
 
 import com.bumptech.glide.Glide;
 import com.example.lenovo.app.GoodsInfoActivity;
 import com.example.lenovo.home.activity.GoodsListActivity;
 import com.example.lenovo.home.activity.GoodsMoreActivity;
+import com.example.lenovo.home.activity.WantListActivity;
 import com.example.lenovo.home.bean.GoodsInfo;
 import com.example.lenovo.home.bean.ResultBeanData;
+import com.example.lenovo.home.bean.Test;
 import com.example.lenovo.myapplication.R;
 import com.example.lenovo.utils.Constants;
 import com.youth.banner.Banner;
@@ -30,7 +33,7 @@ import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
 import com.youth.banner.listener.OnBannerClickListener;
 import com.youth.banner.listener.OnLoadImageListener;
-import com.zhy.magicviewpager.transformer.RotateDownPageTransformer;
+import com.zhy.magicviewpager.transformer.RotateYTransformer;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -46,14 +49,16 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter {
     public static final int BANNER = 0;
     /*频道类型*/
     public static final int CHANNEL = 1;
+    /*求购信息*/
+    public static final int WANT = 2;
     /*活动类型*/
-    public static final int ACT = 2;
+    public static final int ACT = 3;
     /*秒杀类型*/
-    public static final int SECKILL = 3;
+    public static final int SECKILL = 4;
     /*推荐类型*/
-    public static final int RECOMMEND = 4;
+    public static final int RECOMMEND = 5;
     /*热卖类型*/
-    public static final int HOT = 5;
+    public static final int HOT = 6;
     private static final String GOODSBEAN = "goodsbean";
     /*初始化布局*/
     private final LayoutInflater mLayoutInflater;
@@ -90,6 +95,9 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter {
             return new RecommendViewHolder(mcontext, mLayoutInflater.inflate(R.layout.recommend_item, null));
         } else if (viewType == HOT) {
             return new HotViewHolder(mcontext, mLayoutInflater.inflate(R.layout.hot_item, null));
+        } else if (viewType == WANT) {
+            return new WantViewHolder(mcontext, mLayoutInflater.inflate(R.layout.want_item, null));
+
         }
 
         return null;
@@ -117,10 +125,45 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter {
         } else if (getItemViewType(position) == HOT) {
             HotViewHolder hotViewHolder = (HotViewHolder) holder;
             hotViewHolder.setData(resultBean.getHot_info());
+
+        }else if (getItemViewType(position) == WANT) {
+
+            WantViewHolder wantViewHolder = (WantViewHolder) holder;
+//            wantViewHolder.setData(testList);
         }
 
 
     }
+
+    class WantViewHolder extends RecyclerView.ViewHolder {
+        private final Context mcontext;
+        private ViewFlipper vf ;
+        public WantViewHolder(final Context mcontext,View itemView) {
+            super(itemView);
+            this.mcontext = mcontext;
+            vf = itemView.findViewById(R.id.vf);
+            vf.addView(itemView.inflate(mcontext, R.layout.item_want, null));
+            vf.addView(itemView.inflate(mcontext, R.layout.item_want2, null));
+            vf.addView(itemView.inflate(mcontext, R.layout.item_want3, null));
+            vf.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(mcontext, WantListActivity.class);
+                    mcontext.startActivity(intent);
+                }
+            });
+
+        }
+
+        public void setData(List<Test> testList) {
+//            adapter = new WantRecyleViewAdapter(mcontext, testList);
+//            rc_list.setAdapter(adapter);
+
+        }
+    }
+
+
+
 
     class HotViewHolder extends RecyclerView.ViewHolder {
 
@@ -128,7 +171,6 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter {
         private final Context mcontext;
         private TextView tv_more_hot;
         private GridView gv_hot;
-        private List<ResultBeanData.ResultBean.HotInfoBean> data;
 
         public HotViewHolder(final Context mcontext, View itemView) {
             super(itemView);
@@ -311,8 +353,8 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter {
             act_viewpager.setOffscreenPageLimit(3);//>=3
 
             //setPageTransformer 决定动画效果
-            act_viewpager.setPageTransformer(true, new
-                    RotateDownPageTransformer());
+            act_viewpager.setPageTransformer(true, new RotateYTransformer());
+//                    RotateDownPageTransformer(new AlphaPageTransformer(new ScaleInTransformer())));
             /*获得数据*/
             /*设置适配器,内部类生成了*/
             act_viewpager.setAdapter(new PagerAdapter() {
@@ -376,7 +418,7 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onItemClick(AdapterView parent, View view, int position, long id) {
 //                    Toast.makeText(mcontext, "position" + position, Toast.LENGTH_SHORT).show();
-                    if (position <= 8) {
+                    if (position <= 9) {
                         Intent intent = new Intent(mcontext, GoodsListActivity.class);
                         intent.putExtra("position", position);
                         mcontext.startActivity(intent);
@@ -472,6 +514,10 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter {
             case RECOMMEND:
                 currentType = RECOMMEND;
                 break;
+            case WANT:
+                currentType = WANT;
+                break;
+
             case HOT:
                 currentType = HOT;
                 break;
@@ -483,7 +529,7 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemCount() {
         /*开发过程中从1-->2*/
-        return 6;
+        return 7;
     }
 
 }

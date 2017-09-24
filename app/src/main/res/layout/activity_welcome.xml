@@ -15,6 +15,8 @@
         android:layout_height="wrap_content"
         android:background="#00ffffff" />
 
+    <include layout="@layout/view_page"></include>
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,12 +27,12 @@
             android:id="@+id/tv_app"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="67dp"
             android:text="校      淘"
             android:textColor="@color/btn_white_normal"
-            android:layout_marginTop="67dp"
-            android:textSize="35dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:textSize="35dp" />
 
         <!-- <TextView
          android:text="注  册"
@@ -49,14 +51,11 @@
             android:id="@+id/tv_login_first"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/shape_buton"
-            android:gravity="center"
             android:layout_marginTop="423dp"
+            android:background="@drawable/shape_buton_splash"
+            android:gravity="center"
             android:text="立  即  加  入"
-            android:textColor="@color/btn_white_normal"
-            />
+            android:textColor="@color/btn_white_normal" />
 
     </RelativeLayout>
-
-    <include layout="@layout/view_page"></include>
 </FrameLayout>

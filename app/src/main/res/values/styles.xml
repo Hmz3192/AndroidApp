@@ -57,5 +57,9 @@
         <item name="android:textSize">15sp</item>
     </style>
 
+    <style name="want_list">
+        <item name="android:textColor">@drawable/want_select</item>
+    </style>
+
 
 </resources>

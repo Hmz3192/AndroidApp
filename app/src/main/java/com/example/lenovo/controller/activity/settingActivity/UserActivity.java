@@ -83,7 +83,7 @@ public class UserActivity extends Activity implements View.OnClickListener {
     private File file;
     private TextView te_hxid;
     private String hxidge;
-
+    private int yourChoice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -262,13 +262,29 @@ public class UserActivity extends Activity implements View.OnClickListener {
                         }).setNegativeButton(R.string.dl_cancel, null).show();
                 break;
             case R.id.rl_sex:
-                final EditText editText2 = new EditText(this);
-                new AlertDialog.Builder(this).setTitle("设置性别").setIcon(android.R.drawable.ic_dialog_info).setView(editText2)
-                        .setPositiveButton(R.string.dl_ok, new DialogInterface.OnClickListener() {
+                final String[] items = { "男生","女生" };
+                yourChoice = 0;
+
+//                final EditText editText2 = new EditText(this);
+                AlertDialog.Builder singleChoiceDialog  = new AlertDialog.Builder(UserActivity.this);
+                singleChoiceDialog.setTitle("设置性别")
+                        .setIcon(android.R.drawable.ic_dialog_info)
+//                        .setView(editText2)
+                        .setSingleChoiceItems(items, 0,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                yourChoice = which;
+                            }
+                        });
+                singleChoiceDialog.setPositiveButton(R.string.dl_ok, new DialogInterface.OnClickListener() {
 
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                String sex = editText2.getText().toString();
+                                String sex = "男";
+                                if (yourChoice == 1) {
+                                    sex = "女";
+                                }
                                 if (TextUtils.isEmpty(sex)) {
                                     Toast.makeText(UserActivity.this, getString(R.string.toast_nick_not_isnull), Toast.LENGTH_SHORT).show();
                                     return;
@@ -277,6 +293,10 @@ public class UserActivity extends Activity implements View.OnClickListener {
                             }
                         }).setNegativeButton(R.string.dl_cancel, null).show();
                 break;
+
+
+
+
             case R.id.rl_sig:
                 final EditText editText3 = new EditText(this);
                 new AlertDialog.Builder(this).setTitle("设置签名").setIcon(android.R.drawable.ic_dialog_info).setView(editText3)
@@ -575,8 +595,8 @@ public class UserActivity extends Activity implements View.OnClickListener {
         if (res != 1) {
             runOnUiThread(new Runnable() {
                 public void run() {
-                    Toast.makeText(UserActivity.this, getString(R.string.toast_updatenick_fail), Toast.LENGTH_SHORT)
-                            .show();
+//                    Toast.makeText(UserActivity.this, getString(R.string.toast_updatenick_fail), Toast.LENGTH_SHORT)
+//                            .show();
                     dialog.dismiss();
                 }
             });
@@ -585,8 +605,8 @@ public class UserActivity extends Activity implements View.OnClickListener {
                 @Override
                 public void run() {
                     dialog.dismiss();
-                    Toast.makeText(UserActivity.this, getString(R.string.toast_updatenick_success), Toast.LENGTH_SHORT)
-                            .show();
+//                    Toast.makeText(UserActivity.this, getString(R.string.toast_updatenick_success), Toast.LENGTH_SHORT)
+//                            .show();
                     tv_sex.setText(sex);
                 }
             });

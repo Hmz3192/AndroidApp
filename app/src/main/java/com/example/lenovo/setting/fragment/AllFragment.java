@@ -42,7 +42,6 @@ public class AllFragment extends BaseFragment {
         View view = View.inflate(mcontext, R.layout.fragment_order, null);
         rvOrder = view.findViewById(R.id.recyclerview1);
         orderDao = new OrderDao(mcontext);
-
         return view;
     }
 

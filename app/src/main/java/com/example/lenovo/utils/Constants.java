@@ -27,6 +27,9 @@ public class Constants {
     /*所有订单*/
     public static final String ALL_ORDER_INFO = BASE_URL_JSON + "/ALL_ORDER.json";
 
+    /*所有的文章*/
+    public static final String ESSAY_INFO = BASE_URL_JSON + "/WANT_ESSAY.json";
+
 
     //服饰
     public static final String CLOSE_STORE = BASE_URL_JSON + "/CLOSE_STORE.json";

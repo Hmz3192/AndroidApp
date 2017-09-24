@@ -3,8 +3,11 @@ package com.example.lenovo.app;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -35,6 +38,8 @@ import com.example.lenovo.shoppingcart.Activity.ShoppingCartActivity;
 import com.example.lenovo.shoppingcart.utils.CartStorage;
 import com.example.lenovo.shoppingcart.view.AddSubView;
 import com.example.lenovo.utils.Constants;
+import com.hyphenate.chat.EMClient;
+import com.hyphenate.chat.EMGroup;
 import com.hyphenate.easeui.EaseConstant;
 import com.tencent.connect.share.QQShare;
 import com.tencent.tauth.IUiListener;
@@ -75,7 +80,7 @@ public class GoodsInfoActivity extends Activity implements IUiListener {
     private GoodsInfo goodsInfo;
     private GoodsInfo dataForView;
     private LinearLayout ll_root;
-    private String  enable;
+    private String enable;
     private CartStorage cartProvider;
     private String TAG;
     private CollectDao collectDao;
@@ -87,7 +92,7 @@ public class GoodsInfoActivity extends Activity implements IUiListener {
     private Tencent mTencent;
     private RatingUserDao ratingUserDao;
     private String APP_ID = "1106333790";
-
+    private int half = 1;
 
     private BaseDanmakuParser parser = new BaseDanmakuParser() {
         @Override
@@ -95,6 +100,7 @@ public class GoodsInfoActivity extends Activity implements IUiListener {
             return new Danmakus();
         }
     };
+    private String position;
 
     /**
      * Find the Views in the layout<br />
@@ -124,7 +130,7 @@ public class GoodsInfoActivity extends Activity implements IUiListener {
 
         ll_root = (LinearLayout) findViewById(R.id.ll_root);
         initClickListener();
-
+        intiName();
 
         danmakuView = (DanmakuView) findViewById(R.id.danmaku_view);
         danmakuView.enableDanmakuDrawingCache(true);
@@ -156,12 +162,33 @@ public class GoodsInfoActivity extends Activity implements IUiListener {
         danmakuView.prepare(parser, danmakuContext);
     }
 
+    private void intiName() {
+        Random ra = new Random();
+        int i = ra.nextInt(10000);
+        if (i >= 5000) {
+            tvGoodInfoStore.setText("胡*志提供发货");
+            tvGoodInfoCallcenter.setText("联系学长");
+            Drawable drawable = getResources().getDrawable(R.drawable.icon_callserver_unpressed);
+            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight()); //设置边界
+            tvGoodInfoCallcenter.setCompoundDrawables(null, drawable, null, null);//画在top
+            half = 1;
+            /*public void  setCompoundDrawables  (Drawable left, Drawable top, Drawable right, Drawable bottom);*/
+        } else {
+            tvGoodInfoStore.setText("**大学-**社团提供发货");
+            tvGoodInfoCallcenter.setText("联系社团");
+            Drawable drawable = getResources().getDrawable(R.drawable.group);
+            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight()); //设置边界
+            tvGoodInfoCallcenter.setCompoundDrawables(null, drawable, null, null);//画在top
+            half = 2;
+
+        }
+    }
+
     /**
      * 向弹幕View中添加一条弹幕
-     * @param content
-     *          弹幕的具体内容
-     * @param  withBorder
-     *          弹幕是否有边框
+     *
+     * @param content    弹幕的具体内容
+     * @param withBorder 弹幕是否有边框
      */
     private void addDanmaku(String content, boolean withBorder) {
         BaseDanmaku danmaku = danmakuContext.mDanmakuFactory.createDanmaku(BaseDanmaku.TYPE_SCROLL_RL);
@@ -184,7 +211,7 @@ public class GoodsInfoActivity extends Activity implements IUiListener {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while(showDanmaku) {
+                while (showDanmaku) {
                     int time = new Random().nextInt(300);
 //                    String content = "" + <></>ime + time;
                     List<RatingBean> rate = ratingUserDao.getRate();
@@ -210,6 +237,7 @@ public class GoodsInfoActivity extends Activity implements IUiListener {
         final float fontScale = getResources().getDisplayMetrics().scaledDensity;
         return (int) (spValue * fontScale + 0.5f);
     }
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -225,7 +253,6 @@ public class GoodsInfoActivity extends Activity implements IUiListener {
             danmakuView.resume();
         }
     }
-
 
 
     private void initClickListener() {
@@ -265,20 +292,28 @@ public class GoodsInfoActivity extends Activity implements IUiListener {
             public void onClick(View view) {
 
          /*   Toast.makeText(this, "客服", Toast.LENGTH_SHORT).show();*/
-                tvGoodInfoCallcenter.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
                     /*设置点击事件跳转到会话页面*/
-                        Intent intent = new Intent(GoodsInfoActivity.this, ChatActivity.class);
+                if (half == 1) {
+                    Intent intent = new Intent(GoodsInfoActivity.this, ChatActivity.class);
+                    // 传递参数
+                    intent.putExtra(EaseConstant.EXTRA_USER_ID, "111");
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.push_up_in,
+                            R.anim.push_up_out);
+                } else if (half == 2) {
+                    Intent intent1 = new Intent(GoodsInfoActivity.this, ChatActivity.class);
+                    // 传递会话类型
+                    intent1.putExtra(EaseConstant.EXTRA_CHAT_TYPE, EaseConstant.CHATTYPE_GROUP);
 
-                        // 传递参数
-                        intent.putExtra(EaseConstant.EXTRA_USER_ID, "111");
+                    // 群id
+                    // 群id
+                    EMGroup emGroup = EMClient.getInstance().groupManager().getAllGroups().get(1);
+                    intent1.putExtra(EaseConstant.EXTRA_USER_ID, emGroup.getGroupId());
 
-                        startActivity(intent);
-                        overridePendingTransition(R.anim.push_up_in,
-                                R.anim.push_up_out);
-                    }
-                });
+                    startActivity(intent1);
+                    overridePendingTransition(R.anim.push_up_in,
+                            R.anim.push_up_out);
+                }
             }
         });
         tvGoodInfoCollection.setOnClickListener(new View.OnClickListener() {
@@ -289,17 +324,17 @@ public class GoodsInfoActivity extends Activity implements IUiListener {
 //                Toast.makeText(this, "收藏成功", Toast.LENGTH_SHORT).show();
                     tvGoodInfoCollection.setText("已收藏");
                     tvGoodInfoCollection.setCompoundDrawablesWithIntrinsicBounds(null,
-                            ContextCompat.getDrawable(getBaseContext(),R.drawable.good_uncollected_selected), null, null);
+                            ContextCompat.getDrawable(getBaseContext(), R.drawable.good_uncollected_selected), null, null);
                     enable = "0";
-                    collectDao.addCollect(goodsInfo.getProduct_id(),goodsInfo.getName(), goodsInfo.getCover_price(), goodsInfo.getFigure(),enable);
+                    collectDao.addCollect(goodsInfo.getProduct_id(), goodsInfo.getName(), goodsInfo.getCover_price(), goodsInfo.getFigure(), enable);
                 } else if (enable.equalsIgnoreCase("0")) {
 //                Toast.makeText(this, "取消收藏", Toast.LENGTH_SHORT).show();
                     tvGoodInfoCollection.setCompoundDrawablesWithIntrinsicBounds(null,
-                            ContextCompat.getDrawable(getBaseContext(),R.drawable.good_uncollected), null, null);
+                            ContextCompat.getDrawable(getBaseContext(), R.drawable.good_uncollected), null, null);
 
                     tvGoodInfoCollection.setText("收藏");
                     enable = "1";
-                    collectDao.updateById(goodsInfo.getProduct_id(),enable);
+                    collectDao.updateById(goodsInfo.getProduct_id(), enable);
 
                 }
             }
@@ -329,6 +364,7 @@ public class GoodsInfoActivity extends Activity implements IUiListener {
             @Override
             public void onClick(View view) {
                 Intent inteng = new Intent(GoodsInfoActivity.this, RatingActivity.class);
+                inteng.putExtra("see", "no");
                 inteng.putExtra("photo", goodsInfo.getFigure());
                 startActivity(inteng);
 
@@ -380,12 +416,13 @@ public class GoodsInfoActivity extends Activity implements IUiListener {
         cartProvider = CartStorage.getInstance();
         /*接受数据*/
         goodsInfo = (GoodsInfo) getIntent().getSerializableExtra("goodsbean");
+        position = getIntent().getStringExtra("position");
         setCollectPic();
 
-        Log.e(TAG, "------"+goodsInfo);
+        Log.e(TAG, "------" + goodsInfo);
         if (goodsInfo != null) {
 //            Toast.makeText(this, "GoodsBean = " + goodsInfo.toString(),  Toast.LENGTH_SHORT).show();
-            setDataForView(goodsInfo);
+            setDataForView(goodsInfo, position);
         }
 
 
@@ -393,34 +430,42 @@ public class GoodsInfoActivity extends Activity implements IUiListener {
 
     private void setCollectPic() {
         enable = (collectDao.getGoodById(goodsInfo.getProduct_id())).getEnable();
-        if(enable != null){
-        if (enable.equalsIgnoreCase("0")) {
+        if (enable != null) {
+            if (enable.equalsIgnoreCase("0")) {
 //                Toast.makeText(this, "收藏成功", Toast.LENGTH_SHORT).show();
-            tvGoodInfoCollection.setText("已收藏");
-            tvGoodInfoCollection.setCompoundDrawablesWithIntrinsicBounds(null,
-                    ContextCompat.getDrawable(getBaseContext(), R.drawable.good_uncollected_selected), null, null);
+                tvGoodInfoCollection.setText("已收藏");
+                tvGoodInfoCollection.setCompoundDrawablesWithIntrinsicBounds(null,
+                        ContextCompat.getDrawable(getBaseContext(), R.drawable.good_uncollected_selected), null, null);
 //            enable = "1";
 //            collectDao.addCollect(goodsInfo.getName(), goodsInfo.getCover_price(), goodsInfo.getFigure(),enable);
-        } else if (enable.equalsIgnoreCase("1")) {
+            } else if (enable.equalsIgnoreCase("1")) {
 //                Toast.makeText(this, "取消收藏", Toast.LENGTH_SHORT).show();
-            tvGoodInfoCollection.setCompoundDrawablesWithIntrinsicBounds(null,
-                    ContextCompat.getDrawable(getBaseContext(),R.drawable.good_uncollected), null, null);
+                tvGoodInfoCollection.setCompoundDrawablesWithIntrinsicBounds(null,
+                        ContextCompat.getDrawable(getBaseContext(), R.drawable.good_uncollected), null, null);
 
-            tvGoodInfoCollection.setText("收藏");
+                tvGoodInfoCollection.setText("收藏");
 //            enable = "0";
 //            collectDao.updateByName(goodsInfo.getName(),enable);
 
-        }}else
+            }
+        } else
             enable = "1";
-            return;
+        return;
 
     }
 
 
     /*设置数据*/
-    public void setDataForView(GoodsInfo goodsInfo) {
+    public void setDataForView(GoodsInfo goodsInfo, String position) {
+        if (position.equalsIgnoreCase("9")) {
+            Bitmap bm = BitmapFactory.decodeFile(goodsInfo.getFigure());
+            ivGoodInfoImage.setImageBitmap(bm);
+            sc_image.setImageBitmap(bm);
+        } else {
         /*设置图片*/
-        Glide.with(this).load(Constants.BASE_URL_IMAGE + goodsInfo.getFigure()).into(ivGoodInfoImage);
+            Glide.with(this).load(Constants.BASE_URL_IMAGE + goodsInfo.getFigure()).into(ivGoodInfoImage);
+            Glide.with(this).load(Constants.BASE_URL_IMAGE + goodsInfo.getFigure()).into(sc_image);
+        }
         if (goodsInfo.getName() != null) {
         /*设置文本*/
             tvGoodInfoName.setText(goodsInfo.getName());
@@ -429,7 +474,6 @@ public class GoodsInfoActivity extends Activity implements IUiListener {
         tvGoodInfoPrice.setText("$" + goodsInfo.getCover_price());
 
 //        setWebViewData(goodsInfo.getProduct_id());
-        Glide.with(this).load(Constants.BASE_URL_IMAGE + goodsInfo.getFigure()).into(sc_image);
 
     }
 
@@ -565,7 +609,7 @@ public class GoodsInfoActivity extends Activity implements IUiListener {
         params.putString(QQShare.SHARE_TO_QQ_TITLE, "校淘商城");
         params.putString(QQShare.SHARE_TO_QQ_SUMMARY, goodsInfo.getName());
         params.putString(QQShare.SHARE_TO_QQ_TARGET_URL, Constants.BASE_URL_IMAGE + goodsInfo.getFigure());
-        params.putString(QQShare.SHARE_TO_QQ_IMAGE_URL, Constants.BASE_URL_IMAGE + goodsInfo.getFigure() );
+        params.putString(QQShare.SHARE_TO_QQ_IMAGE_URL, Constants.BASE_URL_IMAGE + goodsInfo.getFigure());
         params.putString(QQShare.SHARE_TO_QQ_APP_NAME, "校  淘 APP");
         params.putInt(QQShare.SHARE_TO_QQ_EXT_INT, QQShare.SHARE_TO_QQ_FLAG_QZONE_AUTO_OPEN);
         mTencent.shareToQQ(this, params, this);

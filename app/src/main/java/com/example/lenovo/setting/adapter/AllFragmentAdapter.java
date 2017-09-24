@@ -140,7 +140,6 @@ public class AllFragmentAdapter extends RecyclerView.Adapter {
             tv_delete_order = itemView.findViewById(R.id.tv_delete_order);
 
 
-
         }
 
         public void setData(AllOrder.ResultBean.AllOrderBean data) {

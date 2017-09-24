@@ -26,7 +26,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.chenyu.library.Utils.AnimationUtils;
@@ -38,8 +37,11 @@ import com.example.lenovo.controller.activity.settingActivity.CollectActivity;
 import com.example.lenovo.controller.activity.settingActivity.DiagnoseActivity;
 import com.example.lenovo.controller.activity.settingActivity.LocationActivity;
 import com.example.lenovo.controller.activity.settingActivity.MyCodeActivity;
+import com.example.lenovo.controller.activity.settingActivity.PrizeActivity;
 import com.example.lenovo.controller.activity.settingActivity.ScoreActivity;
+import com.example.lenovo.controller.activity.settingActivity.UploadActivity;
 import com.example.lenovo.controller.activity.settingActivity.UserActivity;
+import com.example.lenovo.controller.activity.settingActivity.WantActivity;
 import com.example.lenovo.model.Model;
 import com.example.lenovo.myapplication.R;
 import com.example.lenovo.setting.activity.OrderActivity;
@@ -106,7 +108,9 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
     private TextView tv_user;
     private TextView tv_user_feedback;
     private String a = "0";
-
+    private TextView tv_user_jiang;
+    private TextView tv_user_upload;
+    private TextView tv_user_want;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = View.inflate(getActivity(), R.layout.fragment_setting, null);
@@ -132,13 +136,13 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
         rl_switch_speaker = (RelativeLayout) view.findViewById(R.id.rl_switch_speaker);
         rl_switch_chatroom_leave = (RelativeLayout) view.findViewById(R.id.rl_switch_chatroom_owner_leave);
         ib_drawer_layout_confirm = view.findViewById(R.id.ib_drawer_layout_confirm);
-
+        tv_user_jiang = view.findViewById(R.id.tv_user_jiang);
         notifySwitch = (EaseSwitchButton) view.findViewById(R.id.switch_notification);
         soundSwitch = (EaseSwitchButton) view.findViewById(R.id.switch_sound);
         vibrateSwitch = (EaseSwitchButton) view.findViewById(R.id.switch_vibrate);
         speakerSwitch = (EaseSwitchButton) view.findViewById(R.id.switch_speaker);
         ownerLeaveSwitch = (EaseSwitchButton) view.findViewById(R.id.switch_owner_leave);
-
+        tv_user_upload = view.findViewById(R.id.tv_user_upload);
         blacklistContainer = (LinearLayout) view.findViewById(R.id.ll_black_list);
         llDiagnose = (LinearLayout) view.findViewById(R.id.ll_diagnose);
 
@@ -159,14 +163,13 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
         ib_drawer_back = view.findViewById(R.id.ib_drawer_back);
         tv_user_collect = view.findViewById(R.id.tv_user_collect);
         tv_all_order = view.findViewById(R.id.tv_all_order);
-
         tv_user_drawback = view.findViewById(R.id.tv_user_drawback);
         tv_user_finish = view.findViewById(R.id.tv_user_finish);
         tv_user_receive = view.findViewById(R.id.tv_user_receive);
         tv_user_send = view.findViewById(R.id.tv_user_send);
         tv_user_pay = view.findViewById(R.id.tv_user_pay);
         tv_user = view.findViewById(R.id.tv_user);
-
+        tv_user_want = view.findViewById(R.id.tv_user_want);
         tv_user_pay.setOnClickListener(this);
         tv_user_send.setOnClickListener(this);
         tv_user_receive.setOnClickListener(this);
@@ -174,7 +177,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
         tv_user_drawback.setOnClickListener(this);
         tv_user_feedback.setOnClickListener(this);
         tv_user_code.setOnClickListener(this);
-
+        tv_user_upload.setOnClickListener(this);
         tv_all_order.setOnClickListener(this);
         tv_user_collect.setOnClickListener(this);
         tv_user_version.setOnClickListener(this);
@@ -188,7 +191,8 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
         llDiagnose.setOnClickListener(this);
         blacklistContainer.setOnClickListener(this);
         tv_user.setOnClickListener(this);
-
+        tv_user_want.setOnClickListener(this);
+        tv_user_jiang.setOnClickListener(this);
     }
 
     @Override
@@ -294,7 +298,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
                                 getActivity().runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        Toast.makeText(getActivity(), "退出失败" + s, Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(getActivity(), "退出失败" + s, Toast.LENGTH_SHORT).show();
                                     }
                                 });
                             }
@@ -581,6 +585,20 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
             case R.id.tv_user_feedback:
                 Intent intent9 = new Intent(getActivity(), ScoreActivity.class);
                 startActivity(intent9);
+                break;
+            case R.id.tv_user_upload:
+                Intent intent10 = new Intent(getActivity(), UploadActivity.class);
+                startActivity(intent10);
+                break;
+
+            case R.id.tv_user_want:
+                Intent intent11 = new Intent(getActivity(), WantActivity.class);
+                startActivity(intent11);
+                break;
+            case R.id.tv_user_jiang:
+                Intent intent12 = new Intent(getActivity(), PrizeActivity.class);
+                startActivity(intent12);
+                break;
         }
     }
 

@@ -1,2 +1,2 @@
-include ':app', ':banner', ':addsubview', ':easeui', ':ViewChange', ':library', ':swiplayout'
+include ':app', ':banner', ':addsubview', ':easeui', ':ViewChange', ':library', ':swiplayout', ':androidimagepicker'
 include ':tBViewer'

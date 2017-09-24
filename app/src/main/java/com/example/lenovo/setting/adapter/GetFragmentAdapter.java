@@ -62,7 +62,7 @@ public class GetFragmentAdapter extends RecyclerView.Adapter{
         builder=new AlertDialog.Builder(mcontext);
         builder.setIcon(R.mipmap.atguigu_logo_1);
         builder.setTitle("提示消息");
-        builder.setMessage("确定要删除吗？");
+        builder.setMessage("是否确认收货吗？");
 
         //监听下方button点击事件
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -135,6 +135,7 @@ public class GetFragmentAdapter extends RecyclerView.Adapter{
             order_show_num = itemView.findViewById(R.id.order_show_num);
             order_show_price = itemView.findViewById(R.id.order_show_price);
             tv_delete_order = itemView.findViewById(R.id.tv_delete_order);
+            tv_delete_order.setText("确认收货");
 
 
 
