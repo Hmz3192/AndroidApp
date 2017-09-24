@@ -421,6 +421,7 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter {
                     if (position <= 9) {
                         Intent intent = new Intent(mcontext, GoodsListActivity.class);
                         intent.putExtra("position", position);
+                        intent.putExtra("yes", "1");
                         mcontext.startActivity(intent);
                     } else {
 //                        Toast.makeText(mcontext, "no choice", Toast.LENGTH_SHORT).show();

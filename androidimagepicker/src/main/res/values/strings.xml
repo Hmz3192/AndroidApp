@@ -16,7 +16,7 @@
   ~  */
   -->
 
-<resources>
+<resources tools:ignore="MissingTranslation" xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">imagepicker</string>
 
     <string name="hello_world">Hello world!</string>

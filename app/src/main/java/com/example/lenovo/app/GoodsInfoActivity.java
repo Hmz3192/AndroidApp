@@ -306,7 +306,6 @@ public class GoodsInfoActivity extends Activity implements IUiListener {
                     intent1.putExtra(EaseConstant.EXTRA_CHAT_TYPE, EaseConstant.CHATTYPE_GROUP);
 
                     // 群id
-                    // 群id
                     EMGroup emGroup = EMClient.getInstance().groupManager().getAllGroups().get(1);
                     intent1.putExtra(EaseConstant.EXTRA_USER_ID, emGroup.getGroupId());
 
@@ -457,12 +456,16 @@ public class GoodsInfoActivity extends Activity implements IUiListener {
 
     /*设置数据*/
     public void setDataForView(GoodsInfo goodsInfo, String position) {
-        if (position.equalsIgnoreCase("9")) {
-            Bitmap bm = BitmapFactory.decodeFile(goodsInfo.getFigure());
-            ivGoodInfoImage.setImageBitmap(bm);
-            sc_image.setImageBitmap(bm);
-        } else {
-        /*设置图片*/
+        try {
+            if (position.equalsIgnoreCase("9")) {
+                Bitmap bm = BitmapFactory.decodeFile(goodsInfo.getFigure());
+                ivGoodInfoImage.setImageBitmap(bm);
+                sc_image.setImageBitmap(bm);
+            }
+            Glide.with(this).load(Constants.BASE_URL_IMAGE + goodsInfo.getFigure()).into(ivGoodInfoImage);
+            Glide.with(this).load(Constants.BASE_URL_IMAGE + goodsInfo.getFigure()).into(sc_image);
+        } catch (Exception e) {
+            /*设置图片*/
             Glide.with(this).load(Constants.BASE_URL_IMAGE + goodsInfo.getFigure()).into(ivGoodInfoImage);
             Glide.with(this).load(Constants.BASE_URL_IMAGE + goodsInfo.getFigure()).into(sc_image);
         }

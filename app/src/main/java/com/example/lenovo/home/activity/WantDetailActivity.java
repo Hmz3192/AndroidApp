@@ -173,7 +173,7 @@ public class WantDetailActivity extends Activity implements View.OnClickListener
 
 
         } else if (kind == 1) {
-
+            oldNewBeanList = resultBeanList.getResult().getOldNew();
             if (postion < 6) {
                 oldNewBean = oldNewBeanList.get(postion);
                 tv_title.setText(oldNewBean.getTitle());
@@ -206,11 +206,13 @@ public class WantDetailActivity extends Activity implements View.OnClickListener
             }
 
         } else if (kind == 2) {
+            newSellBeanList = resultBeanList.getResult().getNewSell();
+
             if (postion < 6) {
                 newSellBean = newSellBeanList.get(postion);
                 tv_title.setText(newSellBean.getTitle());
                 tv_date.setText(newSellBean.getTime());
-                tv_user.setText("来自"+oldNewBean.getUser());
+                tv_user.setText("来自"+newSellBean.getUser());
                 Glide.with(getApplication()).load(Constants.BASE_URL_IMAGE + newSellBean.getUrl().get(0)).into(iv_one);
                 Glide.with(getApplication()).load(Constants.BASE_URL_IMAGE + newSellBean.getUrl().get(1)).into(iv_two);
                 Glide.with(getApplication()).load(Constants.BASE_URL_IMAGE + newSellBean.getUrl().get(2)).into(iv_three);
@@ -238,6 +240,8 @@ public class WantDetailActivity extends Activity implements View.OnClickListener
             }
 
         } else if (kind == 3) {
+            daiGouBeanList = resultBeanList.getResult().getDaiGou();
+
             if (postion < 6) {
                 daiGouBean = daiGouBeanList.get(postion);
                 tv_title.setText(daiGouBean.getTitle());

@@ -17,7 +17,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -34,10 +33,7 @@ import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
-import static com.example.lenovo.myapplication.R.id.name;
-import static com.example.lenovo.myapplication.R.id.tv_search_home;
-
-
+@SuppressWarnings("ResourceType")
 public class RatingActivity extends Activity implements RatingBar.OnRatingBarChangeListener {
     private ImageButton ib_talk_back;
     private String photo;
